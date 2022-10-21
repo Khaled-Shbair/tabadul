@@ -1,0 +1,58 @@
+name: tabadul
+description: tabadul application
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_zoom_drawer: ^3.0.3
+  flutter_svg: ^1.1.5
+  percent_indicator: ^4.2.2
+  url_launcher: ^6.1.6
+  animate_do: ^2.1.0
+  shared_preferences: ^2.0.15
+  get: ^4.6.5
+  image_picker: ^0.8.6
+  fluttertoast: ^8.1.1
+  firebase_core: ^2.0.0
+  firebase_auth: ^4.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.10.0
+  flutter_lints: ^2.0.0
+
+flutter_icons:
+  ios: true
+  android: true
+  image_path: "images/app_icon.png"
+
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - images/Departments/
+    - images/Login and Create Account/
+    - images/on boarding 1/
+    - images/
+
+  fonts:
+    - family: HelveticaLTArabic
+      fonts:
+        - asset: fonts/HelveticaNeueLT-Arabic-75-Bold.ttf
+
+    - family: HelveticaNeueLTRoman
+      fonts:
+        - asset: fonts/HelveticaNeue LT 55 Roman Bold.ttf

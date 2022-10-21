@@ -1,0 +1,33 @@
+const String allPages = '/allPages';
+const String infoScreen = '/infoScreen';
+const String mainScreen = '/mainScreen';
+const String menuScreen = '/menuScreen';
+const String loginScreen = '/loginScreen';
+const String logoutScreen = '/logoutScreen';
+const String splashScreen = '/splashScreen';
+const String profileScreen = '/profileScreen';
+const String provideService = '/provideService';
+const String addAndBuyScreen = '/addAndBuyScreen ';
+const String addProductScreen = '/addProductScreen';
+const String answerIsNoScreen = '/answerIsNoScreen';
+const String answerIsYesScreen = '/answerIsYesScreen';
+const String onBoarding2Screen = '/onBoarding2Screen';
+const String onBoarding1Screen = '/onBoarding1Screen';
+const String securityCodeScreen = '/securityCodeScreen';
+const String createAccountScreen = '/createAccountScreen';
+const String detailProductScreen = '/detailProductScreen';
+const String waitForPickupScreen = '/waitForPickupScreen';
+const String notificationsScreen = '/notificationsScreen';
+const String addInformationScreen = '/addInformationScreen';
+const String readyToReceiveScreen = '/readyToReceiveScreen';
+const String addedSuccessfullyScreen = '/addedSuccessfullyScreen';
+const String computerDepartmentScreen = '/computerDepartmentScreen';
+const String listProvideServiceScreen = '/listProvideServiceScreen';
+const String serviceProviderAlterScreen = '/serviceProviderAlterScreen';
+const String departmentAddProductScreen = '/departmentAddProductScreen';
+const String detailServiceProvideScreen = '/detailServiceProvideScreen';
+const String profileProvideServiceScreen = '/profileProvideServiceScreen';
+const String accountCreatedSuccessfullyScreen =
+    '/accountCreatedSuccessfullyScreen';
+const String serviceProviderRegistrationScreen =
+    '/serviceProviderRegistrationScreen';

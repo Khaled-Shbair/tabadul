@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "974161501487",
+    "project_id": "tabadul-34a2c",
+    "storage_bucket": "tabadul-34a2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974161501487:android:e3b0bbe70a51a4022c55da",
+        "android_client_info": {
+          "package_name": "com.tabadul.tabadul"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974161501487-j7vc3lg2h38e2u0ebv513tt4bi6kah5c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzKGFnnMfcPYBg2yhgb4abWPNnKHQml4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974161501487-j7vc3lg2h38e2u0ebv513tt4bi6kah5c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
