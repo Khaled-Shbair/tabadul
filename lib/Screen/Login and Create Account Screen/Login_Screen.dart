@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
+import 'package:get/get.dart';
 import '../../bloc/test.dart';
 import '../../constants/colors.dart';
 import '../../Widget/Buttons.dart';
@@ -20,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final PhoneAuthBloc _phone = Get.put(PhoneAuthBloc());
   List<CodeCountry> codeCountry = <CodeCountry>[
     CodeCountry(name: '970+', id: 1),
     CodeCountry(name: '972+', id: 2),
@@ -171,7 +172,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-   await PhoneAuthBloc().submitPhoneNumber(_phoneEditingController.text.toString());
+    await _phone.submitPhoneNumber(_phoneEditingController.text);
     bool login = false;
     if (login) {
       print('khaled');
