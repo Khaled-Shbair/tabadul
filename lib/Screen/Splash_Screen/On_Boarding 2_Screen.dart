@@ -1,10 +1,11 @@
+import '../../shared_preference/pref_controller.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import '../../constants/strings.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
-import '../../shared_preference/pref_controller.dart';
+import 'package:get/get.dart';
 
 class OnBoarding2Screen extends StatefulWidget {
   const OnBoarding2Screen({Key? key}) : super(key: key);
@@ -85,7 +86,7 @@ Widget textOne() {
       child: Align(
         alignment: AlignmentDirectional.bottomCenter,
         child: Text(
-          'توصيل سريع',
+          'on_boarding2_title'.tr,
           style: TextStyle(
             color: ColorsApp.s,
             fontSize: 20,
@@ -107,7 +108,7 @@ Widget textTwo() {
         child: FadeInUp(
           delay: const Duration(seconds: 3),
           child: Text(
-            'نتبع سياسة توصيل آمنة تضمن وصول\nالسلعة لباب منزلك خلال 24 ساعة أو أقل',
+            'on_boarding2_subtitle'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: ColorsApp.s1,
@@ -133,16 +134,16 @@ class ButtonWidget extends StatelessWidget {
       child: Align(
         alignment: AlignmentDirectional.bottomStart,
         child: FloatingActionButton(
-          child: const Icon(
-            Icons.arrow_right_alt,
-            size: 30,
-          ),
           backgroundColor: ColorsApp.s,
           elevation: 0,
           onPressed: () {
             SharedPreferencesController().saveOnBoarding(value: true);
             Navigator.pushReplacementNamed(context, loginScreen);
           },
+          child: const Icon(
+            Icons.arrow_right_alt,
+            size: 30,
+          ),
         ),
       ),
     );

@@ -1,10 +1,10 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import '../../constants/strings.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
+import 'package:get/get.dart';
 
 class OnBoarding1Screen extends StatefulWidget {
   const OnBoarding1Screen({Key? key}) : super(key: key);
@@ -132,7 +132,7 @@ Widget textOne() {
       child: Align(
         alignment: AlignmentDirectional.bottomCenter,
         child: Text(
-          'سياسة إرجاع عادلة',
+          'fair_return_policy'.tr,
           style: TextStyle(
             color: ColorsApp.s,
             fontSize: 20,
@@ -155,7 +155,7 @@ Widget textTwo() {
         child: FadeInUp(
           delay: const Duration(seconds: 4),
           child: Text(
-            'نضمن إرجاع السلع دون دفع أي رسوم ويمكنك\nإرجاع أي سلعة لم تعد ترغب بها مع دفع تكلفة\nالتوصيل فقط',
+            'on_boarding1'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
               color: ColorsApp.s1,
@@ -201,15 +201,11 @@ class ButtonWidget extends StatelessWidget {
       child: Align(
         alignment: AlignmentDirectional.bottomStart,
         child: FloatingActionButton(
-          child: const Icon(
-            Icons.arrow_right_alt,
-            size: 30,
-          ),
           backgroundColor: ColorsApp.s,
           elevation: 0,
-          onPressed: () {
-            Navigator.pushReplacementNamed(context, onBoarding2Screen);
-          },
+          onPressed: () =>
+              Navigator.pushReplacementNamed(context, onBoarding2Screen),
+          child: const Icon(Icons.arrow_right_alt, size: 30),
         ),
       ),
     );

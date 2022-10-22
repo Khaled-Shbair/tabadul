@@ -36,8 +36,9 @@ class AppRoutes {
   Route onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case securityCodeScreen:
+        final navigator = settings.arguments as String;
         return MaterialPageRoute(
-            builder: (context) => const SecurityCodeScreen());
+            builder: (context) => SecurityCodeScreen(navigator: navigator));
       case onBoarding2Screen:
         return MaterialPageRoute(
             builder: (context) => const OnBoarding2Screen());

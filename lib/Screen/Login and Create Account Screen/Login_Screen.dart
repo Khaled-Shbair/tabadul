@@ -1,16 +1,15 @@
+import '../../Widget/Text_Field_Profile.dart';
+import '../../getX/phone_auth_getX.dart';
+import '../../models/Code Country.dart';
+import '../../Widget/Menu_Choose.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import '../../bloc/test.dart';
-import '../../constants/colors.dart';
-import '../../Widget/Buttons.dart';
-import '../../Widget/Menu_Choose.dart';
-import '../../Widget/Text_Field_Profile.dart';
-import '../../constants/fonts.dart';
 import '../../constants/strings.dart';
-import '../../models/Code Country.dart';
-import '../../utils/helper.dart';
+import '../../constants/colors.dart';
+import '../../constants/fonts.dart';
+import '../../Widget/Buttons.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final PhoneAuthBloc _phone = Get.put(PhoneAuthBloc());
+  final PhoneAuthGetX _phone = Get.put(PhoneAuthGetX());
   List<CodeCountry> codeCountry = <CodeCountry>[
     CodeCountry(name: '970+', id: 1),
     CodeCountry(name: '972+', id: 2),
@@ -68,9 +67,10 @@ class _LoginScreenState extends State<LoginScreen> {
               Expanded(
                 flex: 3,
                 child: TextFieldProfile(
+                  maxLength: 10,
                   keyboardType: TextInputType.phone,
                   textEditingController: _phoneEditingController,
-                  nameFiled: 'أدخل رقمك الهاتفي',
+                  nameFiled: 'enter_phone_number'.tr,
                 ),
               ),
               const SizedBox(width: 8),
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
               bottom: 43,
             ),
             child: Buttons(
-              name: 'تسجيل دخول',
+              name: 'login'.tr,
               x: 45,
               y: double.infinity,
               function: () => _performResetCode(),
@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: 'ليس لديك حساب من قبل ؟ ',
+                    text: 'do_not_have_an_account'.tr,
                     style: TextStyle(
                       fontSize: 15,
                       fontFamily: FontsApp.helveticaL,
@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextSpan(
                     recognizer: _tapGestureRecognizer,
-                    text: 'إنشاء حساب',
+                    text: 'create_account'.tr,
                     style: TextStyle(
                       fontSize: 15,
                       decoration: TextDecoration.underline,
@@ -146,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        'تسجيل الدخول',
+        'login'.tr,
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
@@ -173,18 +173,16 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _login() async {
     await _phone.submitPhoneNumber(_phoneEditingController.text);
-    bool login = false;
-    if (login) {
-      print('khaled');
-      //Navigator.pushReplacementNamed(context, menuScreen);
-    } else {
-      showSnackBar();
-    }
+    navigator();
   }
+
+  void navigator() =>
+      Navigator.pushNamed(context, securityCodeScreen, arguments: menuScreen);
 
   void showSnackBar() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 1),
         content: Text(
           'يرجى إدخال الرقم بشكل صحيح',
           style: TextStyle(

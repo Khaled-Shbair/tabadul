@@ -182,6 +182,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     bool registered = false;
     if (registered) {
       Navigator.pushReplacementNamed(context, securityCodeScreen);
+      //addInformationScreen
     }
   }
 }

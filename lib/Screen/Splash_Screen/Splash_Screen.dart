@@ -1,9 +1,9 @@
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import '../../shared_preference/pref_controller.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import '../../constants/strings.dart';
-import '../../shared_preference/pref_controller.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
