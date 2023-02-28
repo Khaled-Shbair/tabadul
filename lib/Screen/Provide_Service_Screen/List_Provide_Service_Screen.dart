@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
-import '../../Widget/Button_AppBar.dart';
-import '../../Widget/Buttons.dart';
+import '../../Widget/custom_circle_button.dart';
+import '../../Widget/custom_button.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 
@@ -18,7 +18,7 @@ class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -28,15 +28,15 @@ class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
         leadingWidth: 75,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 35,
           icon: Icons.menu,
-          function: () => ZoomDrawer.of(context)!.toggle(),
+          onPressed: () => ZoomDrawer.of(context)!.toggle(),
         ),
       ),
       body: ListView.builder(
@@ -51,10 +51,10 @@ class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
                 width: 72,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
-                  color: ColorsApp.s4,
+                  color: s4,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: const Icon(Icons.person, size: 30, color: ColorsApp.s),
+                child: const Icon(Icons.person, size: 30, color: primaryColor),
               ),
               Container(
                 alignment: AlignmentDirectional.topCenter,
@@ -67,16 +67,16 @@ class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
                       style: TextStyle(
                         height: 0,
                         fontSize: 12,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color: primaryColor,
                       ),
                     ),
                     Text(
                       'سباك كهربائي',
                       style: TextStyle(
                         fontSize: 12,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color:primaryColor,
                       ),
                     ),
                   ],
@@ -84,7 +84,7 @@ class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.only(bottom: 15),
-                child: Buttons(
+                child: CustomButton(
                   x: 30,
                   y: 65,
                   fontSize: 10,

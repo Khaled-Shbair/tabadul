@@ -1,10 +1,10 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
-
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
 
-class TextFieldProfile extends StatelessWidget {
-  const TextFieldProfile({
+class CustomTextField extends StatelessWidget {
+  const CustomTextField({
     Key? key,
     required this.textEditingController,
     required this.keyboardType,
@@ -21,42 +21,44 @@ class TextFieldProfile extends StatelessWidget {
   final IconData suffixIcon;
   final double sizeSuffixIcon;
   final TextEditingController textEditingController;
-final int? maxLength;
+  final int? maxLength;
+
   @override
   Widget build(BuildContext context) {
     return TextField(
       maxLength: maxLength,
-      cursorColor: ColorsApp.s,
+
+      cursorColor: primaryColor,
       keyboardType: keyboardType,
       controller: textEditingController,
       style: TextStyle(
-        fontSize: 12,
-        fontFamily: FontsApp.helveticaL,
-        color: ColorsApp.s.withAlpha(204),
+        fontSize: 11.sp,
+        fontFamily: kHelveticaL,
+        color: primaryColor.withAlpha(204),
       ),
       decoration: InputDecoration(
         counterText: '',
-        contentPadding: const EdgeInsetsDirectional.only(
-          top: 9,
-          bottom: 10,
-          start: 20,
+        contentPadding: EdgeInsetsDirectional.only(
+          top: 8.h,
+          bottom: 8.h,
+          start: 21.w,
         ),
         suffixIcon: Icon(
           suffixIcon,
           size: sizeSuffixIcon,
-          color: ColorsApp.s,
+          color: primaryColor,
         ),
         hintText: nameFiled,
         hintStyle: TextStyle(
-          fontSize: 10,
-          fontFamily: FontsApp.helveticaL,
-          color: ColorsApp.s.withAlpha(204),
+          fontSize: 11.sp,
+          fontFamily: kHelveticaL,
+          color: primaryColor.withAlpha(204),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(4).w,
         ),
-        fillColor: ColorsApp.s4,
+        fillColor: s4,
         filled: true,
         errorText: errorText,
       ),

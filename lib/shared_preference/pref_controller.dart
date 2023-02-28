@@ -1,39 +1,39 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum PrefKey { login, phone, id, onBoarding }
+enum PrefKey {
+  login,
+  phone,
+  id,
+  onBoarding,
+  verificationId,
+}
 
-class SharedPreferencesController {
-  static final SharedPreferencesController _instance =
-      SharedPreferencesController._();
-  late SharedPreferences _sharedPreferences;
+class PrefController {
+  static final PrefController _instance = PrefController._();
+  late SharedPreferences _pref;
 
-  SharedPreferencesController._();
+  PrefController._();
 
-  factory SharedPreferencesController() {
+  factory PrefController() {
     return _instance;
   }
 
-  Future<void> getInstance() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
-  }
+  Future<void> initializeApp() async =>
+      _pref = await SharedPreferences.getInstance();
 
-  Future<void> save() async {
-    // await _sharedPreferences.setString(PrefKey.phone.toString(), user.phone);
-    // await _sharedPreferences.setInt(PrefKey.id.toString(), user.id);
-    // await _sharedPreferences.setBool(PrefKey.login.toString(), true);
-  }
+////////////////////////////////////////////////////////////////////////////////
+  set verificationId(String value) =>
+      _pref.setString(PrefKey.verificationId.toString(), value);
 
-  Future<void> saveOnBoarding({required bool value}) async {
-    await _sharedPreferences.setBool(PrefKey.onBoarding.toString(), value);
-  }
+  String get verificationId =>
+      _pref.getString(PrefKey.verificationId.toString()) ?? '';
 
-  bool get onBoarding =>
-      _sharedPreferences.getBool(PrefKey.onBoarding.toString()) ?? false;
+  set onBoarding(bool value) =>
+      _pref.setBool(PrefKey.onBoarding.toString(), value);
 
-  bool get login =>
-      _sharedPreferences.getBool(PrefKey.login.toString()) ?? false;
+  bool get onBoarding => _pref.getBool(PrefKey.onBoarding.toString()) ?? false;
 
-  T? getKey<T>({required String key}) {
-    return _sharedPreferences.get(key) as T;
-  }
+  set login(bool value) => _pref.setBool(PrefKey.login.toString(), value);
+
+  bool get login => _pref.getBool(PrefKey.login.toString()) ?? false;
 }

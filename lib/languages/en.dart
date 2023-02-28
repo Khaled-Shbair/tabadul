@@ -5,11 +5,23 @@ const Map<String, String> en = {
   'on_boarding2_title': 'Fast delivery',
   'on_boarding2_subtitle':
       'We follow a safe delivery policy that ensures that\nthe item arrives at your doorstep within 24 hours or less',
-  'login': 'Login',
-  'enter_phone_number': 'Enter your phone number',
-  'do_not_have_an_account': 'Don\'t have an account before ? ',
-  'create_account': 'Create account',
+
   'resend_code': 'Resend Code',
   'please_enter_code_correctly': 'Please enter the code correctly',
-  'security_code_subtitle': 'We have sent you an SMS\n containing the code, it will be activated automatically',
+  'security_code_subtitle':
+      'We have sent you an SMS\n containing the code, it will be activated automatically',
+////////////////////////////////////////////////
+// Create account screen
+  'enter_mobile_number': 'Enter mobile number',
+  'create_account': 'Create account',
+  'login': 'Login',
+  'do_not_have_an_account': 'Don\'t have an account before ? ',
+  'the_time_has_been_set_successfully':
+      'The time has been set successfully, please wait until the time is up to pick up',
+  'cancel': 'Cancel',
+  'notifications': 'Notifications',
+  'main':'Main',
+  'profile':'Profile',
+
+
 };

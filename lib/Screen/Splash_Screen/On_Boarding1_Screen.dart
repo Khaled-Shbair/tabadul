@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
@@ -17,7 +17,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       body: Padding(
         padding: const EdgeInsetsDirectional.only(
           start: 37,
@@ -28,7 +28,7 @@ class _OnBoarding1ScreenState extends State<OnBoarding1Screen> {
         child: Stack(
           alignment: AlignmentDirectional.topCenter,
           children: [
-            SvgPicture.asset('images/on boarding 1/logoTitle.svg', height: 40),
+            SvgPicture.asset('images/on boarding 1/logo_title.svg', height: 40),
             Padding(
               padding: const EdgeInsetsDirectional.only(top: 120),
               child: SvgPicture.asset(
@@ -134,9 +134,9 @@ Widget textOne() {
         child: Text(
           'fair_return_policy'.tr,
           style: TextStyle(
-            color: ColorsApp.s,
+            color: primaryColor,
             fontSize: 20,
-            fontFamily: FontsApp.helveticaL,
+            fontFamily: kHelveticaL,
           ),
         ),
       ),
@@ -158,10 +158,10 @@ Widget textTwo() {
             'on_boarding1'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: ColorsApp.s1,
+              color: s1,
               fontSize: 16,
               height: 1.5,
-              fontFamily: FontsApp.helveticaL,
+              fontFamily: kHelveticaL,
             ),
           ),
         ),
@@ -180,9 +180,9 @@ Widget slider() {
         alignment: AlignmentDirectional.bottomCenter,
         child: Row(
           children: const [
-            CircleAvatar(radius: 6, backgroundColor: ColorsApp.s2),
+            CircleAvatar(radius: 6, backgroundColor: s2),
             SizedBox(width: 10),
-            CircleAvatar(radius: 6, backgroundColor: ColorsApp.s),
+            CircleAvatar(radius: 6, backgroundColor: primaryColor),
           ],
         ),
       ),
@@ -201,7 +201,7 @@ class ButtonWidget extends StatelessWidget {
       child: Align(
         alignment: AlignmentDirectional.bottomStart,
         child: FloatingActionButton(
-          backgroundColor: ColorsApp.s,
+          backgroundColor: primaryColor,
           elevation: 0,
           onPressed: () =>
               Navigator.pushReplacementNamed(context, onBoarding2Screen),

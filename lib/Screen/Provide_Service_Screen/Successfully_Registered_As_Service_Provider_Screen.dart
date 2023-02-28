@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import '../../Widget/Button_AppBar.dart';
+import '../../Widget/custom_circle_button.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 
@@ -10,23 +10,23 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor:colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           icon: Icons.menu,
-          function: () {
+          onPressed: () {
             ZoomDrawer.of(context)!.toggle();
           },
         ),
         actions: [
-          ButtonAppBar(
+          CustomCircleButton(
             end: 40,
             icon: Icons.create,
-            function: () {},
+            onPressed: () {},
           ),
         ],
       ),
@@ -44,7 +44,7 @@ class ProfileScreen extends StatelessWidget {
               bottom: 48,
             ),
             decoration: BoxDecoration(
-              color: ColorsApp.s7,
+              color: s7,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -52,9 +52,9 @@ class ProfileScreen extends StatelessWidget {
                 Text(
                   'سجى الأشرم',
                   style: TextStyle(
-                    color: ColorsApp.s,
+                    color: primaryColor,
                     fontSize: 17,
-                    fontFamily: FontsApp.helveticaL,
+                    fontFamily: kHelveticaL,
                   ),
                 ),
                 const SizedBox(height: 39),
@@ -67,27 +67,27 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           'رقم الجوال',
                           style: TextStyle(
-                            color: ColorsApp.s,
+                            color:primaryColor,
                             fontSize: 15,
-                            fontFamily: FontsApp.helveticaL,
+                            fontFamily: kHelveticaL,
                           ),
                         ),
                         const SizedBox(height: 15),
                         Text(
                           'المدينة',
                           style: TextStyle(
-                            color: ColorsApp.s,
+                            color: primaryColor,
                             fontSize: 15,
-                            fontFamily: FontsApp.helveticaL,
+                            fontFamily: kHelveticaL,
                           ),
                         ),
                         const SizedBox(height: 15),
                         Text(
                           'المنطقة',
                           style: TextStyle(
-                            color: ColorsApp.s,
+                            color:primaryColor,
                             fontSize: 15,
-                            fontFamily: FontsApp.helveticaL,
+                            fontFamily: kHelveticaL,
                           ),
                         ),
                       ],
@@ -98,27 +98,27 @@ class ProfileScreen extends StatelessWidget {
                         Text(
                           '0592638012',
                           style: TextStyle(
-                            color: ColorsApp.s,
+                            color: primaryColor,
                             fontSize: 15,
-                            fontFamily: FontsApp.helveticaL,
+                            fontFamily: kHelveticaL,
                           ),
                         ),
                         const SizedBox(height: 15),
                         Text(
                           'مدينة غزة',
                           style: TextStyle(
-                            color: ColorsApp.s,
+                            color:primaryColor,
                             fontSize: 15,
-                            fontFamily: FontsApp.helveticaL,
+                            fontFamily: kHelveticaL,
                           ),
                         ),
                         const SizedBox(height: 15),
                         Text(
                           'النصيرات',
                           style: TextStyle(
-                            color: ColorsApp.s,
+                            color:primaryColor,
                             fontSize: 15,
-                            fontFamily: FontsApp.helveticaL,
+                            fontFamily: kHelveticaL,
                           ),
                         ),
                       ],

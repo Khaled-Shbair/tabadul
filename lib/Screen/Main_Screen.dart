@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import '../constants/fonts.dart';
-import '../Widget/Button_AppBar.dart';
+import '../Widget/custom_circle_button.dart';
 import '../Widget/Section_Button.dart';
 import '../constants/colors.dart';
 
@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -28,15 +28,15 @@ class _MainScreenState extends State<MainScreen> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
         leadingWidth: 75,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 35,
           icon: Icons.menu,
-          function: () {
+          onPressed: () {
             ZoomDrawer.of(context)!.toggle();
           },
         ),
@@ -86,7 +86,7 @@ class _MainScreenState extends State<MainScreen> {
             function: () {},
           ),
           SectionButton(
-            pathImage: 'images/Departments/electric machines.svg',
+            pathImage: 'images/Departments/electric_machines.svg',
             nameSection: 'قسم الأجهزة الكهربائية',
             function: () {},
           ),

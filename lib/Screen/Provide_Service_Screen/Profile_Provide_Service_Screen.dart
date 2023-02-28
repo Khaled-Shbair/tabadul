@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../Widget/Button_AppBar.dart';
+import '../../Widget/custom_circle_button.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 
 class ProfileProvideServiceScreen extends StatefulWidget {
   const ProfileProvideServiceScreen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _ProfileProvideServiceScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -28,21 +28,21 @@ class _ProfileProvideServiceScreenState
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color:primaryColor,
           ),
         ),
         leadingWidth: 60,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 25,
           icon: Icons.menu,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          ButtonAppBar(
+          CustomCircleButton(
             end: 30,
             icon: Icons.create,
-            function: () =>
+            onPressed: () =>
                 Navigator.pushNamed(context, serviceProviderAlterScreen),
           ),
         ],
@@ -71,15 +71,15 @@ class _ProfileProvideServiceScreenState
             height: 45,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: ColorsApp.s4,
+              color: s4,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
               'سجي الأشرم',
               style: TextStyle(
                 fontSize: 12,
-                fontFamily: FontsApp.helveticaL,
-                color: ColorsApp.s.withAlpha(204),
+                fontFamily: kHelveticaL,
+                color: primaryColor.withAlpha(204),
               ),
             ),
           ),
@@ -88,7 +88,7 @@ class _ProfileProvideServiceScreenState
             height: 45,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: ColorsApp.s4,
+              color: s4,
               borderRadius: BorderRadius.circular(4),
             ),
             margin: const EdgeInsetsDirectional.only(top: 20),
@@ -96,8 +96,8 @@ class _ProfileProvideServiceScreenState
               '0592638012',
               style: TextStyle(
                 fontSize: 12,
-                fontFamily: FontsApp.helveticaL,
-                color: ColorsApp.s.withAlpha(204),
+                fontFamily:kHelveticaL,
+                color: primaryColor.withAlpha(204),
               ),
             ),
           ),
@@ -107,15 +107,15 @@ class _ProfileProvideServiceScreenState
             height: 45,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: ColorsApp.s4,
+              color: s4,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
               'مهندسة حاسوب',
               style: TextStyle(
                 fontSize: 12,
-                fontFamily: FontsApp.helveticaL,
-                color: ColorsApp.s.withAlpha(204),
+                fontFamily: kHelveticaL,
+                color: primaryColor.withAlpha(204),
               ),
             ),
           ),
@@ -125,15 +125,15 @@ class _ProfileProvideServiceScreenState
             height: 45,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: ColorsApp.s4,
+              color:s4,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
               'غزة',
               style: TextStyle(
                 fontSize: 12,
-                fontFamily: FontsApp.helveticaL,
-                color: ColorsApp.s.withAlpha(204),
+                fontFamily: kHelveticaL,
+                color: primaryColor.withAlpha(204),
               ),
             ),
           ),
@@ -143,15 +143,15 @@ class _ProfileProvideServiceScreenState
             height: 45,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: ColorsApp.s4,
+              color: s4,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
               'النصيرات',
               style: TextStyle(
                 fontSize: 12,
-                fontFamily: FontsApp.helveticaL,
-                color: ColorsApp.s.withAlpha(204),
+                fontFamily: kHelveticaL,
+                color: primaryColor.withAlpha(204),
               ),
             ),
           ),

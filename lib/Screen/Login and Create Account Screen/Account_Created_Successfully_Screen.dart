@@ -1,36 +1,40 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import '../../constants/routes.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants/colors.dart';
-
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
+import 'package:get/get.dart';
 
-class AccountCreatedSuccessfullyScreen extends StatefulWidget {
+class AccountCreatedSuccessfullyScreen extends StatelessWidget {
   const AccountCreatedSuccessfullyScreen({Key? key}) : super(key: key);
 
-  @override
-  State<AccountCreatedSuccessfullyScreen> createState() =>
-      _AccountCreatedSuccessfullyScreenState();
-}
-
-class _AccountCreatedSuccessfullyScreenState
-    extends State<AccountCreatedSuccessfullyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding:
-            const EdgeInsetsDirectional.only(start: 37, end: 37, bottom: 10),
-        child: Stack(
-          children: const [
-            ImageTwoWidget(),
-            Padding(
-              padding: EdgeInsetsDirectional.only(bottom: 220),
-              child: ImageOneWidget(),
+        padding: EdgeInsetsDirectional.only(
+          start: 37.w,
+          end: 37.w,
+          bottom: 83.h,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Stack(
+                alignment: AlignmentDirectional.topCenter,
+                children: [
+                  imageTwoWidget(),
+                  imageOneWidget(),
+                ],
+              ),
             ),
-            TextWidget(),
-            ButtonWidget(),
+            SizedBox(height: 35.h),
+            textWidget(),
+            SizedBox(height: 32.h),
+            buttonWidget(),
           ],
         ),
       ),
@@ -38,91 +42,60 @@ class _AccountCreatedSuccessfullyScreenState
   }
 }
 
-class ImageOneWidget extends StatelessWidget {
-  const ImageOneWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeIn(
+Widget imageOneWidget() {
+  return Center(
+    child: FadeIn(
       delay: const Duration(seconds: 2),
-      child: Center(
-        child: SvgPicture.asset(
-          'images/Login and Create Account/ImageOne.svg',
-          fit: BoxFit.fitHeight,
-          width: 380,
-        ),
+      child: SvgPicture.asset(
+        'images/login_and_create_account/image_one.svg',
+        width: double.infinity,
       ),
-    );
-  }
+    ),
+  );
 }
 
-class ImageTwoWidget extends StatelessWidget {
-  const ImageTwoWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInDown(
-      delay: const Duration(seconds: 3),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.only(top: 120, start: 20, end: 15),
-        child: SvgPicture.asset(
-          'images/Login and Create Account/ImageTwo.svg',
-          fit: BoxFit.fitWidth,
-          height: 250,
-          alignment: AlignmentDirectional.bottomCenter,
-        ),
+Widget imageTwoWidget() {
+  return FadeInDown(
+    delay: const Duration(seconds: 3),
+    child: Padding(
+      padding: EdgeInsetsDirectional.only(
+        top: 100.h,
       ),
-    );
-  }
+      child: SvgPicture.asset(
+        'images/login_and_create_account/image_two.svg',
+        width: 227.w,
+      ),
+    ),
+  );
 }
 
-class TextWidget extends StatelessWidget {
-  const TextWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInUp(
+Widget textWidget() {
+  return Align(
+    alignment: AlignmentDirectional.center,
+    child: FadeInUp(
       delay: const Duration(seconds: 4),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.only(bottom: 140),
-        child: Align(
-          alignment: AlignmentDirectional.bottomCenter,
-          child: Text(
-            'لقد تم إنشاء الحساب\n بنجاح',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: ColorsApp.s1,
-              fontSize: 18,
-              height: 1.8,
-              fontFamily: FontsApp.helveticaL,
-            ),
-          ),
+      child: Text(
+        'the_account_has_been_created_successfully'.tr,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: s1,
+          fontSize: 17.sp,
+          height: 1.5.h,
+          fontFamily: kHelveticaL,
         ),
       ),
-    );
-  }
+    ),
+  );
 }
 
-class ButtonWidget extends StatelessWidget {
-  const ButtonWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FadeInLeft(
-      delay: const Duration(seconds: 5),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.only(bottom: 50, end: 285),
-        child: Align(
-          alignment: AlignmentDirectional.bottomCenter,
-          child: FloatingActionButton(
-            child: const Icon(Icons.arrow_right_alt, size: 30),
-            backgroundColor: ColorsApp.s,
-            elevation: 0,
-            onPressed: () =>
-                Navigator.pushReplacementNamed(context, menuScreen),
-          ),
-        ),
-      ),
-    );
-  }
+Widget buttonWidget() {
+  return FadeInLeft(
+    delay: const Duration(seconds: 5),
+    child: FloatingActionButton(
+      backgroundColor: primaryColor,
+      elevation: 0,
+      onPressed: () => Get.offNamedUntil(menuScreen, (route) => false),
+      child: Icon(Icons.arrow_right_alt, size: 30.w),
+    ),
+  );
 }

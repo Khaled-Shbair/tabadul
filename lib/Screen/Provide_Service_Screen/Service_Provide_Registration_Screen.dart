@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../Widget/Buttons.dart';
+import '../../Widget/custom_button.dart';
 import '../../Widget/Circle_Button.dart';
 import '../../Widget/Menu_Choose.dart';
-import '../../Widget/Text_Field_Profile.dart';
+import '../../Widget/custom_text_field.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 import '../../models/City.dart';
 
 class ServiceProviderRegistrationScreen extends StatefulWidget {
@@ -21,22 +21,22 @@ class ServiceProviderRegistrationScreen extends StatefulWidget {
 class _ServiceProviderRegistrationScreenState
     extends State<ServiceProviderRegistrationScreen> {
   List<City> city = <City>[
-    City(name: 'غزة', id: 1),
-    City(name: 'خانيونس', id: 2),
-    City(name: 'رفع', id: 3),
-    City(name: 'النصيرات', id: 4),
-    City(name: 'دير البلح', id: 5),
-    City(name: 'المغازي', id: 6),
-    City(name: 'الزهرة', id: 7),
+    City(nameAr: 'غزة', id: 1),
+    City(nameAr: 'خانيونس', id: 2),
+    City(nameAr: 'رفع', id: 3),
+    City(nameAr: 'النصيرات', id: 4),
+    City(nameAr: 'دير البلح', id: 5),
+    City(nameAr: 'المغازي', id: 6),
+    City(nameAr: 'الزهرة', id: 7),
   ];
   List<City> area = <City>[
-    City(name: 'غزة', id: 1),
-    City(name: 'خانيونس', id: 2),
-    City(name: 'رفع', id: 3),
-    City(name: 'النصيرات', id: 4),
-    City(name: 'دير البلح', id: 5),
-    City(name: 'المغازي', id: 6),
-    City(name: 'الزهرة', id: 7),
+    City(nameAr: 'غزة', id: 1),
+    City(nameAr: 'خانيونس', id: 2),
+    City(nameAr: 'رفع', id: 3),
+    City(nameAr: 'النصيرات', id: 4),
+    City(nameAr: 'دير البلح', id: 5),
+    City(nameAr: 'المغازي', id: 6),
+    City(nameAr: 'الزهرة', id: 7),
   ];
   String? selectedCityId;
   String? selectedAreaId;
@@ -78,8 +78,8 @@ class _ServiceProviderRegistrationScreenState
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
       ),
@@ -110,7 +110,7 @@ class _ServiceProviderRegistrationScreenState
                       color: Colors.white,
                       icon: Icons.camera_alt,
                       sizeIcon: 15,
-                      colorIcon: ColorsApp.s,
+                      colorIcon: primaryColor,
                       function: () {
                         personalPicture();
                         setState(() {
@@ -124,21 +124,21 @@ class _ServiceProviderRegistrationScreenState
             ],
           ),
           const SizedBox(height: 28.4),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.text,
             textEditingController: _nameEditingController,
             errorText: 'يرجى إدخال الاسم',
             nameFiled: 'الاسم الكامل',
           ),
           const SizedBox(height: 20),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.phone,
             textEditingController: _phoneEditingController,
             errorText: 'يرجى إدخال رقم الجوال',
             nameFiled: 'رقم الجوال',
           ),
           const SizedBox(height: 20),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.text,
             textEditingController: _workEditingController,
             errorText: 'يرجى إدخال المهنة',
@@ -173,7 +173,7 @@ class _ServiceProviderRegistrationScreenState
           const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-            child: Buttons(
+            child: CustomButton(
               name: 'تسجيل',
               x: 45,
               y: double.infinity,
@@ -195,7 +195,7 @@ class _ServiceProviderRegistrationScreenState
       context: context,
       builder: (context) {
         return BottomSheet(
-          backgroundColor: ColorsApp.s4,
+          backgroundColor: s4,
           elevation: 4,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -216,8 +216,8 @@ class _ServiceProviderRegistrationScreenState
                     'الصورة الشخصية',
                     style: TextStyle(
                       fontSize: 17,
-                      color: ColorsApp.s,
-                      fontFamily: FontsApp.helveticaL,
+                      color: primaryColor,
+                      fontFamily: kHelveticaL,
                     ),
                   ),
                   const SizedBox(height: 7),
@@ -229,17 +229,17 @@ class _ServiceProviderRegistrationScreenState
                           CircleButton(
                             height: 40,
                             width: 40,
-                            color: ColorsApp.s4,
+                            color: s4,
                             icon: Icons.image,
-                            colorIcon: ColorsApp.s,
+                            colorIcon: primaryColor,
                             function: () async => await _pickImageGallery(),
                           ),
                           Text(
                             'المعرض',
                             style: TextStyle(
                               fontSize: 11,
-                              color: ColorsApp.s,
-                              fontFamily: FontsApp.helveticaL,
+                              color: primaryColor,
+                              fontFamily: kHelveticaL,
                             ),
                           ),
                         ],
@@ -250,17 +250,17 @@ class _ServiceProviderRegistrationScreenState
                           CircleButton(
                             height: 40,
                             width: 40,
-                            color: ColorsApp.s4,
+                            color: s4,
                             icon: Icons.camera_alt,
-                            colorIcon: ColorsApp.s,
+                            colorIcon:primaryColor,
                             function: () async => await _pickImageCamera(),
                           ),
                           Text(
                             'الكاميرا',
                             style: TextStyle(
                               fontSize: 11,
-                              color: ColorsApp.s.withAlpha(255),
-                              fontFamily: FontsApp.helveticaL,
+                              color: primaryColor.withAlpha(255),
+                              fontFamily: kHelveticaL,
                             ),
                           ),
                         ],

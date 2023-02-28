@@ -1,7 +1,7 @@
 import '../../shared_preference/pref_controller.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
@@ -18,7 +18,7 @@ class _OnBoarding2ScreenState extends State<OnBoarding2Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       body: Padding(
         padding: const EdgeInsetsDirectional.only(
           start: 37,
@@ -47,7 +47,7 @@ class _OnBoarding2ScreenState extends State<OnBoarding2Screen> {
 }
 
 Widget imageOne() {
-  return SvgPicture.asset('images/on boarding 1/logoTitle.svg', height: 40);
+  return SvgPicture.asset('images/on boarding 1/logo_title.svg', height: 40);
 }
 
 Widget imageTwo() {
@@ -57,7 +57,7 @@ Widget imageTwo() {
       padding: const EdgeInsetsDirectional.only(bottom: 320, start: 15),
       child: Center(
         child: SvgPicture.asset(
-          'images/on boarding 1/on boarding 2.svg',
+          'images/on boarding 1/on_boarding_2.svg',
           fit: BoxFit.fitWidth,
           height: 300,
         ),
@@ -70,7 +70,7 @@ Widget imageThree() {
   return Padding(
     padding: const EdgeInsetsDirectional.only(top: 150),
     child: SvgPicture.asset(
-      'images/on boarding 1/on boarding 1.svg',
+      'images/on boarding 1/on_boarding_1.svg',
       fit: BoxFit.fitWidth,
       height: 320,
     ),
@@ -87,10 +87,10 @@ Widget textOne() {
         alignment: AlignmentDirectional.bottomCenter,
         child: Text(
           'on_boarding2_title'.tr,
-          style: TextStyle(
-            color: ColorsApp.s,
+          style: const TextStyle(
+            color: primaryColor,
             fontSize: 20,
-            fontFamily: FontsApp.helveticaL,
+            fontFamily: kHelveticaL,
           ),
         ),
       ),
@@ -111,10 +111,10 @@ Widget textTwo() {
             'on_boarding2_subtitle'.tr,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: ColorsApp.s1,
+              color: s1,
               fontSize: 16,
               height: 1.7,
-              fontFamily: FontsApp.helveticaL,
+              fontFamily: kHelveticaL,
             ),
           ),
         ),
@@ -134,10 +134,10 @@ class ButtonWidget extends StatelessWidget {
       child: Align(
         alignment: AlignmentDirectional.bottomStart,
         child: FloatingActionButton(
-          backgroundColor: ColorsApp.s,
+          backgroundColor: primaryColor,
           elevation: 0,
           onPressed: () {
-            SharedPreferencesController().saveOnBoarding(value: true);
+            PrefController().onBoarding = true;
             Navigator.pushReplacementNamed(context, loginScreen);
           },
           child: const Icon(

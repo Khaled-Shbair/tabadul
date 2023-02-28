@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../constants/fonts.dart';
-import '../Widget/Button_AppBar.dart';
-import '../Widget/Buttons.dart';
+import '../Widget/custom_circle_button.dart';
+import '../Widget/custom_button.dart';
 import '../constants/colors.dart';
-import '../constants/strings.dart';
+import '../constants/routes.dart';
 
 class AnswerIsYesScreen extends StatelessWidget {
   const AnswerIsYesScreen({Key? key}) : super(key: key);
@@ -12,17 +12,17 @@ class AnswerIsYesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView(
@@ -30,7 +30,7 @@ class AnswerIsYesScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           SvgPicture.asset(
-            'images/Answer is yes.svg',
+            'images/answer_is_yes.svg',
             fit: BoxFit.fitWidth,
             height: 300,
           ),
@@ -41,14 +41,14 @@ class AnswerIsYesScreen extends StatelessWidget {
             style: TextStyle(
               height: 1.8,
               fontSize: 18,
-              fontFamily: FontsApp.helveticaL,
-              color: ColorsApp.s1,
+              fontFamily: kHelveticaL,
+              color: s1,
             ),
           ),
           Padding(
             padding:
                 const EdgeInsetsDirectional.only(top: 50, start: 80, end: 80),
-            child: Buttons(
+            child: CustomButton(
               name: 'حسنا',
               x: 50,
               y: 106,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/fonts.dart';
 import '../constants/colors.dart';
 
@@ -11,9 +12,6 @@ class MenuChoose extends StatelessWidget {
     required this.function,
     this.icon = Icons.keyboard_arrow_down,
     this.size = 24,
-    this.paddingEnd = 20,
-    this.paddingStart = 20,
-    this.marginEnd = 0,
     this.fontSize = 10,
   }) : super(key: key);
 
@@ -22,9 +20,7 @@ class MenuChoose extends StatelessWidget {
   final List list;
   final IconData icon;
   final double size;
-  final double paddingEnd;
-  final double paddingStart;
-  final double marginEnd;
+
   final double fontSize;
 
   final Function(String? value) function;
@@ -32,42 +28,47 @@ class MenuChoose extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(end: marginEnd),
-      padding: EdgeInsetsDirectional.only(start: paddingStart, end: paddingEnd),
-      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsetsDirectional.only(
+        start: 7.w,
+        end: 5.w,
+      ),
+      alignment: AlignmentDirectional.center,
+      width: 73.w,
+      height: 45.h,
       decoration: BoxDecoration(
-          color: ColorsApp.s4, borderRadius: BorderRadius.circular(4)),
+        color: s4,
+        borderRadius: BorderRadius.circular(4).w,
+      ),
       child: DropdownButton<String>(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(4).w,
         hint: Text(
           nameFiled,
           style: TextStyle(
-            fontSize: fontSize,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontSize: fontSize.sp,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
-        menuMaxHeight: 150,
         underline: const Text(''),
         isExpanded: true,
         icon: Icon(
           icon,
-          color: ColorsApp.s,
+          color: primaryColor,
           size: size,
         ),
-        dropdownColor: ColorsApp.s4,
+        dropdownColor: s4,
         style: TextStyle(
-          fontSize: fontSize,
-          fontFamily: FontsApp.helveticaL,
-          color: ColorsApp.s,
+          fontSize: fontSize.sp,
+          fontFamily: kHelveticaL,
+          color: primaryColor,
         ),
         elevation: 0,
         value: selectedId,
         items: list
             .map(
               (dynamic list) => DropdownMenuItem<String>(
-                child: Text(list.name),
                 value: list.id.toString(),
+                child: Text(list.name),
               ),
             )
             .toList(),

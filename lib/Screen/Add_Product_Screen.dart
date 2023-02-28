@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../Widget/Button_AppBar.dart';
-import '../Widget/Buttons.dart';
-import '../Widget/Text_Field_Profile.dart';
+import '../Widget/custom_circle_button.dart';
+import '../Widget/custom_button.dart';
+import '../Widget/custom_text_field.dart';
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
-import '../constants/strings.dart';
+import '../constants/routes.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({Key? key}) : super(key: key);
@@ -39,7 +39,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite ,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -49,16 +49,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView(
@@ -86,10 +86,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 },
                 child: Icon(
                   Icons.camera_alt,
-                  color: click1 ? ColorsApp.s : ColorsApp.s4,
+                  color: click1 ? primaryColor : s4,
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: click1 ? ColorsApp.s4 : ColorsApp.s,
+                  primary: click1 ? s4 :primaryColor,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -106,7 +106,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 },
                 child: Icon(
                   Icons.camera_alt,
-                  color: click2 ? ColorsApp.s : ColorsApp.s4,
+                  color: click2 ? primaryColor : s4,
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: click2
@@ -128,10 +128,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 },
                 child: Icon(
                   Icons.camera_alt,
-                  color: click3 ? ColorsApp.s : ColorsApp.s4,
+                  color: click3 ? primaryColor : s4,
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: click3 ? ColorsApp.s4 : ColorsApp.s,
+                  primary: click3 ? s4 : primaryColor,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -148,10 +148,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 },
                 child: Icon(
                   Icons.camera_alt,
-                  color: click4 ? ColorsApp.s : ColorsApp.s4,
+                  color: click4 ? primaryColor : s4,
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: click4 ? ColorsApp.s4 : ColorsApp.s,
+                  primary: click4 ? s4 : primaryColor,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -161,14 +161,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
             ],
           ),
           const SizedBox(height: 30),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.text,
             textEditingController: productNameEditingController,
             errorText: 'يرجى إدخال اسم السلعة',
             nameFiled: 'اسم السلعة',
           ),
           const SizedBox(height: 20),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.text,
             textEditingController: priceEditingController,
             errorText: 'يرجى إدخال السعر',
@@ -177,13 +177,13 @@ class _AddProductScreenState extends State<AddProductScreen> {
           const SizedBox(height: 20),
           TextField(
             keyboardType: TextInputType.text,
-            cursorColor: ColorsApp.s,
+            cursorColor: primaryColor,
             maxLines: 4,
             maxLength: 4,
             style: TextStyle(
               fontSize: 12,
-              fontFamily: FontsApp.helveticaL,
-              color: ColorsApp.s.withAlpha(204),
+              fontFamily: kHelveticaL,
+              color: primaryColor.withAlpha(204),
             ),
             decoration: InputDecoration(
               counterText: '',
@@ -193,21 +193,21 @@ class _AddProductScreenState extends State<AddProductScreen> {
               hintMaxLines: 4,
               hintStyle: TextStyle(
                 fontSize: 10,
-                fontFamily: FontsApp.helveticaL,
-                color: ColorsApp.s.withAlpha(204),
+                fontFamily: kHelveticaL,
+                color: primaryColor.withAlpha(204),
               ),
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(4),
               ),
-              fillColor: ColorsApp.s4,
+              fillColor: s4,
               filled: true,
             ),
           ),
           const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-            child: Buttons(
+            child: CustomButton(
               name: 'إضافة',
               x: 45,
               function: () =>

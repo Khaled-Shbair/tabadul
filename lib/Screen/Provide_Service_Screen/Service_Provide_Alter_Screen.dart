@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../Widget/Button_AppBar.dart';
-import '../../constants/strings.dart';
-import '../../Widget/Buttons.dart';
+import '../../Widget/custom_circle_button.dart';
+import '../../constants/routes.dart';
+import '../../Widget/custom_button.dart';
 import '../../Widget/Circle_Button.dart';
 import '../../Widget/Menu_Choose.dart';
-import '../../Widget/Text_Field_Profile.dart';
+import '../../Widget/custom_text_field.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 import '../../models/City.dart';
@@ -20,22 +20,22 @@ class ServiceProviderAlterScreen extends StatefulWidget {
 class _ServiceProviderAlterScreenState
     extends State<ServiceProviderAlterScreen> {
   List<City> city = <City>[
-    City(name: 'غزة', id: 1),
-    City(name: 'خانيونس', id: 2),
-    City(name: 'رفع', id: 3),
-    City(name: 'النصيرات', id: 4),
-    City(name: 'دير البلح', id: 5),
-    City(name: 'المغازي', id: 6),
-    City(name: 'الزهرة', id: 7),
+    City(nameAr: 'غزة', id: 1),
+    City(nameAr: 'خانيونس', id: 2),
+    City(nameAr: 'رفع', id: 3),
+    City(nameAr: 'النصيرات', id: 4),
+    City(nameAr: 'دير البلح', id: 5),
+    City(nameAr: 'المغازي', id: 6),
+    City(nameAr: 'الزهرة', id: 7),
   ];
   List<City> area = <City>[
-    City(name: 'غزة', id: 1),
-    City(name: 'خانيونس', id: 2),
-    City(name: 'رفع', id: 3),
-    City(name: 'النصيرات', id: 4),
-    City(name: 'دير البلح', id: 5),
-    City(name: 'المغازي', id: 6),
-    City(name: 'الزهرة', id: 7),
+    City(nameAr: 'غزة', id: 1),
+    City(nameAr: 'خانيونس', id: 2),
+    City(nameAr: 'رفع', id: 3),
+    City(nameAr: 'النصيرات', id: 4),
+    City(nameAr: 'دير البلح', id: 5),
+    City(nameAr: 'المغازي', id: 6),
+    City(nameAr: 'الزهرة', id: 7),
   ];
   String? selectedCityId;
   String? selectedAreaId;
@@ -62,26 +62,26 @@ class _ServiceProviderAlterScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         leadingWidth: 60,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 25,
           paddingStart: 15,
           icon: Icons.arrow_back_ios,
           size: 15,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           'تعديل الملف الشخصي(مزود خدمة)',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
       ),
@@ -98,14 +98,14 @@ class _ServiceProviderAlterScreenState
                   Container(
                     height: 170,
                     width: 300,
-                    color: ColorsApp.s4,
+                    color: s4,
                     child:
-                        const Icon(Icons.person, size: 80, color: ColorsApp.s),
+                        const Icon(Icons.person, size: 80, color: primaryColor),
                   ),
                   CircleButton(
                     height: 35,
                     width: 35,
-                    color: ColorsApp.s,
+                    color: primaryColor,
                     icon: Icons.camera_alt,
                     sizeIcon: 18,
                     colorIcon: Colors.white,
@@ -116,7 +116,7 @@ class _ServiceProviderAlterScreenState
             ],
           ),
           const SizedBox(height: 33),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.text,
             textEditingController: _nameEditingController,
             nameFiled: 'الاسم الكامل',
@@ -124,7 +124,7 @@ class _ServiceProviderAlterScreenState
             sizeSuffixIcon: 20,
           ),
           const SizedBox(height: 20),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.phone,
             textEditingController: _nameEditingController,
             nameFiled: 'رقم الجوال',
@@ -132,7 +132,7 @@ class _ServiceProviderAlterScreenState
             sizeSuffixIcon: 20,
           ),
           const SizedBox(height: 20),
-          TextFieldProfile(
+          CustomTextField(
             keyboardType: TextInputType.text,
             textEditingController: _workEditingController,
             nameFiled: 'المهنة',
@@ -151,7 +151,6 @@ class _ServiceProviderAlterScreenState
             selectedId: selectedCityId,
             icon: Icons.create,
             size: 20,
-            paddingEnd: 15,
             list: city,
             nameFiled: 'المدينة',
           ),
@@ -166,7 +165,6 @@ class _ServiceProviderAlterScreenState
             },
             icon: Icons.create,
             size: 20,
-            paddingEnd: 15,
             selectedId: selectedAreaId,
             list: area,
             nameFiled: 'المنطقة / الشارع',
@@ -174,7 +172,7 @@ class _ServiceProviderAlterScreenState
           const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-            child: Buttons(
+            child: CustomButton(
               name: 'حفظ',
               x: 45,
               y: double.infinity,
@@ -195,7 +193,7 @@ class _ServiceProviderAlterScreenState
       context: context,
       builder: (context) {
         return BottomSheet(
-          backgroundColor: ColorsApp.s4,
+          backgroundColor: s4,
           elevation: 4,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -216,8 +214,8 @@ class _ServiceProviderAlterScreenState
                     'الصورة الشخصية',
                     style: TextStyle(
                       fontSize: 17,
-                      color: ColorsApp.s,
-                      fontFamily: FontsApp.helveticaL,
+                      color: primaryColor,
+                      fontFamily: kHelveticaL,
                     ),
                   ),
                   const SizedBox(
@@ -231,17 +229,17 @@ class _ServiceProviderAlterScreenState
                           CircleButton(
                             height: 40,
                             width: 40,
-                            color: ColorsApp.s4,
+                            color: s4,
                             icon: Icons.image,
-                            colorIcon: ColorsApp.s,
+                            colorIcon: primaryColor,
                             function: () {},
                           ),
                           Text(
                             'المعرض',
                             style: TextStyle(
                               fontSize: 11,
-                              color: ColorsApp.s,
-                              fontFamily: FontsApp.helveticaL,
+                              color: primaryColor,
+                              fontFamily: kHelveticaL,
                             ),
                           ),
                         ],
@@ -252,17 +250,17 @@ class _ServiceProviderAlterScreenState
                           CircleButton(
                             height: 40,
                             width: 40,
-                            color: ColorsApp.s4,
+                            color: s4,
                             icon: Icons.camera_alt,
-                            colorIcon: ColorsApp.s,
+                            colorIcon:primaryColor,
                             function: () {},
                           ),
                           Text(
                             'الكاميرا',
                             style: TextStyle(
                               fontSize: 11,
-                              color: ColorsApp.s.withAlpha(255),
-                              fontFamily: FontsApp.helveticaL,
+                              color:primaryColor.withAlpha(255),
+                              fontFamily: kHelveticaL,
                             ),
                           ),
                         ],

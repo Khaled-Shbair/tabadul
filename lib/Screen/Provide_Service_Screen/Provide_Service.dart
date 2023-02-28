@@ -7,11 +7,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../Widget/Button_AppBar.dart';
-import '../../Widget/Buttons.dart';
+import '../../Widget/custom_circle_button.dart';
+import '../../Widget/custom_button.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 
 class SuccessfullyRegisteredAsServiceProviderScreen extends StatelessWidget {
   const SuccessfullyRegisteredAsServiceProviderScreen({Key? key})
@@ -20,18 +20,18 @@ class SuccessfullyRegisteredAsServiceProviderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         leadingWidth: 60,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 25,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
           size: 15,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView(
@@ -50,14 +50,14 @@ class SuccessfullyRegisteredAsServiceProviderScreen extends StatelessWidget {
             style: TextStyle(
               height: 1.8,
               fontSize: 17,
-              fontFamily: FontsApp.helveticaL,
-              color: ColorsApp.s1,
+              fontFamily: kHelveticaL,
+              color:s1,
             ),
           ),
           Padding(
             padding:
             const EdgeInsetsDirectional.only(top: 40, start: 75, end: 75),
-            child: Buttons(
+            child: CustomButton(
               name: 'إلغاء',
               x: 45,
               y: 106,

@@ -1,5 +1,5 @@
 import 'AllPages.dart';
-import 'constants/strings.dart';
+import 'constants/routes.dart';
 import 'Screen/MenuScreen.dart';
 import 'Screen/Main_Screen.dart';
 import 'Screen/Info_Screen.dart';
@@ -120,7 +120,8 @@ class AppRoutes {
       case addAndBuyScreen:
         return MaterialPageRoute(builder: (context) => const AddAndBuyScreen());
       default:
-        return MaterialPageRoute(builder: (context) => const SplashScreen());
+        return MaterialPageRoute(builder: (context) => LoginScreen());
+//        return MaterialPageRoute(builder: (context) => const SplashScreen());
     }
   }
 }

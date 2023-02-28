@@ -33,7 +33,7 @@ class _AllPagesState extends State<AllPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       bottomNavigationBar: Container(
         height: 50,
         margin: const EdgeInsetsDirectional.only(

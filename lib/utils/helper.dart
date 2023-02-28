@@ -1,16 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
+import 'package:get/get.dart';
 
 mixin Helper {
 
   void showSnackBar() {
     Fluttertoast.showToast(
-      msg: 'يرجى إدخال الرقم بشكل صحيح',
+      msg: 'please_enter_code_correctly'.tr,
       fontSize: 12,
       timeInSecForIosWeb: 5,
-      textColor: ColorsApp.s3,
+      textColor: kErrorColor,
       gravity: ToastGravity.CENTER_RIGHT,
       toastLength: Toast.LENGTH_LONG,
       backgroundColor: Colors.transparent,
@@ -25,8 +26,8 @@ mixin Helper {
           'يرجى إدخال الرقم بشكل صحيح',
           style: TextStyle(
             fontSize: 12,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s3,
+            fontFamily: kHelveticaL,
+            color: s3,
           ),
         ),
         padding: const EdgeInsetsDirectional.only(bottom: 300, start: 50),

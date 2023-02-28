@@ -1,143 +1,110 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../getX/add_information_getx_controller.dart';
+import '../../Widget/custom_circle_button.dart';
+import '../../Widget/custom_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../Widget/Button_AppBar.dart';
-import '../../Widget/Buttons.dart';
 import '../../Widget/Menu_Choose.dart';
-import '../../Widget/Text_Field_Profile.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../constants/strings.dart';
-import '../../models/City.dart';
+import '../../Widget/custom_button.dart';
+import 'package:get/get.dart';
 
-class AddInformationScreen extends StatefulWidget {
+
+class AddInformationScreen extends StatelessWidget {
   const AddInformationScreen({Key? key}) : super(key: key);
-
-  @override
-  State<AddInformationScreen> createState() => _AddInformationScreenState();
-}
-
-class _AddInformationScreenState extends State<AddInformationScreen> {
-  List<City> city = <City>[
-    City(name: 'غزة', id: 1),
-    City(name: 'خانيونس', id: 2),
-    City(name: 'رفع', id: 3),
-    City(name: 'النصيرات', id: 4),
-    City(name: 'دير البلح', id: 5),
-    City(name: 'المغازي', id: 6),
-    City(name: 'الزهرة', id: 7),
-  ];
-  List<City> area = <City>[
-    City(name: 'غزة', id: 1),
-    City(name: 'خانيونس', id: 2),
-    City(name: 'رفع', id: 3),
-    City(name: 'النصيرات', id: 4),
-    City(name: 'دير البلح', id: 5),
-    City(name: 'المغازي', id: 6),
-    City(name: 'الزهرة', id: 7),
-  ];
-  String? selectedCityId;
-  String? selectedAreaId;
-  bool blur = false;
-  late TextEditingController firstNameEditingController;
-  late TextEditingController lastNameEditingController;
-
-  @override
-  void initState() {
-    super.initState();
-    firstNameEditingController = TextEditingController();
-    lastNameEditingController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    firstNameEditingController.dispose();
-    lastNameEditingController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        leadingWidth: 78,
-        leading: ButtonAppBar(
-          start: 40,
-          paddingStart: 5,
-          icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
-        ),
+        leadingWidth: 55.w,
+        leading: CustomCircleButton(onPressed: () => Get.back()),
         title: Text(
-          'إضافة معلومات',
+          'add_information'.tr,
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontSize: 17.sp,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
       ),
       body: ListView(
-        padding: const EdgeInsetsDirectional.only(top: 41, start: 37, end: 37),
         physics: const NeverScrollableScrollPhysics(),
+        padding: EdgeInsetsDirectional.only(
+          top: 20.h,
+          start: 37.w,
+          end: 37.w,
+        ),
         children: [
           SvgPicture.asset(
-            'images/Login and Create Account/Add Information.svg',
+            'images/login_and_create_account/add_information.svg',
+            height: 211.h,
+            width: 212.w,
           ),
-          const SizedBox(height: 45),
-          TextFieldProfile(
-            keyboardType: TextInputType.text,
-            textEditingController: firstNameEditingController,
-            errorText: 'يرجى إدخال الاسم الأول',
-            nameFiled: 'الاسم الأول',
-          ),
-          const SizedBox(height: 20),
-          TextFieldProfile(
-            keyboardType: TextInputType.text,
-            textEditingController: lastNameEditingController,
-            errorText: 'يرجى إدخال الاسم الأخير',
-            nameFiled: 'الاسم الأخير',
-          ),
-          const SizedBox(height: 20),
-          MenuChoose(
-            function: (String? value) {
-              if (value != null) {
-                setState(() {
-                  selectedCityId = value;
-                });
-              }
+          SizedBox(height: 30.h),
+          GetBuilder<AddInformationGetxController>(
+            init: AddInformationGetxController.to,
+            builder: (controller) {
+              return CustomTextField(
+                keyboardType: TextInputType.text,
+                textEditingController: controller.firstName,
+                nameFiled: 'first_name'.tr,
+              );
             },
-            selectedId: selectedCityId,
-            list: city,
-            nameFiled: 'المدينة',
           ),
-          const SizedBox(height: 20),
-          MenuChoose(
-            function: (String? value) {
-              if (value != null) {
-                setState(() {
-                  selectedAreaId = value;
-                });
-              }
+          SizedBox(height: 10.h),
+          GetBuilder<AddInformationGetxController>(
+            init: AddInformationGetxController.to,
+            builder: (controller) {
+              return CustomTextField(
+                keyboardType: TextInputType.text,
+                textEditingController: controller.lastName,
+                nameFiled: 'last_name'.tr,
+              );
             },
-            selectedId: selectedAreaId,
-            list: area,
-            nameFiled: 'المنطقة / الشارع',
           ),
-          const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(start: 20, end: 20),
-            child: Buttons(
-              name: 'التالي',
-              x: 45,
-              y: double.infinity,
-              function: () => Navigator.pushReplacementNamed(
-                  context, accountCreatedSuccessfullyScreen),
-            ),
+          SizedBox(height: 10.h),
+          GetBuilder<AddInformationGetxController>(
+            init: AddInformationGetxController.to,
+            builder: (controller) {
+              return MenuChoose(
+                function: (String? value) {
+                  if (value != null) {
+                    controller.selectedCity(value);
+                  }
+                },
+                selectedId: controller.selectedCityId,
+                list: controller.city,
+                nameFiled: 'city'.tr,
+              );
+            },
+          ),
+          SizedBox(height: 10.h),
+          GetBuilder<AddInformationGetxController>(
+            init: AddInformationGetxController.to,
+            builder: (controller) {
+              return MenuChoose(
+                function: (String? value) {
+                  if (value != null) {
+                    controller.selectedArea(value);
+                  }
+                },
+                selectedId: controller.selectedAreaId,
+                list: controller.area,
+                nameFiled: 'area_street'.tr,
+              );
+            },
+          ),
+          SizedBox(height: 20.h),
+          CustomButton(
+            name: 'next'.tr,
+            function: () =>
+                AddInformationGetxController.to.createUser(phone: '0599724037'),
           ),
         ],
       ),

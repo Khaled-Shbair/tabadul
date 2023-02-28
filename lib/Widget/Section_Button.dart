@@ -20,6 +20,14 @@ class SectionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: function,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0XFFF1F1F9),
+        shadowColor: const Color(0XFF464698),
+        elevation: 1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -30,22 +38,14 @@ class SectionButton extends StatelessWidget {
           ),
           Text(
             nameSection,
-            style: TextStyle(
-              color: ColorsApp.s,
+            style: const TextStyle(
+              color: primaryColor,
               fontSize: 13,
-              fontFamily: FontsApp.helveticaL,
+              fontFamily: kHelveticaL,
               fontWeight: FontWeight.bold,
             ),
           ),
         ],
-      ),
-      style: ElevatedButton.styleFrom(
-        primary: const Color(0XFFF1F1F9),
-        shadowColor: const Color(0XFF464698),
-        elevation: 1,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
       ),
     );
   }

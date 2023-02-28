@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+import 'package:get/get.dart';
 import '../constants/fonts.dart';
 import '../AllPages.dart';
-import '../Widget/Button_AppBar.dart';
+import '../Widget/custom_circle_button.dart';
 import '../constants/colors.dart';
 import 'Info_Screen.dart';
 import 'Provide_Service_Screen/List_Provide_Service_Screen.dart';
@@ -49,7 +50,7 @@ class _MenuScreenState extends State<MenuScreen> {
       slideWidth: 281.5,
       angle: 0.0,
       isRtl: true,
-      menuBackgroundColor: ColorsApp.s,
+      menuBackgroundColor: primaryColor,
       androidCloseOnBackTap: true,
     );
   }
@@ -87,7 +88,7 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.s,
+      backgroundColor: primaryColor,
       body: SafeArea(
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
@@ -96,8 +97,8 @@ class MenuPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                ButtonAppBar(
-                  function: () {
+                CustomCircleButton(
+                  onPressed: () {
                     ZoomDrawer.of(context)!.close();
                   },
                   icon: Icons.close,
@@ -120,10 +121,10 @@ class MenuPage extends StatelessWidget {
       leading: Icon(item.icon, color: Colors.white),
       title: Text(
         item.title,
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 13,
-          fontFamily: FontsApp.helveticaL,
+          fontFamily: kHelveticaL,
         ),
       ),
       onTap: () => onSelectedItem(item),
@@ -139,7 +140,7 @@ class MenuItem {
 }
 
 class MenuItems {
-  static const mainScreen = MenuItem(Icons.person, 'الرئيسية');
+  static final mainScreen = MenuItem(Icons.person, 'main'.tr);
   static const profilePerson = MenuItem(Icons.person, 'الملف الشخصي');
   static const listProvideService =
       MenuItem(Icons.volunteer_activism_sharp, 'قائمة مزودي الخدمات');

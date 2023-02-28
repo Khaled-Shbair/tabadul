@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import '../../Widget/Buttons.dart';
+import '../../Widget/custom_button.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
 
@@ -10,7 +10,7 @@ class DetailServiceProvideScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       body: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: [
@@ -50,7 +50,7 @@ class DetailServiceProvideScreen extends StatelessWidget {
                       height: 4,
                       width: 75,
                       decoration: BoxDecoration(
-                        color: ColorsApp.s1,
+                        color: s1,
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
@@ -58,8 +58,8 @@ class DetailServiceProvideScreen extends StatelessWidget {
                       'سامر الحوت',
                       style: TextStyle(
                         fontSize: 20,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color: primaryColor,
                       ),
                     ),
                   ],
@@ -69,10 +69,10 @@ class DetailServiceProvideScreen extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 10,
-                      backgroundColor: ColorsApp.s,
+                      backgroundColor:primaryColor,
                       child: CircleAvatar(
                         radius: 4,
-                        backgroundColor: ColorsApp.s4,
+                        backgroundColor:s4,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -80,8 +80,8 @@ class DetailServiceProvideScreen extends StatelessWidget {
                       'عامل',
                       style: TextStyle(
                         fontSize: 15,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color: primaryColor,
                       ),
                     ),
                   ],
@@ -90,10 +90,10 @@ class DetailServiceProvideScreen extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 10,
-                      backgroundColor: ColorsApp.s,
+                      backgroundColor: primaryColor,
                       child: CircleAvatar(
                         radius: 4,
-                        backgroundColor: ColorsApp.s4,
+                        backgroundColor: s4,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -101,8 +101,8 @@ class DetailServiceProvideScreen extends StatelessWidget {
                       'مدينة غزة / دير البلح ',
                       style: TextStyle(
                         fontSize: 15,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color: primaryColor,
                       ),
                     ),
                   ],
@@ -111,10 +111,10 @@ class DetailServiceProvideScreen extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 10,
-                      backgroundColor: ColorsApp.s,
+                      backgroundColor: primaryColor,
                       child: CircleAvatar(
                         radius: 4,
-                        backgroundColor: ColorsApp.s4,
+                        backgroundColor: s4,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -122,8 +122,8 @@ class DetailServiceProvideScreen extends StatelessWidget {
                       'عامل كهرباء ',
                       style: TextStyle(
                         fontSize: 15,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color: primaryColor,
                       ),
                     ),
                   ],
@@ -132,10 +132,10 @@ class DetailServiceProvideScreen extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 10,
-                      backgroundColor: ColorsApp.s,
+                      backgroundColor: primaryColor,
                       child: CircleAvatar(
                         radius: 4,
-                        backgroundColor: ColorsApp.s4,
+                        backgroundColor: s4,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -143,8 +143,8 @@ class DetailServiceProvideScreen extends StatelessWidget {
                       '0590005695',
                       style: TextStyle(
                         fontSize: 15,
-                        fontFamily: FontsApp.helveticaL,
-                        color: ColorsApp.s,
+                        fontFamily: kHelveticaL,
+                        color: primaryColor,
                       ),
                     ),
                   ],
@@ -155,10 +155,10 @@ class DetailServiceProvideScreen extends StatelessWidget {
                   children: [
                     const CircleAvatar(
                       radius: 10,
-                      backgroundColor: ColorsApp.s,
+                      backgroundColor: primaryColor,
                       child: CircleAvatar(
                         radius: 4,
-                        backgroundColor: ColorsApp.s4,
+                        backgroundColor: s4,
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -170,8 +170,8 @@ class DetailServiceProvideScreen extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 15,
                           height: 1.5,
-                          fontFamily: FontsApp.helveticaL,
-                          color: ColorsApp.s,
+                          fontFamily: kHelveticaL,
+                          color:primaryColor,
                         ),
                       ),
                     ),
@@ -183,7 +183,7 @@ class DetailServiceProvideScreen extends StatelessWidget {
                     end: 100,
                     top: 40,
                   ),
-                  child: Buttons(
+                  child: CustomButton(
                     x: 45,
                     y: double.infinity,
                     fontSize: 15,

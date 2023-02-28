@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../constants/strings.dart';
-import '../Widget/Buttons.dart';
+import '../constants/routes.dart';
+import '../Widget/custom_button.dart';
 import '../constants/colors.dart';
 
 class DepartmentAddProductScreen extends StatefulWidget {
@@ -17,13 +17,13 @@ class _DepartmentAddProductScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       body: ListView(
         physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsetsDirectional.only(start: 37, end: 37),
         children: [
           const SizedBox(height: 52),
-          SvgPicture.asset('images/add product.svg', height: 450),
+          SvgPicture.asset('images/add_product.svg', height: 450),
           const SizedBox(height: 45),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +32,7 @@ class _DepartmentAddProductScreenState
                 height: 45,
                 width: 45,
                 decoration: BoxDecoration(
-                  color: ColorsApp.s,
+                  color: primaryColor,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: const Icon(
@@ -41,11 +41,11 @@ class _DepartmentAddProductScreenState
                 ),
               ),
               const SizedBox(width: 4),
-              Buttons(
+              CustomButton(
                 name: 'إضافة سلعة',
-                colorFont: ColorsApp.s,
+                colorFont: primaryColor,
                 fontSize: 12,
-                color: ColorsApp.s4,
+                color: s4,
                 x: 45,
                 y: 140,
                 function: () => Navigator.pushNamed(context, addProductScreen),

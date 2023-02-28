@@ -15,7 +15,7 @@ class _ComputerDepartmentScreenState extends State<ComputerDepartmentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       body: Padding(
         padding: const EdgeInsetsDirectional.only(start: 37, end: 37, top: 25),
         child: Column(
@@ -24,14 +24,14 @@ class _ComputerDepartmentScreenState extends State<ComputerDepartmentScreen> {
             Stack(
               alignment: AlignmentDirectional.bottomStart,
               children: [
-                const CircleAvatar(radius: 13, backgroundColor: ColorsApp.s4),
+                const CircleAvatar(radius: 13, backgroundColor: s4),
                 Text(
                   ' قسم أجهزة الحاسوب',
                   style: TextStyle(
-                    color: ColorsApp.s,
+                    color: primaryColor,
                     fontSize: 18,
                     height: 1.4,
-                    fontFamily: FontsApp.helveticaL,
+                    fontFamily: kHelveticaL,
                   ),
                 ),
               ],
@@ -48,9 +48,9 @@ class _ComputerDepartmentScreenState extends State<ComputerDepartmentScreen> {
                 itemBuilder: (context, index) {
                   return ElevatedButton(
                     onPressed: () {},
-                    child: const Icon(Icons.add, color: ColorsApp.s, size: 50),
+                    child: const Icon(Icons.add, color: primaryColor, size: 50),
                     style: ElevatedButton.styleFrom(
-                      primary: ColorsApp.s4,
+                      primary: s4,
                       elevation: 0,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(4),

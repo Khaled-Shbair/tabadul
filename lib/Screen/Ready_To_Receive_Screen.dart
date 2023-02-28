@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../constants/fonts.dart';
 import '../constants/colors.dart';
-import '../Widget/Button_AppBar.dart';
-import '../Widget/Buttons.dart';
-import '../constants/strings.dart';
+import '../Widget/custom_circle_button.dart';
+import '../Widget/custom_button.dart';
+import '../constants/routes.dart';
 
 class ReadyToReceiveScreen extends StatelessWidget {
   const ReadyToReceiveScreen({Key? key}) : super(key: key);
@@ -12,17 +12,17 @@ class ReadyToReceiveScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView(
@@ -30,7 +30,7 @@ class ReadyToReceiveScreen extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           SvgPicture.asset(
-            'images/ready to receive.svg',
+            'images/ready_to_receive.svg',
             fit: BoxFit.fitWidth,
             height: 300,
           ),
@@ -41,8 +41,8 @@ class ReadyToReceiveScreen extends StatelessWidget {
             style: TextStyle(
               height: 1.8,
               fontSize: 18,
-              fontFamily: FontsApp.helveticaL,
-              color: ColorsApp.s1,
+              fontFamily: kHelveticaL,
+              color: s1,
             ),
           ),
           Padding(
@@ -51,7 +51,7 @@ class ReadyToReceiveScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Buttons(
+                CustomButton(
                   name: 'نعم',
                   x: 45,
                   y: 85,
@@ -60,12 +60,12 @@ class ReadyToReceiveScreen extends StatelessWidget {
                   },
                 ),
                 const SizedBox(width: 10),
-                Buttons(
+                CustomButton(
                   name: 'لا',
                   x: 45,
                   y: 85,
-                  colorFont: ColorsApp.s,
-                  color: ColorsApp.s4,
+                  colorFont: primaryColor,
+                  color: s4,
                   function: () {
                     Navigator.pushReplacementNamed(context, answerIsNoScreen);
                   },

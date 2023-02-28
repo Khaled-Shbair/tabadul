@@ -1,8 +1,8 @@
 import '../../constants/fonts.dart';
 import '../../constants/colors.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 import 'package:flutter/material.dart';
-import '../../Widget/Button_AppBar.dart';
+import '../../Widget/custom_circle_button.dart';
 import '../../shared_preference/pref_controller.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
@@ -26,22 +26,22 @@ class _LogoutScreenState extends State<LogoutScreen> {
           'تسجيل خروج',
           style: TextStyle(
             fontSize: 20,
-            fontFamily: FontsApp.helveticaLNeeL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaLNeeL,
+            color: primaryColor,
           ),
         ),
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          ButtonAppBar(
+          CustomCircleButton(
             end: 40,
             icon: Icons.menu,
-            function: () => ZoomDrawer.of(context)!.toggle(),
+            onPressed: () => ZoomDrawer.of(context)!.toggle(),
           ),
         ],
       ),
@@ -51,16 +51,16 @@ class _LogoutScreenState extends State<LogoutScreen> {
           height: 250,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: ColorsApp.s,
+            color: primaryColor,
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: ColorsApp.s6.withAlpha(153),
+                color: s6.withAlpha(153),
                 offset: const Offset(2, 60),
                 spreadRadius: -40,
               ),
               BoxShadow(
-                color: ColorsApp.s5.withAlpha(255),
+                color: s5.withAlpha(255),
                 offset: const Offset(0, 30),
                 spreadRadius: -20,
               ),
@@ -78,7 +78,7 @@ class _LogoutScreenState extends State<LogoutScreen> {
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  fontFamily: FontsApp.helveticaLNeeL,
+                  fontFamily: kHelveticaLNeeL,
                 ),
               ),
               const SizedBox(height: 14),
@@ -88,8 +88,8 @@ class _LogoutScreenState extends State<LogoutScreen> {
                   'إلغاء',
                   style: TextStyle(
                     fontSize: 15,
-                    color: ColorsApp.s,
-                    fontFamily: FontsApp.helveticaLNeeL,
+                    color: primaryColor,
+                    fontFamily: kHelveticaLNeeL,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
@@ -106,7 +106,7 @@ class _LogoutScreenState extends State<LogoutScreen> {
                   style: TextStyle(
                     fontSize: 15,
                     color: Colors.white,
-                    fontFamily: FontsApp.helveticaLNeeL,
+                    fontFamily: kHelveticaLNeeL,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(

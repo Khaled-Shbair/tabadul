@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../constants/fonts.dart';
-import '../constants/strings.dart';
-import '../Widget/Button_AppBar.dart';
-import '../Widget/Buttons.dart';
+import '../constants/routes.dart';
+import '../Widget/custom_circle_button.dart';
+import '../Widget/custom_button.dart';
 import '../constants/colors.dart';
 
 class DetailProductScreen extends StatelessWidget {
@@ -11,25 +11,25 @@ class DetailProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'تفاصيل السلعة',
           style: TextStyle(
             fontSize: 20,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView(
@@ -83,7 +83,7 @@ class DetailProductScreen extends StatelessWidget {
           Padding(
             padding:
                 const EdgeInsetsDirectional.only(start: 20, end: 20, top: 25),
-            child: Buttons(
+            child: CustomButton(
               name: 'شراء الآن',
               x: 45,
               function: () =>
@@ -118,7 +118,7 @@ class Detail extends StatelessWidget {
       height: 40,
       width: width,
       decoration: BoxDecoration(
-        color: ColorsApp.s4,
+        color: s4,
         borderRadius: BorderRadius.circular(4),
       ),
       child: SingleChildScrollView(
@@ -126,9 +126,9 @@ class Detail extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            fontFamily: FontsApp.helveticaL,
+            fontFamily: kHelveticaL,
             fontSize: 12,
-            color: ColorsApp.s,
+            color: primaryColor,
           ),
         ),
       ),
@@ -145,7 +145,7 @@ class Photo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorsApp.s4,
+        color: s4,
         borderRadius: BorderRadius.circular(4),
       ),
       // child: Image.asset('images/saja.jpg', fit: BoxFit.fill),

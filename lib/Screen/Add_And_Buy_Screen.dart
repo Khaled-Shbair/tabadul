@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Widget/Button_AppBar.dart';
+import '../Widget/custom_circle_button.dart';
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
 import 'Department_Add_Product_Screen.dart';
@@ -14,17 +14,17 @@ class AddAndBuyScreen extends StatelessWidget {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: ColorsApp.colorScaffold,
+        backgroundColor: colorWhite,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
           leadingWidth: 78,
-          leading: ButtonAppBar(
+          leading: CustomCircleButton(
             start: 40,
             paddingStart: 5,
             icon: Icons.arrow_back_ios,
-            function: () => Navigator.pop(context),
+            onPressed: () => Navigator.pop(context),
           ),
         ),
         body: Column(
@@ -34,7 +34,7 @@ class AddAndBuyScreen extends StatelessWidget {
               margin:
                   const EdgeInsetsDirectional.only(start: 37, end: 37, top: 30),
               decoration: BoxDecoration(
-                color: ColorsApp.s4,
+                color: s4,
                 borderRadius: BorderRadius.circular(22),
               ),
               child: TabBar(
@@ -45,14 +45,14 @@ class AddAndBuyScreen extends StatelessWidget {
                   start: 5,
                 ),
                 labelColor: Colors.white,
-                unselectedLabelColor: ColorsApp.s,
+                unselectedLabelColor: primaryColor,
                 // controller: tabController,
                 labelStyle: TextStyle(
-                  fontFamily: FontsApp.helveticaL,
+                  fontFamily: kHelveticaL,
                   fontSize: 15,
                 ),
                 indicator: BoxDecoration(
-                  color: ColorsApp.s,
+                  color: primaryColor,
                   borderRadius: BorderRadius.circular(22),
                 ),
                 tabs: const [

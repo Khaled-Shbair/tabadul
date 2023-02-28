@@ -1,188 +1,139 @@
-import 'package:flutter/gestures.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../getX/create_account_getx_controller.dart';
+import '../../Widget/custom_text_field.dart';
+import '../../Widget/Menu_Choose.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../constants/fonts.dart';
-import '../../Widget/Buttons.dart';
-import '../../Widget/Menu_Choose.dart';
-import '../../Widget/Text_Field_Profile.dart';
 import '../../constants/colors.dart';
-import '../../constants/strings.dart';
-import '../../models/Code Country.dart';
+import '../../constants/fonts.dart';
+import '../../Widget/custom_button.dart';
+import 'package:get/get.dart';
 
-class CreateAccountScreen extends StatefulWidget {
+class CreateAccountScreen extends StatelessWidget {
   const CreateAccountScreen({Key? key}) : super(key: key);
-
-  @override
-  State<CreateAccountScreen> createState() => _CreateAccountScreenState();
-}
-
-class _CreateAccountScreenState extends State<CreateAccountScreen> {
-  List<CodeCountry> codeCountry = <CodeCountry>[
-    CodeCountry(name: '970+', id: 1),
-    CodeCountry(name: '972+', id: 2),
-  ];
-
-  String? selectedCodeCountry;
-  late TextEditingController _phoneEditingController;
-  late TapGestureRecognizer _tapGestureRecognizer;
-
-  void _navigatorToLoginScreen() => Navigator.pushNamed(context, loginScreen);
-
-  @override
-  void initState() {
-    super.initState();
-    _phoneEditingController = TextEditingController();
-    _tapGestureRecognizer = TapGestureRecognizer()
-      ..onTap = _navigatorToLoginScreen;
-  }
-
-  @override
-  void dispose() {
-    _phoneEditingController.dispose();
-    _tapGestureRecognizer.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'إنشاء حساب',
+          'create_account'.tr,
           style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontSize: 17.sp,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
       ),
       body: ListView(
-        padding: const EdgeInsetsDirectional.only(top: 40, start: 37, end: 37),
+        padding: EdgeInsetsDirectional.only(
+          top: 44.5.h,
+          start: 37.w,
+          end: 37.w,
+        ),
         physics: const NeverScrollableScrollPhysics(),
         children: [
           SvgPicture.asset(
-            'images/Login and Create Account/Create Account.svg',
-            height: 250,
+            'images/login_and_create_account/create_account.svg',
+            height: 196.h,
+            width: 221.w,
           ),
-          const SizedBox(height: 67),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: TextFieldProfile(
-                    keyboardType: TextInputType.phone,
-                    textEditingController: _phoneEditingController,
-                    nameFiled: 'أدخل رقمك الهاتفي',
+          SizedBox(height: 62.8.h),
+          GetBuilder<CreateAccountGetxController>(
+            builder: (controller) {
+              return Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: CustomTextField(
+                      maxLength: 10,
+                      keyboardType: TextInputType.phone,
+                      textEditingController: controller.phoneController,
+                      nameFiled: 'enter_mobile_number'.tr,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: MenuChoose(
-                    function: (String? value) {
+                  SizedBox(width: 8.w),
+                  MenuChoose(
+                    function: (value) {
                       if (value != null) {
-                        setState(() {
-                          selectedCodeCountry = value;
-                        });
+                        controller.selectedCode(value);
                       }
                     },
-                    paddingEnd: 10,
-                    fontSize: 15,
-                    paddingStart: 10,
-                    selectedId: selectedCodeCountry,
-                    list: codeCountry,
-                    nameFiled: codeCountry[0].name,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(
-              start: 20,
-              end: 20,
-              top: 50,
-              bottom: 43,
-            ),
-            child: Buttons(
-              name: 'إنشاء حساب',
-              x: 45,
-              y: double.infinity,
-              function: () => _performLogin(),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsetsDirectional.only(start: 40),
-            child: RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'ليس لديك حساب من قبل ؟ ',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: FontsApp.helveticaL,
-                      color: ColorsApp.s1,
-                    ),
-                  ),
-                  TextSpan(
-                    recognizer: _tapGestureRecognizer,
-                    text: 'تسجيل دخول',
-                    style: TextStyle(
-                      fontSize: 15,
-                      decoration: TextDecoration.underline,
-                      fontFamily: FontsApp.helveticaL,
-                      color: ColorsApp.s,
-                    ),
+                    fontSize: 14.sp,
+                    selectedId: controller.selectedCodeCountry,
+                    list: controller.codeCountry,
+                    nameFiled: controller.codeCountry[0].name,
                   ),
                 ],
-              ),
+              );
+            },
+          ),
+          Container(
+            height: 27.h,
+            margin: EdgeInsetsDirectional.only(
+              top: 6.h,
+              start: 20.w,
+            ),
+            child: GetBuilder<CreateAccountGetxController>(
+              init: CreateAccountGetxController.to,
+              builder: (controller) {
+                if (controller.existsPhone == true) {
+                  return Text(
+                    controller.messageError,
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontFamily: kHelveticaL,
+                      color: kErrorColor,
+                    ),
+                  );
+                }
+                return const SizedBox();
+              },
+            ),
+          ),
+          CustomButton(
+            top: 16.h,
+            bottom: 43.h,
+            name: 'create_account'.tr,
+            function: () => CreateAccountGetxController.to.register(),
+          ),
+          Center(
+            child: GetBuilder<CreateAccountGetxController>(
+              init: CreateAccountGetxController.to,
+              builder: (controller) {
+                return RichText(
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: 'already_have_an_account'.tr,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontFamily: kHelveticaL,
+                          color: s1,
+                        ),
+                      ),
+                      TextSpan(
+                        recognizer: controller.tapGestureRecognizer,
+                        text: 'create_account'.tr,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          decoration: TextDecoration.underline,
+                          fontFamily: kHelveticaL,
+                          color: primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
           ),
         ],
       ),
     );
-  }
-
-  Future<void> _performLogin() async {
-    if (_checkData()) {
-      await _register();
-    }
-  }
-
-  bool _checkData() {
-    if (_phoneEditingController.text.isNotEmpty) {
-      return true;
-    }
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'يرجى إدخال الرقم بشكل صحيح',
-          style: TextStyle(
-            fontSize: 12,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s3,
-          ),
-        ),
-        padding: const EdgeInsetsDirectional.only(bottom: 330, start: 40),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-    return false;
-  }
-
-  Future<void> _register() async {
-    /*** Get State Management ***/
-    bool registered = false;
-    if (registered) {
-      Navigator.pushReplacementNamed(context, securityCodeScreen);
-      //addInformationScreen
-    }
   }
 }

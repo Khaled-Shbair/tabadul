@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import '../constants/fonts.dart';
 import '../constants/colors.dart';
-import '../Widget/Button_AppBar.dart';
+import '../Widget/custom_circle_button.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({Key? key}) : super(key: key);
@@ -11,22 +11,22 @@ class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
         actions: [
-          ButtonAppBar(
+          CustomCircleButton(
             end: 40,
             icon: Icons.menu,
-            function: () {
+            onPressed: () {
               ZoomDrawer.of(context)!.toggle();
             },
           ),
@@ -41,7 +41,7 @@ class InfoScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsetsDirectional.only(start: 40),
                 child: SvgPicture.asset(
-                  'images/Info.svg',
+                  'images/info.svg',
                   height: 90,
                 ),
               ),
@@ -58,7 +58,7 @@ class InfoScreen extends StatelessWidget {
                   top: 250,
                 ),
                 decoration: BoxDecoration(
-                  color: ColorsApp.s5.withAlpha(255),
+                  color: s5.withAlpha(255),
                   borderRadius:
                       const BorderRadius.only(topRight: Radius.circular(40)),
                 ),
@@ -78,7 +78,7 @@ class InfoScreen extends StatelessWidget {
                   top: 260,
                 ),
                 decoration: BoxDecoration(
-                  color: ColorsApp.s6.withAlpha(153),
+                  color:s6.withAlpha(153),
                   borderRadius:
                       const BorderRadius.only(topRight: Radius.circular(40)),
                 ),
@@ -98,13 +98,13 @@ class InfoScreen extends StatelessWidget {
                   top: 30,
                 ),
                 decoration: const BoxDecoration(
-                  color: ColorsApp.s,
+                  color: primaryColor,
                   borderRadius:
                       BorderRadius.only(topRight: Radius.circular(40)),
                 ),
                 width: double.infinity,
                 height: 505,
-                child: Center(
+                child: const Center(
                   child: Text(
                     ' هذا النص هو مثال لنص يمكن أن يستبدل في\n'
                     'نفس المساحة، لقد تم توليد هذا النص من مولد\n'
@@ -120,7 +120,7 @@ class InfoScreen extends StatelessWidget {
                       fontSize: 18,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontFamily: FontsApp.helveticaL,
+                      fontFamily: kHelveticaL,
                     ),
                   ),
                 ),

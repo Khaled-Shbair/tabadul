@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tabadul/constants/colors.dart';
+
+import '../constants/colors.dart';
 
 class CircleButton extends StatelessWidget {
   const CircleButton({
@@ -30,7 +31,7 @@ class CircleButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         boxShadow: [
           BoxShadow(
-            color:  ColorsApp.s.withAlpha(41),
+            color:  primaryColor.withAlpha(41),
             offset: const Offset(0, 3),
             blurRadius: 6,
           ),

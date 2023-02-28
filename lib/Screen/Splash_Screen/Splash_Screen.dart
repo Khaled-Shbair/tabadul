@@ -3,7 +3,7 @@ import '../../shared_preference/pref_controller.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../constants/strings.dart';
+import '../../constants/routes.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
-    String route = SharedPreferencesController().onBoarding
+    String route = PrefController().onBoarding
         ? loginScreen
         : onBoarding1Screen;
     Future.delayed(

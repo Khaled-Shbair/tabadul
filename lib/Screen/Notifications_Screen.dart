@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../constants/fonts.dart';
 import '../constants/colors.dart';
-import '../Widget/Button_AppBar.dart';
+import '../Widget/custom_circle_button.dart';
 
 class NotificationsScreen extends StatelessWidget {
   const NotificationsScreen({Key? key}) : super(key: key);
@@ -9,26 +10,26 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.colorScaffold,
+      backgroundColor: colorWhite,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
         title: Text(
-          'الإشعارات',
-          style: TextStyle(
+          'notifications'.tr,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            fontFamily: FontsApp.helveticaL,
-            color: ColorsApp.s,
+            fontFamily: kHelveticaL,
+            color: primaryColor,
           ),
         ),
         leadingWidth: 78,
-        leading: ButtonAppBar(
+        leading: CustomCircleButton(
           start: 40,
           paddingStart: 5,
           icon: Icons.arrow_back_ios,
-          function: () => Navigator.pop(context),
+          onPressed: () => Navigator.pop(context),
         ),
       ),
       body: ListView.builder(
@@ -45,22 +46,22 @@ class NotificationsScreen extends StatelessWidget {
             ),
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
-              color: ColorsApp.s4,
+              color: s4,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
               children: [
-                Container(width: 8, color: ColorsApp.s),
+                Container(width: 8, color: primaryColor),
                 Container(
                   height: 74,
                   width: 310,
                   margin: const EdgeInsetsDirectional.only(start: 6, end: 10),
-                  child: Text(
+                  child: const Text(
                     'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد النص العربي حيث يمكنك أن تولد مثل هذا حيث يمكنك أن تولد مثل هذا',
                     style: TextStyle(
                       fontSize: 10,
-                      color: ColorsApp.s,
-                      fontFamily: FontsApp.helveticaL,
+                      color: primaryColor,
+                      fontFamily: kHelveticaL,
                     ),
                   ),
                 ),
