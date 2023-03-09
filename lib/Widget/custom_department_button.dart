@@ -10,17 +10,17 @@ class CustomDepartmentButton extends StatelessWidget {
     Key? key,
     required this.pathImage,
     required this.nameDepartment,
-    required this.function,
+    required this.onPressed,
   }) : super(key: key);
 
   final String nameDepartment;
   final String pathImage;
-  final Function() function;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: function,
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: s4,
         shadowColor: primaryColor,

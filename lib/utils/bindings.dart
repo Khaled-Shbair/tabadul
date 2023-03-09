@@ -1,3 +1,4 @@
+import '../getX/detail_service_provide_getx_controller.dart';
 import '../getX/add_information_getx_controller.dart';
 import '../getX/create_account_getx_controller.dart';
 import '../getX/security_code_getx_controller.dart';
@@ -14,6 +15,7 @@ class InitialBinding extends Bindings {
     Get.lazyPut(() => SecurityCodeGetxController());
     Get.lazyPut(() => AddInformationGetxController());
     Get.lazyPut(() => AddProductGetxController());
+    Get.lazyPut(() => DetailServiceProvideGetxController());
     Get.put(() => ProfileGetxController());
   }
 }

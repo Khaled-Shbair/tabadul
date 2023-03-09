@@ -1,96 +1,80 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tabadul/constants/routes.dart';
 import '../../Widget/custom_circle_button.dart';
 import '../../Widget/custom_button.dart';
+import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
+import 'package:get/get.dart';
 
-class ListProvideServiceScreen extends StatefulWidget {
+class ListProvideServiceScreen extends StatelessWidget {
   const ListProvideServiceScreen({Key? key}) : super(key: key);
 
   @override
-  State<ListProvideServiceScreen> createState() =>
-      _ListProvideServiceScreenState();
-}
-
-class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'قائمة مزودي الخدمات',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            fontFamily: kHelveticaL,
-            color: primaryColor,
-          ),
-        ),
-        leadingWidth: 75,
+        title: Text('list_service_provide'.tr),
+        leadingWidth: 55.w,
         leading: CustomCircleButton(
-          start: 35,
           icon: Icons.menu,
           onPressed: () => ZoomDrawer.of(context)!.toggle(),
         ),
       ),
       body: ListView.builder(
-        itemCount: 10,
-        padding: const EdgeInsetsDirectional.only(top: 50, start: 37, end: 37),
+        itemCount: 5,
+        padding: EdgeInsetsDirectional.only(
+          top: 50.h,
+          start: 37.w,
+          end: 37.w,
+        ),
         itemBuilder: (context, index) {
           return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsetsDirectional.only(end: 10, bottom: 12),
-                height: 69,
-                width: 72,
+                margin: EdgeInsetsDirectional.only(end: 10.w, bottom: 12.h),
+                height: 70.h,
+                width: 72.w,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   color: s4,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: const Icon(Icons.person, size: 30, color: primaryColor),
-              ),
-              Container(
-                alignment: AlignmentDirectional.topCenter,
-                margin: const EdgeInsetsDirectional.only(end: 117),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'علي أحمد',
-                      style: TextStyle(
-                        height: 0,
-                        fontSize: 12,
-                        fontFamily: kHelveticaL,
-                        color: primaryColor,
-                      ),
-                    ),
-                    Text(
-                      'سباك كهربائي',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontFamily: kHelveticaL,
-                        color:primaryColor,
-                      ),
-                    ),
-                  ],
+                  borderRadius: BorderRadius.circular(10).w,
+                  image: const DecorationImage(
+                    image: AssetImage('images/test.png'),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.only(bottom: 15),
-                child: CustomButton(
-                  x: 30,
-                  y: 65,
-                  fontSize: 10,
-                  name: 'اتصل',
-                  function: () {},
-                ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'علي أحمد',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontFamily: kHelveticaL,
+                      color: primaryColor,
+                    ),
+                  ),
+                  Text(
+                    'سباك كهربائي',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontFamily: kHelveticaLNeeL,
+                      color: primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: 20,),
+              CustomButton(
+                x: 30,
+                y: 63,
+                fontSize: 10,
+                name: 'call'.tr,
+                function: () => Get.toNamed(detailServiceProvideScreen),
               ),
             ],
           );
@@ -99,3 +83,51 @@ class _ListProvideServiceScreenState extends State<ListProvideServiceScreen> {
     );
   }
 }
+/*
+    return Row(
+            children: [
+              Container(
+                margin: EdgeInsetsDirectional.only(end: 10.w, bottom: 12.h),
+                height: 69.h,
+                width: 72.w,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  color: s4,
+                  borderRadius: BorderRadius.circular(10).w,
+                  image: const DecorationImage(
+                    image: AssetImage('images/test.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'علي أحمد',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontFamily: kHelveticaL,
+                      color: primaryColor,
+                    ),
+                  ),
+                  Text(
+                    'سباك كهربائي',
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      fontFamily: kHelveticaLNeeL,
+                      color: primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+              // CustomButton(
+              //
+              //   fontSize: 10,
+              //   name: 'اتصل',
+              //   function: () {},
+              // ),
+            ],
+          );
+ */

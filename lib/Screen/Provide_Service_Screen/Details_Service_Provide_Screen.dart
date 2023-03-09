@@ -1,8 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher_string.dart';
+import '../../Widget/custom_widget_details_service_provide.dart';
+import '../../getX/detail_service_provide_getx_controller.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Widget/custom_button.dart';
+import 'package:flutter/material.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
+import 'package:get/get.dart';
 
 class DetailServiceProvideScreen extends StatelessWidget {
   const DetailServiceProvideScreen({Key? key}) : super(key: key);
@@ -10,7 +13,6 @@ class DetailServiceProvideScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorWhite,
       body: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: [
@@ -23,181 +25,85 @@ class DetailServiceProvideScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: 490,
+            height: 433.h,
             width: double.infinity,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              color: Colors.white,
+              borderRadius: BorderRadius.circular(31).w,
+              color: colorWhite,
             ),
             child: ListView(
               physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsetsDirectional.only(start: 58, end: 37),
+              padding:
+                  EdgeInsetsDirectional.only(start: 58.w, end: 37.w, top: 13.h),
               children: [
-                ListView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  padding: const EdgeInsetsDirectional.only(
-                    top: 15,
-                    //end: 110,
-                    start: 100,
+                Container(
+                  margin: EdgeInsetsDirectional.only(
+                    bottom: 12.h,
+                    end: 77.w,
+                    start: 77.w,
                   ),
-                  children: [
-                    Container(
-                      margin: const EdgeInsetsDirectional.only(
-                        bottom: 15,
-                        end: 115,
-                      ),
-                      height: 4,
-                      width: 75,
-                      decoration: BoxDecoration(
-                        color: s1,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    Text(
-                      'سامر الحوت',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: kHelveticaL,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ],
+                  height: 4.h,
+                  decoration: BoxDecoration(
+                    color: s1,
+                    borderRadius: BorderRadius.circular(20).w,
+                  ),
+                ),
+                Text(
+                  'سامر الحوت',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontFamily: kHelveticaL,
+                    color: primaryColor,
+                  ),
                 ),
                 const SizedBox(height: 25),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 10,
-                      backgroundColor:primaryColor,
-                      child: CircleAvatar(
-                        radius: 4,
-                        backgroundColor:s4,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      'عامل',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: kHelveticaL,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 10,
-                      backgroundColor: primaryColor,
-                      child: CircleAvatar(
-                        radius: 4,
-                        backgroundColor: s4,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      'مدينة غزة / دير البلح ',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: kHelveticaL,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 10,
-                      backgroundColor: primaryColor,
-                      child: CircleAvatar(
-                        radius: 4,
-                        backgroundColor: s4,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      'عامل كهرباء ',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: kHelveticaL,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 10,
-                      backgroundColor: primaryColor,
-                      child: CircleAvatar(
-                        radius: 4,
-                        backgroundColor: s4,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      '0590005695',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: kHelveticaL,
-                        color: primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const CircleAvatar(
-                      radius: 10,
-                      backgroundColor: primaryColor,
-                      child: CircleAvatar(
-                        radius: 4,
-                        backgroundColor: s4,
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    SizedBox(
-                      width: 280,
-                      height: 100,
-                      child: Text(
-                        'مرحبا اسمي سامر ، أنا بشتغل جميع ما يتعلق بالكهرباء ، ما عليك الا تتواصل معي وما بنقصر  معك',
-                        style: TextStyle(
-                          fontSize: 15,
-                          height: 1.5,
-                          fontFamily: kHelveticaL,
-                          color:primaryColor,
+                const CustomWidgetDetailsServiceProvide('عامل'),
+                SizedBox(height: 10.h),
+                const CustomWidgetDetailsServiceProvide(
+                    'مدينة غزة / دير البلح '),
+                SizedBox(height: 10.h),
+                const CustomWidgetDetailsServiceProvide('عامل كهرباء '),
+                SizedBox(height: 10.h),
+                const CustomWidgetDetailsServiceProvide('0590005695'),
+                SizedBox(height: 10.h),
+                SizedBox(
+                  height: 70.h,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 9.w,
+                        backgroundColor: primaryColor,
+                        child: CircleAvatar(
+                          radius: 4.w,
+                          backgroundColor: s4,
                         ),
                       ),
-                    ),
-                  ],
+                      SizedBox(width: 10.w),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Text(
+                            'مرحبا اسمي سامر ، أنا بشتغل جميع ما يتعلق بالكهرباء ، ما عليك الا تتواصل معي وما بنقصر  معك',
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: 11.sp,
+                              height: 1.2.h,
+                              fontFamily: kHelveticaL,
+                              color: primaryColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.only(
-                    start: 80,
-                    end: 100,
-                    top: 40,
-                  ),
-                  child: CustomButton(
-                    x: 45,
-                    y: double.infinity,
-                    fontSize: 15,
-                    name: 'اتصل',
-                    function: () async {
-                      final Uri launchUri = Uri(
-                        scheme: 'tel',
-                        path: '0599724037',
-                      );
-                      if (await canLaunchUrlString(launchUri.toString())) {
-                        await launchUrlString(launchUri.toString());
-                      }
-                    },
-                  ),
+                CustomButton(
+                  name: 'call'.tr,
+                  start: 70,
+                  end: 70,
+                  function: () => DetailServiceProvideGetxController.to
+                      .callServiceProvide('0599724037'),
                 ),
               ],
             ),

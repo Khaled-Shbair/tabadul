@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../constants/routes.dart';
 import '../firebase/firebase_firestore_controller.dart';
+import 'package:flutter/material.dart';
 import '../models/product_model.dart';
+import '../constants/routes.dart';
+import 'package:get/get.dart';
 
 class AddProductGetxController extends GetxController {
   static AddProductGetxController get to => Get.find();
@@ -86,7 +85,7 @@ class AddProductGetxController extends GetxController {
     }
   }
 
-  void addProduct() {
+  void addProduct(String nameDepartment) async {
     if (_productController.text.isNotEmpty &&
         _priceController.text.isNotEmpty &&
         _descriptionController.text.isNotEmpty) {
@@ -99,12 +98,45 @@ class AddProductGetxController extends GetxController {
         price: _priceController.text,
         description: _descriptionController.text,
       );
-      if (true) {
-        //_firestore.addToBicycleDepartment(product);
+      if (nameDepartment == 'furniture_department'.tr) {
+        await _firestore
+            .addToFurnitureDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'phone_department'.tr) {
+        await _firestore
+            .addToPhoneDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'computer_department'.tr) {
+        await _firestore
+            .addToComputerDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'motorcycle_department'.tr) {
+        await _firestore
+            .addToMotorcycleDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'bicycle_department'.tr) {
+        await _firestore
+            .addToBicycleDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'car_department'.tr) {
+        await _firestore
+            .addToCarDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'electric_machines_department'.tr) {
+        await _firestore
+            .addToElectricMachinesDepartment(product)
+            .then((value) => _navigation());
+      } else if (nameDepartment == 'carpets_and_mattresses_department'.tr) {
+        await _firestore
+            .addToCarpetsAndMattressesDepartment(product)
+            .then((value) => _navigation());
       }
-      //Get.toNamed(addedSuccessfullyScreen);
     } else {
       Get.snackbar('يرجى ادخال البيانات المطلوبة', '');
     }
+  }
+
+  void _navigation() {
+    //Get.toNamed(addedSuccessfullyScreen);
   }
 }

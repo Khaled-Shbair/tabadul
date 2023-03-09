@@ -1,12 +1,12 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
-import '../../constants/colors.dart';
-import '../../constants/images.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../shared_preference/pref_controller.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants/routes.dart';
+import '../../constants/colors.dart';
+import '../../constants/images.dart';
 import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {

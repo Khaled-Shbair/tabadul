@@ -1,8 +1,8 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'Screen/Provide_Service_Screen/profile_screen.dart';
+import 'Screen/notifications_screen.dart';
 import 'package:flutter/material.dart';
 import 'Screen/Main_Screen.dart';
-import 'Screen/notifications_screen.dart';
-import 'Screen/Provide_Service_Screen/profile_screen.dart';
-import 'Screen/Provide_Service_Screen/profile_screen.dart';
 import 'constants/colors.dart';
 import 'models/BnItem.dart';
 
@@ -33,17 +33,16 @@ class _AllPagesState extends State<AllPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorWhite,
       bottomNavigationBar: Container(
-        height: 50,
-        margin: const EdgeInsetsDirectional.only(
-          start: 37,
-          end: 37,
-          bottom: 24,
+        height: 50.h,
+        margin: EdgeInsetsDirectional.only(
+          start: 37.w,
+          end: 37.w,
+          bottom: 24.h,
         ),
         decoration: BoxDecoration(
-          color: const Color(0XFF464698),
-          borderRadius: BorderRadius.circular(10),
+          color: primaryColor,
+          borderRadius: BorderRadius.circular(10).w,
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(40),
@@ -54,24 +53,20 @@ class _AllPagesState extends State<AllPages> {
               for (int x = 0; x < data.length; x++) ...<Expanded>{
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedIndex = x;
-                      });
-                    },
+                    onTap: () => setState(() => selectedIndex = x),
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(data[x], color: Colors.white),
+                          SizedBox(height: 4.h),
                           if (x == selectedIndex)
                             Container(
-                              margin: const EdgeInsetsDirectional.only(top: 5),
-                              height: 3,
-                              width: 5,
+                              height: 3.h,
+                              width: 5.w,
                               decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20),
+                                color: colorWhite,
+                                borderRadius: BorderRadius.circular(5).w,
                               ),
                             ),
                         ],

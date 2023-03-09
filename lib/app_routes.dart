@@ -1,5 +1,3 @@
-import 'package:tabadul/Screen/Add_And_Buy_Screen.dart';
-
 import 'AllPages.dart';
 import 'constants/routes.dart';
 import 'Screen/menu_screen.dart';
@@ -61,10 +59,6 @@ class AppRoutes {
       case detailProductScreen:
         return MaterialPageRoute(
             builder: (context) => const DetailProductScreen());
-      // case departmentAddProductScreen:
-      //   final value = settings.arguments as String;
-      //   return MaterialPageRoute(
-      //       builder: (context) => DepartmentAddProductScreen(value));
 
       case waitForPickupScreen:
         return MaterialPageRoute(
@@ -118,9 +112,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const LoginScreen());
 
       default:
-
-        return MaterialPageRoute(
-            builder: (context) => MenuScreen());
+      return MaterialPageRoute(builder: (context) => ListProvideServiceScreen());
       //return MaterialPageRoute(builder: (context) => const SplashScreen());
       //TODO:Edit in add information screen
     }

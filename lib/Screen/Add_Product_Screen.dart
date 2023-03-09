@@ -111,7 +111,7 @@ class AddProductScreen extends StatelessWidget {
                 name: 'add'.tr,
                 fontSize: 12,
                 top: 30,
-                function: () => controller.addProduct(),
+                function: () => controller.addProduct(nameDepartment),
               ),
             ],
           );

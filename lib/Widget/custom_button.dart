@@ -9,7 +9,7 @@ class CustomButton extends StatelessWidget {
     required this.function,
     required this.name,
     this.x = 39,
-    this.y,
+    this.y = double.infinity,
     this.fontSize = 15,
     this.color = primaryColor,
     this.colorFont = Colors.white,
@@ -21,7 +21,7 @@ class CustomButton extends StatelessWidget {
   final Function() function;
   final String name;
   final double x;
-  final double? y;
+  final double y;
   final double fontSize;
   final Color color;
   final Color colorFont;
@@ -44,7 +44,7 @@ class CustomButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           elevation: 0,
           backgroundColor: color,
-          minimumSize: Size(double.infinity.w, x.h),
+          minimumSize: Size(y.w, x.h),
         ),
         child: Text(
           name,
