@@ -7,6 +7,8 @@ import '../constants/routes.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
+import 'profile_getx_controller.dart';
+
 class LoginGetxController extends GetxController {
   static LoginGetxController get to => Get.find();
   final FbAuthController _auth = FbAuthController();
@@ -65,6 +67,7 @@ class LoginGetxController extends GetxController {
             await _auth.verifyPhoneNumber(_phoneController.text,
                 then: (value) =>
                     Get.toNamed(securityCodeScreen, arguments: menuScreen));
+            ProfileGetxController.to.getUserData(_phoneController.text);
           } else {
             _existsPhone = false;
             timer = Timer.periodic(

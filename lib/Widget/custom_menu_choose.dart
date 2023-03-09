@@ -3,13 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constants/fonts.dart';
 import '../constants/colors.dart';
 
-class MenuChoose extends StatelessWidget {
-  const MenuChoose({
+class CustomMenuChoose extends StatelessWidget {
+  const CustomMenuChoose({
     Key? key,
     required this.selectedId,
     required this.nameFiled,
     required this.list,
     required this.function,
+    this.name,
+    this.nameAr,
     this.icon = Icons.keyboard_arrow_down,
     this.size = 24,
     this.fontSize = 10,
@@ -17,6 +19,8 @@ class MenuChoose extends StatelessWidget {
 
   final String? selectedId;
   final String nameFiled;
+  final String? name;
+  final String? nameAr;
   final List list;
   final IconData icon;
   final double size;
@@ -34,7 +38,6 @@ class MenuChoose extends StatelessWidget {
       ),
       alignment: AlignmentDirectional.center,
       width: 73.w,
-      height: 45.h,
       decoration: BoxDecoration(
         color: s4,
         borderRadius: BorderRadius.circular(4).w,
@@ -68,7 +71,8 @@ class MenuChoose extends StatelessWidget {
             .map(
               (dynamic list) => DropdownMenuItem<String>(
                 value: list.id.toString(),
-                child: Text(list.name),
+                child: name != null ?
+                Text(list.name) : Text(list.nameAr),
               ),
             )
             .toList(),

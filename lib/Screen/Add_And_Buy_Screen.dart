@@ -1,71 +1,77 @@
-import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'Departments_Products/department_screen.dart';
 import '../Widget/custom_circle_button.dart';
+import 'Department_Add_Product_Screen.dart';
+import 'package:flutter/material.dart';
 import '../constants/colors.dart';
 import '../constants/fonts.dart';
-import 'Department_Add_Product_Screen.dart';
-import 'Departments_Products/Computer_department_Screen.dart';
+import 'package:get/get.dart';
 
 class AddAndBuyScreen extends StatelessWidget {
-  const AddAndBuyScreen({Key? key}) : super(key: key);
+  const AddAndBuyScreen({
+    required this.nameDepartment,
+    required this.image,
+    Key? key,
+  }) : super(key: key);
+  final String nameDepartment;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: colorWhite,
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          centerTitle: true,
-          leadingWidth: 78,
+          leadingWidth: 55.w,
           leading: CustomCircleButton(
-            start: 40,
-            paddingStart: 5,
-            icon: Icons.arrow_back_ios,
-            onPressed: () => Navigator.pop(context),
+            icon: Icons.arrow_back_ios_new,
+            onPressed: () => Get.back(),
           ),
         ),
         body: Column(
           children: [
             Container(
-              height: 45,
-              margin:
-                  const EdgeInsetsDirectional.only(start: 37, end: 37, top: 30),
+              height: 42.h,
+              margin: EdgeInsetsDirectional.only(
+                start: 37.w,
+                end: 37.w,
+                top: 30.h,
+              ),
               decoration: BoxDecoration(
                 color: s4,
-                borderRadius: BorderRadius.circular(22),
+                borderRadius: BorderRadius.circular(22).w,
               ),
               child: TabBar(
-                padding: const EdgeInsetsDirectional.only(
-                  top: 4,
-                  bottom: 4,
-                  end: 5,
-                  start: 5,
+                padding: EdgeInsetsDirectional.only(
+                  top: 4.h,
+                  bottom: 4.h,
+                  end: 5.w,
+                  start: 5.w,
                 ),
-                labelColor: Colors.white,
+                labelColor: colorWhite,
                 unselectedLabelColor: primaryColor,
-                // controller: tabController,
                 labelStyle: TextStyle(
                   fontFamily: kHelveticaL,
-                  fontSize: 15,
+                  fontSize: 15.sp,
                 ),
                 indicator: BoxDecoration(
                   color: primaryColor,
-                  borderRadius: BorderRadius.circular(22),
+                  borderRadius: BorderRadius.circular(22).w,
                 ),
-                tabs: const [
-                  Text('إضافة'),
-                  Text('شراء'),
+                tabs: [
+                  Text('add'.tr),
+                  Text('buy'.tr),
                 ],
               ),
             ),
-            const Expanded(
+            Expanded(
               child: TabBarView(
                 children: [
-                  DepartmentAddProductScreen(),
-                  ComputerDepartmentScreen(),
+                  DepartmentScreen(
+                    image: image,
+                    nameDepartment: nameDepartment,
+                  ),
+                  DepartmentAddProductScreen(nameDepartment),
                 ],
               ),
             ),

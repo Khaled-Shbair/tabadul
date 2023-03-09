@@ -36,8 +36,8 @@ class CustomFiledCode extends StatelessWidget {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           contentPadding: EdgeInsetsDirectional.only(
-            top: 7.h,
-            bottom: 7.h,
+            top: 10.h,
+            bottom: 10.h,
             start: 12.w,
             end: 12.w,
           ),
@@ -51,7 +51,7 @@ class CustomFiledCode extends StatelessWidget {
             borderRadius: BorderRadius.circular(10).w,
             borderSide: BorderSide.none,
           ),
-          fillColor:error?kErrorColor: s4,
+          fillColor: error ? kErrorColor : s4,
           filled: true,
         ),
       ),

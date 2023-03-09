@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../constants/routes.dart';
 import '../Widget/custom_button.dart';
 import '../constants/colors.dart';
 
-class DepartmentAddProductScreen extends StatefulWidget {
-  const DepartmentAddProductScreen({Key? key}) : super(key: key);
+class DepartmentAddProductScreen extends StatelessWidget {
+  const DepartmentAddProductScreen(this.nameDepartment, {Key? key})
+      : super(key: key);
+  final String nameDepartment;
 
-  @override
-  State<DepartmentAddProductScreen> createState() =>
-      _DepartmentAddProductScreenState();
-}
-
-class _DepartmentAddProductScreenState
-    extends State<DepartmentAddProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +42,9 @@ class _DepartmentAddProductScreenState
                 colorFont: primaryColor,
                 fontSize: 12,
                 color: s4,
-                x: 45,
                 y: 140,
-                function: () => Navigator.pushNamed(context, addProductScreen),
+                function: () =>
+                    Get.toNamed(addProductScreen, arguments: nameDepartment),
               ),
             ],
           ),

@@ -1,93 +1,83 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-import '../constants/fonts.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../Widget/custom_department_button.dart';
 import '../Widget/custom_circle_button.dart';
-import '../Widget/Section_Button.dart';
-import '../constants/colors.dart';
+import 'package:flutter/material.dart';
+import '../constants/images.dart';
+import 'Add_And_Buy_Screen.dart';
+import 'package:get/get.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-Widget openDrawer() => openDrawer();
-
-class _MainScreenState extends State<MainScreen> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colorWhite,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        centerTitle: true,
-        title: Text(
-          'الرئيسية',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            fontFamily: kHelveticaL,
-            color: primaryColor,
-          ),
-        ),
-        leadingWidth: 75,
+        title: Text('main'.tr),
+        leadingWidth: 55.w,
         leading: CustomCircleButton(
-          start: 35,
           icon: Icons.menu,
-          onPressed: () {
-            ZoomDrawer.of(context)!.toggle();
-          },
+          onPressed: () => ZoomDrawer.of(context)!.toggle(),
         ),
       ),
       body: GridView(
-        padding: const EdgeInsetsDirectional.only(start: 37, end: 37, top: 20),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        padding: EdgeInsetsDirectional.only(
+          start: 37.w,
+          end: 37.w,
+          top: 20.h,
+        ),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: 135 / 126,
+          crossAxisSpacing: 16.w,
+          mainAxisSpacing: 16.h,
+          childAspectRatio: 135.w / 126.h,
         ),
         children: [
-          SectionButton(
-            pathImage: 'images/Departments/Furniture.svg',
-            nameSection: 'قسم الأثاث',
+          CustomDepartmentButton(
+            pathImage: kFurniture,
+            nameDepartment: 'furniture_department'.tr,
+            function: () => Get.to(
+               AddAndBuyScreen(
+                nameDepartment: 'furniture_department'.tr,
+                image:
+                    'https://firebasestorage.googleapis.com/v0/b/tabadul-34a2c.appspot.com/o/transparency-computer-desktop-pc-37558.png?alt=media&token=813f6579-359f-4257-9924-5be01dc2e132',
+              ),
+            ),
+          ),
+          CustomDepartmentButton(
+            pathImage: kCarpet,
+            nameDepartment: 'carpets_and_mattresses_department'.tr,
             function: () {},
           ),
-          SectionButton(
-            pathImage: 'images/Departments/carpet.svg',
-            nameSection: 'قسم السجاد والمفارش',
+          CustomDepartmentButton(
+            pathImage: kPhone,
+            nameDepartment: 'phone_department'.tr,
             function: () {},
           ),
-          SectionButton(
-            pathImage: 'images/Departments/phone.svg',
-            nameSection: 'قسم أجهزة الجوال',
+          CustomDepartmentButton(
+            pathImage: kComputer,
+            nameDepartment: 'computer_department'.tr,
             function: () {},
           ),
-          SectionButton(
-            pathImage: 'images/Departments/computer.svg',
-            nameSection: 'قسم أجهزة الحاسوب',
+          CustomDepartmentButton(
+            pathImage: kMotorcycle,
+            nameDepartment: 'motorcycle_department'.tr,
             function: () {},
           ),
-          SectionButton(
-            pathImage: 'images/Departments/Motorcycle.svg',
-            nameSection: 'قسم الدراجات النارية',
+          CustomDepartmentButton(
+            pathImage: kBicycle,
+            nameDepartment: 'bicycle_department'.tr,
             function: () {},
           ),
-          SectionButton(
-            pathImage: 'images/Departments/bicycle.svg',
-            nameSection: 'قسم الدراجات الهوائية',
+          CustomDepartmentButton(
+            pathImage: kCar,
+            nameDepartment: 'car_department'.tr,
             function: () {},
           ),
-          SectionButton(
-            pathImage: 'images/Departments/car.svg',
-            nameSection: 'قسم السيارات',
-            function: () {},
-          ),
-          SectionButton(
-            pathImage: 'images/Departments/electric_machines.svg',
-            nameSection: 'قسم الأجهزة الكهربائية',
+          CustomDepartmentButton(
+            pathImage: kElectricMachines,
+            nameDepartment: 'electric_machines_department'.tr,
             function: () {},
           ),
         ],

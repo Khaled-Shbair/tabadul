@@ -1,26 +1,26 @@
+import 'package:tabadul/Screen/Add_And_Buy_Screen.dart';
+
 import 'AllPages.dart';
 import 'constants/routes.dart';
-import 'Screen/MenuScreen.dart';
+import 'Screen/menu_screen.dart';
 import 'Screen/Main_Screen.dart';
-import 'Screen/Info_Screen.dart';
+import 'Screen/info_screen.dart';
 import 'package:flutter/material.dart';
-import 'Screen/Add_And_Buy_Screen.dart';
 import 'Screen/Add_Product_Screen.dart';
 import 'Screen/Answer_Is_No_Screen.dart';
-import 'Screen/Notifications_Screen.dart';
+import 'Screen/notifications_screen.dart';
 import 'Screen/Answer_Is_Yes_Screen.dart';
-import 'Screen/Detail_Product_Screen.dart';
+import 'Screen/detail_product_screen.dart';
 import 'Screen/Wait_for_pickup_Screen.dart';
-import 'Screen/Ready_To_Receive_Screen.dart';
+import 'Screen/ready_to_receive_screen.dart';
 import 'Screen/Added_Successfully_Screen.dart';
 import 'Screen/Splash_Screen/Splash_Screen.dart';
 import 'Screen/Department_Add_Product_Screen.dart';
-import 'Screen/Splash_Screen/On_Boarding1_Screen.dart';
-import 'Screen/Splash_Screen/On_Boarding 2_Screen.dart';
+import 'Screen/Splash_Screen/on_boarding_one_screen.dart';
+import 'Screen/Splash_Screen/on_boarding_two_screen.dart';
 import 'Screen/Provide_Service_Screen/Provide_Service.dart';
 import 'Screen/Login and Create Account Screen/Login_Screen.dart';
 import 'Screen/Login and Create Account Screen/Logout_Screen.dart';
-import 'Screen/Departments_Products/Computer_department_Screen.dart';
 import 'Screen/Provide_Service_Screen/List_Provide_Service_Screen.dart';
 import 'Screen/Provide_Service_Screen/Service_Provide_Alter_Screen.dart';
 import 'Screen/Login and Create Account Screen/Security_Code_Screen.dart';
@@ -28,9 +28,8 @@ import 'Screen/Login and Create Account Screen/Create_Account_Screen.dart';
 import 'Screen/Provide_Service_Screen/Details_Service_Provide_Screen.dart';
 import 'Screen/Provide_Service_Screen/Profile_Provide_Service_Screen.dart';
 import 'Screen/Login and Create Account Screen/Add_Information_Screen.dart';
-import 'Screen/Provide_Service_Screen/Service_Provide_Registration_Screen.dart';
+import 'Screen/Provide_Service_Screen/profile_screen.dart';
 import 'Screen/Login and Create Account Screen/Account_Created_Successfully_Screen.dart';
-import 'Screen/Provide_Service_Screen/Successfully_Registered_As_Service_Provider_Screen.dart';
 
 class AppRoutes {
   Route onGenerateRoute(RouteSettings settings) {
@@ -39,12 +38,12 @@ class AppRoutes {
         final navigator = settings.arguments as String;
         return MaterialPageRoute(
             builder: (context) => SecurityCodeScreen(navigator: navigator));
-      case onBoarding2Screen:
+      case onBoardingTwoScreen:
         return MaterialPageRoute(
             builder: (context) => const OnBoarding2Screen());
-      case onBoarding1Screen:
+      case onBoardingOneScreen:
         return MaterialPageRoute(
-            builder: (context) => const OnBoarding1Screen());
+            builder: (context) => const OnBoardingOneScreen());
       case accountCreatedSuccessfullyScreen:
         return MaterialPageRoute(
             builder: (context) => const AccountCreatedSuccessfullyScreen());
@@ -55,17 +54,18 @@ class AppRoutes {
         return MaterialPageRoute(
             builder: (context) => const AddInformationScreen());
       case addProductScreen:
+        final department = settings.arguments as String;
+
         return MaterialPageRoute(
-            builder: (context) => const AddProductScreen());
+            builder: (context) => AddProductScreen(department));
       case detailProductScreen:
         return MaterialPageRoute(
             builder: (context) => const DetailProductScreen());
-      case departmentAddProductScreen:
-        return MaterialPageRoute(
-            builder: (context) => const DepartmentAddProductScreen());
-      case computerDepartmentScreen:
-        return MaterialPageRoute(
-            builder: (context) => const ComputerDepartmentScreen());
+      // case departmentAddProductScreen:
+      //   final value = settings.arguments as String;
+      //   return MaterialPageRoute(
+      //       builder: (context) => DepartmentAddProductScreen(value));
+
       case waitForPickupScreen:
         return MaterialPageRoute(
             builder: (context) => const WaitForPickupScreen());
@@ -82,8 +82,7 @@ class AppRoutes {
         return MaterialPageRoute(
             builder: (context) => const AddedSuccessfullyScreen());
       case serviceProviderRegistrationScreen:
-        return MaterialPageRoute(
-            builder: (context) => const ServiceProviderRegistrationScreen());
+        return MaterialPageRoute(builder: (context) => const ProfileScreen());
       case provideService:
         return MaterialPageRoute(
             builder: (context) =>
@@ -117,11 +116,13 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) => const MenuScreen());
       case loginScreen:
         return MaterialPageRoute(builder: (context) => const LoginScreen());
-      case addAndBuyScreen:
-        return MaterialPageRoute(builder: (context) => const AddAndBuyScreen());
+
       default:
-        return MaterialPageRoute(builder: (context) => LoginScreen());
-//        return MaterialPageRoute(builder: (context) => const SplashScreen());
+
+        return MaterialPageRoute(
+            builder: (context) => MenuScreen());
+      //return MaterialPageRoute(builder: (context) => const SplashScreen());
+      //TODO:Edit in add information screen
     }
   }
 }

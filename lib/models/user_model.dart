@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   late String id;
   late String firstName;
   late String lastName;
@@ -7,7 +7,7 @@ class User {
   late String image;
   late String phone;
 
-  User({
+  UserModel({
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -17,7 +17,7 @@ class User {
     required this.phone,
   });
 
-  User.fromMap(Map<String, dynamic> map) {
+  UserModel.fromMap(Map<String, dynamic> map) {
     firstName = map['first_name'];
     lastName = map['last_name'];
     city = map['city'];

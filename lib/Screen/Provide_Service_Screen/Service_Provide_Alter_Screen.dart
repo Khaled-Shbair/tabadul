@@ -3,11 +3,11 @@ import '../../Widget/custom_circle_button.dart';
 import '../../constants/routes.dart';
 import '../../Widget/custom_button.dart';
 import '../../Widget/Circle_Button.dart';
-import '../../Widget/Menu_Choose.dart';
+import '../../Widget/custom_menu_choose.dart';
 import '../../Widget/custom_text_field.dart';
 import '../../constants/colors.dart';
 import '../../constants/fonts.dart';
-import '../../models/City.dart';
+import '../../models/city_model.dart';
 
 class ServiceProviderAlterScreen extends StatefulWidget {
   const ServiceProviderAlterScreen({Key? key}) : super(key: key);
@@ -19,23 +19,23 @@ class ServiceProviderAlterScreen extends StatefulWidget {
 
 class _ServiceProviderAlterScreenState
     extends State<ServiceProviderAlterScreen> {
-  List<City> city = <City>[
-    City(nameAr: 'غزة', id: 1),
-    City(nameAr: 'خانيونس', id: 2),
-    City(nameAr: 'رفع', id: 3),
-    City(nameAr: 'النصيرات', id: 4),
-    City(nameAr: 'دير البلح', id: 5),
-    City(nameAr: 'المغازي', id: 6),
-    City(nameAr: 'الزهرة', id: 7),
+  List<CityModel> city = <CityModel>[
+    CityModel(nameAr: 'غزة', id: 1),
+    CityModel(nameAr: 'خانيونس', id: 2),
+    CityModel(nameAr: 'رفع', id: 3),
+    CityModel(nameAr: 'النصيرات', id: 4),
+    CityModel(nameAr: 'دير البلح', id: 5),
+    CityModel(nameAr: 'المغازي', id: 6),
+    CityModel(nameAr: 'الزهرة', id: 7),
   ];
-  List<City> area = <City>[
-    City(nameAr: 'غزة', id: 1),
-    City(nameAr: 'خانيونس', id: 2),
-    City(nameAr: 'رفع', id: 3),
-    City(nameAr: 'النصيرات', id: 4),
-    City(nameAr: 'دير البلح', id: 5),
-    City(nameAr: 'المغازي', id: 6),
-    City(nameAr: 'الزهرة', id: 7),
+  List<CityModel> area = <CityModel>[
+    CityModel(nameAr: 'غزة', id: 1),
+    CityModel(nameAr: 'خانيونس', id: 2),
+    CityModel(nameAr: 'رفع', id: 3),
+    CityModel(nameAr: 'النصيرات', id: 4),
+    CityModel(nameAr: 'دير البلح', id: 5),
+    CityModel(nameAr: 'المغازي', id: 6),
+    CityModel(nameAr: 'الزهرة', id: 7),
   ];
   String? selectedCityId;
   String? selectedAreaId;
@@ -140,7 +140,8 @@ class _ServiceProviderAlterScreenState
             sizeSuffixIcon: 20,
           ),
           const SizedBox(height: 20),
-          MenuChoose(
+          CustomMenuChoose(
+            name: 'nameAr',
             function: (String? value) {
               if (value != null) {
                 setState(() {
@@ -155,7 +156,9 @@ class _ServiceProviderAlterScreenState
             nameFiled: 'المدينة',
           ),
           const SizedBox(height: 20),
-          MenuChoose(
+          CustomMenuChoose(
+            name: 'nameAr',
+
             function: (String? value) {
               if (value != null) {
                 setState(() {

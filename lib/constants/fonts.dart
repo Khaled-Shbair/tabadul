@@ -1,2 +1,2 @@
 const String kHelveticaL = 'HelveticaLTArabic';//bold
-const String kHelveticaLNeeL = 'HelveticaNeeLTArabic';
+const String kHelveticaLNeeL = 'HelveticaNeueLTRoman';

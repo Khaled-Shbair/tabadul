@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'Screen/Main_Screen.dart';
-import 'Screen/Notifications_Screen.dart';
-import 'Screen/Provide_Service_Screen/Successfully_Registered_As_Service_Provider_Screen.dart';
-import 'Screen/Provide_Service_Screen/Service_Provide_Registration_Screen.dart';
+import 'Screen/notifications_screen.dart';
+import 'Screen/Provide_Service_Screen/profile_screen.dart';
+import 'Screen/Provide_Service_Screen/profile_screen.dart';
 import 'constants/colors.dart';
 import 'models/BnItem.dart';
 
@@ -26,7 +26,7 @@ class _AllPagesState extends State<AllPages> {
   final List<BnItem> bnItem = [
     BnItem(widget: const MainScreen()),
     BnItem(widget: const NotificationsScreen()),
-    BnItem(widget: const ServiceProviderRegistrationScreen()),
+    BnItem(widget: const ProfileScreen()),
     BnItem(widget: const ProfileScreen()),
   ];
 

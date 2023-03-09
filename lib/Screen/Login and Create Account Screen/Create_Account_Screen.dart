@@ -1,7 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../getX/create_account_getx_controller.dart';
 import '../../Widget/custom_text_field.dart';
-import '../../Widget/Menu_Choose.dart';
+import '../../Widget/custom_menu_choose.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../constants/colors.dart';
@@ -57,7 +57,8 @@ class CreateAccountScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 8.w),
-                  MenuChoose(
+                  CustomMenuChoose(
+                    name: 'nameAr',
                     function: (value) {
                       if (value != null) {
                         controller.selectedCode(value);
@@ -118,7 +119,7 @@ class CreateAccountScreen extends StatelessWidget {
                       ),
                       TextSpan(
                         recognizer: controller.tapGestureRecognizer,
-                        text: 'create_account'.tr,
+                        text: 'login_button'.tr,
                         style: TextStyle(
                           fontSize: 14.sp,
                           decoration: TextDecoration.underline,

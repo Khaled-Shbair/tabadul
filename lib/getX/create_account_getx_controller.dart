@@ -66,7 +66,7 @@ class CreateAccountGetxController extends GetxController {
           if (!value.exists) {
             await _auth.verifyPhoneNumber(_phoneController.text,
                 then: (value) => Get.toNamed(securityCodeScreen,
-                    arguments: accountCreatedSuccessfullyScreen));
+                    arguments: addInformationScreen));
           } else {
             _existsPhone = true;
             _messageError = 'the_number_is_already_registered'.tr;

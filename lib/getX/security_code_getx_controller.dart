@@ -1,10 +1,7 @@
-import 'dart:async';
-
-import 'package:sms_autofill/sms_autofill.dart';
-
 import '../firebase/firebase_auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:async';
 
 class SecurityCodeGetxController extends GetxController {
   static SecurityCodeGetxController get to => Get.find();
@@ -81,11 +78,10 @@ class SecurityCodeGetxController extends GetxController {
     _fourthFocusNode.dispose();
     _fifthFocusNode.dispose();
     _sixthFocusNode.dispose();
-    SmsAutoFill().unregisterListener();
     super.onClose();
   }
 
-  String code = '';
+  String _code = '';
 
   Future<void> resetCode(String nextScreen) async {
     if (_firstCode.text.isNotEmpty &&
@@ -94,21 +90,20 @@ class SecurityCodeGetxController extends GetxController {
         _fourthCode.text.isNotEmpty &&
         _fifthCode.text.isNotEmpty &&
         _sixthCode.text.isNotEmpty) {
-      code = _firstCode.text +
+      _code = _firstCode.text +
           _secondCode.text +
           _thirdCode.text +
           _fourthCode.text +
           _fifthCode.text +
           _sixthCode.text;
       try {
-        bool result = await _auth.submitOTP(code);
-        print(result);
+        bool result = await _auth.submitOTP(_code);
         if (result == true) {
-          Get.snackbar('Code corrected', '');
+          Get.offAllNamed(nextScreen);
         } else {
           _error = true;
           timer = Timer.periodic(
-            const Duration(seconds: 5),
+            const Duration(seconds: 3),
             (timer) {
               _error = false;
               update();
@@ -122,7 +117,7 @@ class SecurityCodeGetxController extends GetxController {
     } else {
       _error = true;
       timer = Timer.periodic(
-        const Duration(seconds: 5),
+        const Duration(seconds: 3),
         (timer) {
           _error = false;
           update();
@@ -131,8 +126,4 @@ class SecurityCodeGetxController extends GetxController {
       update();
     }
   }
-
-// Future<void> _resetCode() async {
-//   // Navigator.pushReplacementNamed(context, widget.navigator);
-// }
 }

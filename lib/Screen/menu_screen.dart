@@ -5,10 +5,10 @@ import '../constants/fonts.dart';
 import '../AllPages.dart';
 import '../Widget/custom_circle_button.dart';
 import '../constants/colors.dart';
-import 'Info_Screen.dart';
+import 'info_screen.dart';
 import 'Provide_Service_Screen/List_Provide_Service_Screen.dart';
 import 'Login and Create Account Screen/Logout_Screen.dart';
-import 'Provide_Service_Screen/Successfully_Registered_As_Service_Provider_Screen.dart';
+import 'Provide_Service_Screen/profile_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);

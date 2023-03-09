@@ -46,9 +46,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/Departments/
+    - images/departments/
     - images/login_and_create_account/
-    - images/on_boarding_1/
+    - images/splash_screen_images/
     - images/
 
   fonts:
@@ -58,4 +58,4 @@ flutter:
 
     - family: HelveticaNeueLTRoman
       fonts:
-        - asset: fonts/HelveticaNeue LT 55 Roman Bold.ttf
+        - asset: fonts/HelveticaNeueLT-55-Roman-Bold.ttf

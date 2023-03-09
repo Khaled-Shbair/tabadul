@@ -1,5 +1,4 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sms_autofill/sms_autofill.dart';
 import '../../getX/security_code_getx_controller.dart';
 import '../../Widget/custom_circle_button.dart';
 import '../../Widget/custom_filed_code.dart';
@@ -11,10 +10,8 @@ import '../../constants/fonts.dart';
 import 'package:get/get.dart';
 
 class SecurityCodeScreen extends StatelessWidget {
-  const SecurityCodeScreen({
-    Key? key,
-    required this.navigator,
-  }) : super(key: key);
+  const SecurityCodeScreen({Key? key, required this.navigator})
+      : super(key: key);
 
   final String navigator;
 
@@ -27,7 +24,10 @@ class SecurityCodeScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         leadingWidth: 55.w,
-        leading: CustomCircleButton(onPressed: () => Get.back()),
+        leading: CustomCircleButton(
+          icon: Icons.arrow_back_ios_new,
+          onPressed: () => Get.back(),
+        ),
         title: Text(
           'security_code'.tr,
           style: TextStyle(
@@ -62,7 +62,6 @@ class SecurityCodeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20.h),
-          //PinFieldAutoFill(),
           GetBuilder<SecurityCodeGetxController>(
             init: SecurityCodeGetxController.to,
             builder: (controller) {
