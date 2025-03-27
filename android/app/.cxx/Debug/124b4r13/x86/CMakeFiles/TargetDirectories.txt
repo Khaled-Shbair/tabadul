@@ -1,0 +1,2 @@
+K:/tabadul/android/app/.cxx/Debug/124b4r13/x86/CMakeFiles/edit_cache.dir
+K:/tabadul/android/app/.cxx/Debug/124b4r13/x86/CMakeFiles/rebuild_cache.dir
