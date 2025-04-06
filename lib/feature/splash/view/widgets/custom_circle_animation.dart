@@ -5,26 +5,31 @@ class CustomCircleAnimation extends StatelessWidget {
     required this.opacity,
     required this.value,
     required this.milliseconds,
+    required this.width,
     super.key,
   });
 
   final double opacity;
   final double value;
+  final double width;
   final int milliseconds;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FadeOut(
-        animate: true,
-        delay: Duration(milliseconds: milliseconds),
+    return FadeOut(
+      animate: true,
+      delay: Duration(milliseconds: milliseconds),
+      child: OverflowBox(
+        maxWidth: double.infinity,
+        maxHeight: double.infinity,
         child: CircularPercentIndicator(
           curve: Curves.bounceOut,
           radius: value,
           circularStrokeCap: CircularStrokeCap.round,
           backgroundColor: Colors.white.withOpacity(opacity),
-          lineWidth: ManagerWidth.w40,
           animation: true,
+          lineWidth: width,
+          backgroundWidth: width,
         ),
       ),
     );

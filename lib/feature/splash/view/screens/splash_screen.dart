@@ -27,52 +27,67 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: context.theme.primaryColor,
-      body: Stack(
-        children: [
-          CustomCircleAnimation(
-            opacity: .45,
-            value: ManagerRadius.r100,
-            milliseconds: 1500,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: context.theme.primaryColor,
+        body: Padding(
+          padding: EdgeInsetsDirectional.only(
+            top: ManagerHeight.h15,
           ),
-          CustomCircleAnimation(
-            opacity: .39,
-            value: ManagerRadius.r200,
-            milliseconds: 1800,
+          child: Stack(
+            children: [
+              CustomCircleAnimation(
+                opacity: .52,
+                milliseconds: 1200,
+                value: ManagerRadius.r40,
+                width: ManagerWidth.w18,
+              ),
+              CustomCircleAnimation(
+                opacity: .46,
+                milliseconds: 1500,
+                value: ManagerRadius.r90,
+                width: ManagerWidth.w20,
+              ),
+              CustomCircleAnimation(
+                opacity: .40,
+                milliseconds: 1800,
+                width: ManagerWidth.w22,
+                value: ManagerRadius.r140,
+              ),
+              CustomCircleAnimation(
+                opacity: .34,
+                milliseconds: 2100,
+                width: ManagerWidth.w24,
+                value: ManagerRadius.r190,
+              ),
+              CustomCircleAnimation(
+                opacity: .28,
+                milliseconds: 2400,
+                width: ManagerWidth.w26,
+                value: ManagerRadius.r240,
+              ),
+              CustomCircleAnimation(
+                opacity: .22,
+                milliseconds: 2700,
+                width: ManagerWidth.w28,
+                value: ManagerRadius.r290,
+              ),
+              CustomCircleAnimation(
+                opacity: .16,
+                milliseconds: 3000,
+                width: ManagerWidth.w30,
+                value: ManagerRadius.r340,
+              ),
+              CustomCircleAnimation(
+                opacity: .10,
+                milliseconds: 3300,
+                width: ManagerWidth.w32,
+                value: ManagerRadius.r390,
+              ),
+              CustomAppearLogo(),
+            ],
           ),
-          CustomCircleAnimation(
-            opacity: .33,
-            value: ManagerRadius.r300,
-            milliseconds: 2100,
-          ),
-          CustomCircleAnimation(
-            opacity: .27,
-            value: ManagerRadius.r400,
-            milliseconds: 2400,
-          ),
-          CustomCircleAnimation(
-            opacity: .21,
-            value: ManagerRadius.r500,
-            milliseconds: 2700,
-          ),
-          CustomCircleAnimation(
-            opacity: .15,
-            value: ManagerRadius.r600,
-            milliseconds: 3000,
-          ),
-          CustomCircleAnimation(
-            opacity: .12,
-            value: ManagerRadius.r700,
-            milliseconds: 3300,
-          ),
-          CustomCircleAnimation(
-            opacity: .10,
-            value: ManagerRadius.r800,
-            milliseconds: 3600,
-          ),
-          CustomAppearLogo(),
-        ],
+        ),
       ),
     );
   }
