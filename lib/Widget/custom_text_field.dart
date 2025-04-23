@@ -1,66 +1,85 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/material.dart';
-import '../constants/colors.dart';
-import '../constants/fonts.dart';
+import '/config/all_imports.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
-    Key? key,
+    super.key,
     required this.textEditingController,
-    required this.keyboardType,
-    required this.nameFiled,
-    this.errorText,
+    this.keyboardType = TextInputType.datetime,
+    required this.hintText,
     this.maxLength,
-    this.suffixIcon = Icons.create,
-    this.sizeSuffixIcon = 0,
-  }) : super(key: key);
+    this.focusNode,
+    this.validator,
+    this.onChanged,
+    this.contentPadding,
+    this.errorBorder,
+    this.textInputAction,
+    this.onFieldSubmitted,
+    this.helperText,
+    this.helperStyle,
+    this.errorText,
+    this.textInputStyle,
+    this.expands = false,
+    this.autofocus = false,
+    this.textAlign = TextAlign.start,
+  });
 
   final TextInputType keyboardType;
-  final String nameFiled;
+  final TextStyle? textInputStyle;
+  final bool expands;
+  final bool autofocus;
+  final String hintText;
   final String? errorText;
-  final IconData suffixIcon;
-  final double sizeSuffixIcon;
+  final String? helperText;
   final TextEditingController textEditingController;
+  final FocusNode? focusNode;
   final int? maxLength;
+  final String? Function(String?)? validator;
+  final Function(String)? onChanged;
+  final TextAlign textAlign;
+  final TextStyle? helperStyle;
+  final EdgeInsetsDirectional? contentPadding;
+  final InputBorder? errorBorder;
+  final TextInputAction? textInputAction;
+  final Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      maxLength: maxLength,
-
-      cursorColor: primaryColor,
-      keyboardType: keyboardType,
+    return TextFormField(
       controller: textEditingController,
-      style: TextStyle(
-        fontSize: 11.sp,
-        fontFamily: kHelveticaL,
-        color: primaryColor.withAlpha(204),
-      ),
+      validator: validator,
+      onChanged: onChanged,
+      focusNode: focusNode,
+      maxLength: maxLength,
+      textAlign: textAlign,
+      expands: expands,
+      autofocus: autofocus,
+      keyboardType: keyboardType,
+      cursorColor: context.theme.primaryColor,
+      textInputAction: textInputAction,
+      onFieldSubmitted: onFieldSubmitted,
+      autovalidateMode: AutovalidateMode.onUnfocus,
+      cursorRadius: Radius.circular(ManagerRadius.r15),
+      style: textInputStyle ??
+          context.theme.inputDecorationTheme.hintStyle?.copyWith(
+            color: context.theme.primaryColor,
+          ),
       decoration: InputDecoration(
-        counterText: '',
-        contentPadding: EdgeInsetsDirectional.only(
-          top: 8.h,
-          bottom: 8.h,
-          start: 21.w,
-        ),
-        suffixIcon: Icon(
-          suffixIcon,
-          size: sizeSuffixIcon,
-          color: primaryColor,
-        ),
-        hintText: nameFiled,
-        hintStyle: TextStyle(
-          fontSize: 11.sp,
-          fontFamily: kHelveticaL,
-          color: primaryColor.withAlpha(204),
-        ),
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(4).w,
-        ),
-        fillColor: s4,
-        filled: true,
         errorText: errorText,
+        hintText: hintText,
+        isDense: true,
+        counterText: '',
+        helperText: helperText,
+        helperStyle: helperStyle,
+        contentPadding:
+            contentPadding ?? context.theme.inputDecorationTheme.contentPadding,
+        hintStyle: context.theme.inputDecorationTheme.hintStyle,
+        errorMaxLines: context.theme.inputDecorationTheme.errorMaxLines,
+        border: context.theme.inputDecorationTheme.border,
+        fillColor: context.theme.inputDecorationTheme.fillColor,
+        filled: context.theme.inputDecorationTheme.filled,
+        errorStyle: context.theme.inputDecorationTheme.errorStyle,
+        errorBorder:
+            errorBorder ?? context.theme.inputDecorationTheme.errorBorder,
       ),
     );
   }

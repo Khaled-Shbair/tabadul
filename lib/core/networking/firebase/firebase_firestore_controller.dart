@@ -1,26 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:tabadul/config/all_imports.dart';
 import 'package:tabadul/models/user_model.dart';
-import '../models/product_model.dart';
-import '../constants/tables.dart';
+
+import '../../../config/constants/tables.dart';
+import '../../../models/product_model.dart';
 
 class FbFirestoreController {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore;
+
+  FbFirestoreController(this._firestore);
 
   Future<void> createUser(String id, UserModel user) async {
     await _firestore.collection(usersTable).doc(id).set(user.toMap());
   }
 
-  Future<void> getUserData(
-    String id, {
-    required Function(DocumentSnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(usersTable)
-        .doc(id)
-        .get()
-        .then(then)
-        .catchError(catchError);
+  Future<LoginResponse?> getUserData(String phoneNumber) async {
+    var snapshot = await _firestore
+        .collection(FirebaseConstants.usersTable)
+        .doc(phoneNumber)
+        .get();
+    if (snapshot.exists && snapshot.data() != null) {
+      return LoginResponse.fromMap(snapshot.data()!);
+    } else {
+      return null;
+    }
   }
 
   Future<void> getCities({

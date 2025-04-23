@@ -33,6 +33,11 @@ dependencies:
   #local Storage
   shared_preferences: ^2.2.0
 
+  # Functional Programming
+  dartz: ^0.10.1
+
+  # Check your internet connection
+  internet_connection_checker_plus: ^2.7.1
 
   get: ^4.6.5
   url_launcher: ^6.1.12
@@ -74,6 +79,7 @@ flutter:
     - assets/images/departments/
     - assets/images/login_and_create_account/
     - assets/images/splash/
+    - assets/images/on_boarding/
 
   fonts:
     - family: HelveticaLTArabic
