@@ -2,10 +2,15 @@ import '/config/all_imports.dart';
 
 class ManagerFontsSizes {
   static double f8 = SizeUtil.setFontSize(8);
+  static double f9 = SizeUtil.setFontSize(9);
   static double f10 = SizeUtil.setFontSize(10);
+  static double f11 = SizeUtil.setFontSize(11);
   static double f12 = SizeUtil.setFontSize(12);
+  static double f13 = SizeUtil.setFontSize(13);
   static double f14 = SizeUtil.setFontSize(14);
+  static double f15 = SizeUtil.setFontSize(14);
   static double f16 = SizeUtil.setFontSize(16);
+  static double f17 = SizeUtil.setFontSize(17);
   static double f18 = SizeUtil.setFontSize(18);
   static double f20 = SizeUtil.setFontSize(20);
   static double f22 = SizeUtil.setFontSize(22);
@@ -24,6 +29,6 @@ class ManagerFontWeight {
 }
 
 class ManagerFontFamily {
-  static const String kHelveticaL = 'HelveticaLTArabic';//bold
+  static const String kHelveticaL = 'HelveticaLTArabic';
   static const String kHelveticaLNeeL = 'HelveticaNeueLTRoman';
 }
