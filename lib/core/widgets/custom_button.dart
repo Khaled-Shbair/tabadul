@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
     super.key,
   });
 
-  final Function() onPressed;
+  final Function()? onPressed;
   final Widget child;
   final Color color;
   final double? height;
@@ -37,7 +37,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () => onPressed(),
+      onPressed: onPressed,
       color: color,
       height: height ?? ManagerHeight.h39,
       minWidth: minWidth ?? ManagerWidth.infinity,
@@ -46,12 +46,13 @@ class CustomButton extends StatelessWidget {
       highlightElevation: highlightElevation ?? 0,
       focusColor: ManagerColors.transparent,
       splashColor: splashColor,
+      disabledColor: context.theme.colorScheme.secondary,
       padding: padding,
       shape: shape ??
           RoundedRectangleBorder(
             side: side ??
                 BorderSide(
-                  color: borderSideColor,
+                  color: context.theme.unselectedWidgetColor,
                   width: AppConstants.widthOfSideOfBorderSideInMainButton,
                 ),
             borderRadius:
