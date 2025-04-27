@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import '/config/all_imports.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -27,7 +29,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light,
+      ),
       child: Scaffold(
         backgroundColor: context.theme.primaryColor,
         body: Padding(
