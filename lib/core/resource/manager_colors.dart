@@ -18,6 +18,8 @@ class ManagerColors {
   ///s6
   static const Color lavenderBright = Color(0XFFE8E8FD);
 
+  static Color lavenderBrightS6 = Color(0XFFE8E8FD).withAlpha(60);
+
   ///s7
   static const Color ghostWhite = Color(0XFFF7F7FE);
 
@@ -26,4 +28,6 @@ class ManagerColors {
   static const Color white = Colors.white;
   static const Color black = Colors.black;
   static const Color transparent = Colors.transparent;
+
+  static const Color black70 = Color.fromRGBO(0, 0, 0, .70); //black opacity 70%
 }
