@@ -1,5 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '/config/all_imports.dart';
 
 class OnBoardingScreen extends StatelessWidget {
