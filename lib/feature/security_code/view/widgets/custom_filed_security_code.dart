@@ -3,16 +3,10 @@ import '/config/all_imports.dart';
 class CustomFiledSecurityCode extends StatelessWidget {
   const CustomFiledSecurityCode({
     required this.phoneNumber,
-    required this.timer,
-    required this.canSend,
-    required this.errorMessage,
     super.key,
   });
 
-  final String errorMessage;
   final String phoneNumber;
-  final String timer;
-  final bool canSend;
 
   @override
   Widget build(BuildContext context) {
@@ -22,124 +16,94 @@ class CustomFiledSecurityCode extends StatelessWidget {
         start: ManagerWidth.w7,
         end: ManagerWidth.w10,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
         children: [
-          Row(
-            children: [
-              _CustomFiledCode(
-                textEditingController: controller.firstCode,
-                focusNode: controller.firstFocusNode,
-                onChanged: (String value) {
-                  if (value.isNotEmpty) {
-                    controller.secondFocusNode.requestFocus();
-                  }
-                },
-              ),
-              horizontalSpace(ManagerWidth.w5),
-              _CustomFiledCode(
-                textEditingController: controller.secondCode,
-                focusNode: controller.secondFocusNode,
-                onChanged: (String value) {
-                  if (value.isNotEmpty) {
-                    controller.thirdFocusNode.requestFocus();
-                  } else {
-                    controller.firstFocusNode.requestFocus();
-                  }
-                },
-              ),
-              horizontalSpace(ManagerWidth.w5),
-              _CustomFiledCode(
-                textEditingController: controller.thirdCode,
-                focusNode: controller.thirdFocusNode,
-                onChanged: (String value) {
-                  if (value.isNotEmpty) {
-                    controller.fourthFocusNode.requestFocus();
-                  } else {
-                    controller.secondFocusNode.requestFocus();
-                  }
-                },
-              ),
-              horizontalSpace(ManagerWidth.w5),
-              _CustomFiledCode(
-                textEditingController: controller.fourthCode,
-                focusNode: controller.fourthFocusNode,
-                onChanged: (String value) {
-                  if (value.isNotEmpty) {
-                    controller.fifthFocusNode.requestFocus();
-                  } else {
-                    controller.thirdFocusNode.requestFocus();
-                  }
-                },
-              ),
-              horizontalSpace(ManagerWidth.w5),
-              _CustomFiledCode(
-                textEditingController: controller.fifthCode,
-                focusNode: controller.fifthFocusNode,
-                onChanged: (String value) {
-                  if (value.isNotEmpty) {
-                    controller.sixthFocusNode.requestFocus();
-                  } else {
-                    controller.fourthFocusNode.requestFocus();
-                  }
-                },
-              ),
-              horizontalSpace(ManagerWidth.w5),
-              _CustomFiledCode(
-                textEditingController: controller.sixthCode,
-                focusNode: controller.sixthFocusNode,
-                onChanged: (String value) {
-                  if (value.isEmpty) {
-                    controller.fifthFocusNode.requestFocus();
-                  } else {
-                    String code = controller.firstCode.text +
-                        controller.secondCode.text +
-                        controller.thirdCode.text +
-                        controller.fourthCode.text +
-                        controller.fifthCode.text +
-                        controller.sixthCode.text;
-                    controller.sixthFocusNode.unfocus();
-                    controller.add(VerifySecurityCode(code));
-                  }
-                },
-              ),
-            ],
+          _CustomFiledCode(
+            textEditingController: controller.firstCode,
+            focusNode: controller.firstFocusNode,
+            onChanged: (String value) {
+              if (value.isNotEmpty) {
+                controller.secondFocusNode.requestFocus();
+              }
+            },
           ),
-          if (errorMessage.isNotEmpty) ...{
-            CustomErrorMessageAnimation(
-              message: errorMessage,
-              paddingStart: ManagerWidth.w5,
-            ),
-          } else ...{
-            SizedBox(height: ManagerHeight.h49, width: ManagerWidth.infinity),
-          },
-          CustomButton(
-            onPressed: canSend
-                ? () => controller.add(ResendSecurityCode(phoneNumber))
-                : null,
-            color: context.theme.primaryColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  ManagerStrings.resendCode,
-                  style: context.textTheme.labelLarge?.copyWith(
-                    color: canSend
-                        ? context.theme.colorScheme.surface
-                        : context.theme.primaryColor,
-                  ),
-                ),
-                horizontalSpace(ManagerWidth.w10),
-                Text(
-                  '00:$timer',
-                  style: context.textTheme.labelLarge?.copyWith(
-                    color: canSend
-                        ? context.theme.colorScheme.surface
-                        : context.theme.primaryColor,
-                  ),
-                ),
-              ],
-            ),
+          horizontalSpace(ManagerWidth.w5),
+          _CustomFiledCode(
+            textEditingController: controller.secondCode,
+            focusNode: controller.secondFocusNode,
+            onChanged: (String value) {
+              if (value.isNotEmpty) {
+                controller.thirdFocusNode.requestFocus();
+              } else {
+                controller.firstFocusNode.requestFocus();
+              }
+            },
+          ),
+          horizontalSpace(ManagerWidth.w5),
+          _CustomFiledCode(
+            textEditingController: controller.thirdCode,
+            focusNode: controller.thirdFocusNode,
+            onChanged: (String value) {
+              if (value.isNotEmpty) {
+                controller.fourthFocusNode.requestFocus();
+              } else {
+                controller.secondFocusNode.requestFocus();
+              }
+            },
+          ),
+          horizontalSpace(ManagerWidth.w5),
+          _CustomFiledCode(
+            textEditingController: controller.fourthCode,
+            focusNode: controller.fourthFocusNode,
+            onChanged: (String value) {
+              if (value.isNotEmpty) {
+                controller.fifthFocusNode.requestFocus();
+              } else {
+                controller.thirdFocusNode.requestFocus();
+              }
+            },
+          ),
+          horizontalSpace(ManagerWidth.w5),
+          _CustomFiledCode(
+            textEditingController: controller.fifthCode,
+            focusNode: controller.fifthFocusNode,
+            onChanged: (String value) {
+              if (value.isNotEmpty) {
+                controller.sixthFocusNode.requestFocus();
+              } else {
+                controller.fourthFocusNode.requestFocus();
+              }
+            },
+          ),
+          horizontalSpace(ManagerWidth.w5),
+          _CustomFiledCode(
+            textEditingController: controller.sixthCode,
+            focusNode: controller.sixthFocusNode,
+            textInputAction: TextInputAction.done,
+            onFieldSubmitted: (p0) {
+              String code = controller.firstCode.text +
+                  controller.secondCode.text +
+                  controller.thirdCode.text +
+                  controller.fourthCode.text +
+                  controller.fifthCode.text +
+                  controller.sixthCode.text;
+              controller.sixthFocusNode.unfocus();
+              controller.add(VerifySecurityCode(code));
+            },
+            onChanged: (String value) {
+              if (value.isEmpty) {
+                controller.fifthFocusNode.requestFocus();
+              } else {
+                String code = controller.firstCode.text +
+                    controller.secondCode.text +
+                    controller.thirdCode.text +
+                    controller.fourthCode.text +
+                    controller.fifthCode.text +
+                    controller.sixthCode.text;
+                controller.sixthFocusNode.unfocus();
+                controller.add(VerifySecurityCode(code));
+              }
+            },
           ),
         ],
       ),
@@ -152,16 +116,22 @@ class _CustomFiledCode extends StatelessWidget {
     required this.textEditingController,
     required this.focusNode,
     required this.onChanged,
+    this.onFieldSubmitted,
+    this.textInputAction = TextInputAction.next,
   });
 
   final TextEditingController textEditingController;
   final FocusNode focusNode;
   final Function(String value) onChanged;
+  final TextInputAction textInputAction;
+  final Function(String)? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: CustomTextField(
+        textInputAction: textInputAction,
+        onFieldSubmitted: onFieldSubmitted,
         textEditingController: textEditingController,
         autofocus: true,
         focusNode: focusNode,
