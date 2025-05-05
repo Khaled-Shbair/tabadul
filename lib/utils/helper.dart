@@ -1,41 +1,15 @@
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:flutter/material.dart';
-import '../constants/colors.dart';
-import '../constants/fonts.dart';
-import 'package:get/get.dart';
+import '/config/all_imports.dart';
 
 mixin Helper {
-
-  void showSnackBar() {
+  void showSnackBar(String message, {bool error = false}) {
     Fluttertoast.showToast(
-      msg: 'please_enter_code_correctly'.tr,
-      fontSize: 12,
-      timeInSecForIosWeb: 5,
-      textColor: kErrorColor,
+      msg: message,
+      fontSize: ManagerFontsSizes.f12,
+      textColor: error ? ManagerColors.errorColor : ManagerColors.successColor,
       gravity: ToastGravity.CENTER_RIGHT,
       toastLength: Toast.LENGTH_LONG,
       backgroundColor: Colors.transparent,
+      timeInSecForIosWeb: 5,
     );
   }
 }
-/*
-  void showSnackBar(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          'يرجى إدخال الرقم بشكل صحيح',
-          style: TextStyle(
-            fontSize: 12,
-            fontFamily: kHelveticaL,
-            color: s3,
-          ),
-        ),
-        padding: const EdgeInsetsDirectional.only(bottom: 300, start: 50),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        behavior: SnackBarBehavior.floating,
-      ),
-    );
-  }
-
- */
