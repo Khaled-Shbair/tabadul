@@ -5,7 +5,7 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.textEditingController,
     this.keyboardType = TextInputType.datetime,
-    required this.hintText,
+     this.hintText,
     this.maxLength,
     this.focusNode,
     this.validator,
@@ -15,7 +15,9 @@ class CustomTextField extends StatelessWidget {
     this.textInputAction,
     this.onFieldSubmitted,
     this.helperText,
+    this.hintTextStyle,
     this.helperStyle,
+    this.enabled = true,
     this.errorText,
     this.textInputStyle,
     this.expands = false,
@@ -25,9 +27,11 @@ class CustomTextField extends StatelessWidget {
 
   final TextInputType keyboardType;
   final TextStyle? textInputStyle;
+  final TextStyle? hintTextStyle;
   final bool expands;
+  final bool enabled;
   final bool autofocus;
-  final String hintText;
+  final String? hintText;
   final String? errorText;
   final String? helperText;
   final TextEditingController textEditingController;
@@ -64,6 +68,7 @@ class CustomTextField extends StatelessWidget {
             color: context.theme.primaryColor,
           ),
       decoration: InputDecoration(
+        enabled:enabled,
         errorText: errorText,
         hintText: hintText,
         isDense: true,
@@ -72,7 +77,8 @@ class CustomTextField extends StatelessWidget {
         helperStyle: helperStyle,
         contentPadding:
             contentPadding ?? context.theme.inputDecorationTheme.contentPadding,
-        hintStyle: context.theme.inputDecorationTheme.hintStyle,
+        hintStyle:
+            hintTextStyle ?? context.theme.inputDecorationTheme.hintStyle,
         errorMaxLines: context.theme.inputDecorationTheme.errorMaxLines,
         border: context.theme.inputDecorationTheme.border,
         fillColor: context.theme.inputDecorationTheme.fillColor,
