@@ -3,8 +3,9 @@ import '/config/all_imports.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     required this.onPressed,
-    required this.child,
-    this.color = ManagerColors.primaryColor,
+    this.child,
+    this.textButton = '',
+    this.color,
     this.borderSideColor = ManagerColors.primaryColor,
     this.borderRadius,
     this.elevation,
@@ -20,8 +21,9 @@ class CustomButton extends StatelessWidget {
   });
 
   final Function()? onPressed;
-  final Widget child;
-  final Color color;
+  final Widget? child;
+  final String textButton;
+  final Color? color;
   final double? height;
   final double? minWidth;
   final double? elevation;
@@ -38,7 +40,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialButton(
       onPressed: onPressed,
-      color: color,
+      color: color ?? context.theme.primaryColor,
       height: height ?? ManagerHeight.h39,
       minWidth: minWidth ?? ManagerWidth.infinity,
       elevation: elevation.onNull(),
@@ -58,7 +60,11 @@ class CustomButton extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(borderRadius ?? ManagerRadius.r5),
           ),
-      child: child,
+      child: child ??
+          Text(
+            textButton,
+            style: context.textTheme.labelLarge,
+          ),
     );
   }
 }
