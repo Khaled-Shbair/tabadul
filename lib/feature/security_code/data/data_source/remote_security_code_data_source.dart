@@ -15,7 +15,10 @@ class RemoteSecurityCodeDataSourceImpl extends RemoteSecurityCodeDataSource {
 
   @override
   Future<SendSecurityCodeResponse> sendSecurityCode(request) async {
-    return await _firebaseAuth.sendSecurityCode(request.phoneNumber);
+    return await _firebaseAuth.sendSecurityCode(
+      request.phoneNumber,
+      resendToken: request.resendToken,
+    );
   }
 
   @override

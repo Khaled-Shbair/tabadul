@@ -9,6 +9,7 @@ enum ResponseCode {
   UNAUTHORIZED,
   FORBIDDEN,
   NOT_FOUND,
+  USER_IS_REGISTER,
   METHOD_NOT_ALLOWED,
   CONFLICT,
   INTERNAL_SERVER_ERROR,
@@ -22,6 +23,8 @@ enum ResponseCode {
 extension ResponseCodeExtension on ResponseCode {
   int get value {
     switch (this) {
+      case ResponseCode.USER_IS_REGISTER:
+        return 100;
       case ResponseCode.SUCCESS:
         return 200;
       case ResponseCode.CREATED:

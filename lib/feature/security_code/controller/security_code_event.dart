@@ -13,7 +13,3 @@ class VerifySecurityCode extends SecurityCodeEvent {
 
   VerifySecurityCode(this.code);
 }
-
-class StartResendTimer extends SecurityCodeEvent {}
-
-class TickResendTimer extends SecurityCodeEvent {}

@@ -1,3 +1,5 @@
+import 'package:tabadul/feature/security_code/view/widgets/custom_timer.dart';
+
 import '/config/all_imports.dart';
 
 class SecurityCodeScreen extends StatelessWidget {
@@ -16,7 +18,7 @@ class SecurityCodeScreen extends StatelessWidget {
       listener: (_, state) async {
         if (state is VerifiedSecurityCodeSuccessfully) {
           context.pop();
-          context.pushReplacementNamed(route);
+          context.pushReplacementNamed(route, arguments: phoneNumber);
           disposeSecurityCode();
         }
         if (state is VerifiedSecurityCodeLoading) {
@@ -60,25 +62,59 @@ class SecurityCodeScreen extends StatelessWidget {
               style: context.textTheme.displayMedium,
             ),
             verticalSpace(ManagerHeight.h24),
-            BlocBuilder<SecurityCodeBloc, SecurityCodeState>(
-              builder: (_, state) {
-                int timer = 45;
-                bool canResend = false;
-                String errorMessage = '';
-                if (state is SecurityCodeTimerState) {
-                  timer = state.seconds;
-                  canResend = state.canResend;
+            CustomFiledSecurityCode(phoneNumber: phoneNumber),
+            BlocSelector<SecurityCodeBloc, SecurityCodeState, String?>(
+              selector: (state) =>
+                  state is VerifiedSecurityCodeFailed ? state.message : null,
+              builder: (context, errorMessage) {
+                if (errorMessage != null) {
+                  return CustomErrorMessageAnimation(
+                    message: errorMessage,
+                    paddingStart: ManagerWidth.w5,
+                  );
+                } else {
+                  return SizedBox(
+                    height: ManagerHeight.h49,
+                    width: ManagerWidth.infinity,
+                  );
                 }
-                if (state is VerifiedSecurityCodeFailed) {
-                  errorMessage = state.message;
-                }
-                return CustomFiledSecurityCode(
-                  phoneNumber: phoneNumber,
-                  timer: timer.toString().padLeft(2, '0'),
-                  canSend: canResend,
-                  errorMessage: errorMessage,
-                );
               },
+            ),
+            BlocProvider<TimerBloc>(
+              create: (context) => instance<TimerBloc>()
+                ..add(StartTimer(AppConstants.timeoutVerifyPhoneNumber)),
+              child: BlocSelector<TimerBloc, TimerState, bool>(
+                selector: (state) => state is TimerRunComplete,
+                builder: (context, canResend) {
+                  return CustomButton(
+                    onPressed: canResend
+                        ? () {
+                            context
+                                .read<SecurityCodeBloc>()
+                                .add(ResendSecurityCode(phoneNumber));
+                            context.read<TimerBloc>().add(StartTimer(
+                                AppConstants.timeoutVerifyPhoneNumber));
+                          }
+                        : null,
+                    color: context.theme.primaryColor,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          ManagerStrings.resendCode,
+                          style: context.textTheme.labelLarge?.copyWith(
+                            color: canResend
+                                ? context.theme.colorScheme.surface
+                                : context.theme.primaryColor,
+                          ),
+                        ),
+                        horizontalSpace(ManagerWidth.w10),
+                        CustomTimer(canSend: canResend),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

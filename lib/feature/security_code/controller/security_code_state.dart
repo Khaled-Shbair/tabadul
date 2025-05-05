@@ -14,12 +14,3 @@ class VerifiedSecurityCodeFailed extends SecurityCodeState {
 
 class VerifiedSecurityCodeLoading extends SecurityCodeState {}
 
-class SecurityCodeTimerState extends SecurityCodeState {
-  final int seconds;
-  final bool canResend;
-
-  SecurityCodeTimerState({
-    required this.seconds,
-    required this.canResend,
-  });
-}

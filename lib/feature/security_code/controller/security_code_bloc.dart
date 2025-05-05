@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import '/config/all_imports.dart';
 
 part 'security_code_event.dart';
@@ -10,8 +8,6 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
   SecurityCodeBloc(this._repo) : super(SecurityCodeInitial()) {
     on<ResendSecurityCode>(_resendSecurityCode);
     on<VerifySecurityCode>(_verifySecurityCode);
-    on<StartResendTimer>(_startResendTimer);
-    on<TickResendTimer>(_tickResendTimer);
   }
 
   final SecurityCodeRepo _repo;
@@ -28,14 +24,15 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
   final FocusNode fourthFocusNode = FocusNode();
   final FocusNode fifthFocusNode = FocusNode();
   final FocusNode sixthFocusNode = FocusNode();
+  int? _resendToken;
+
   String _verificationId = '';
-  int _seconds = 45;
-  Timer? timer;
 
   void _resendSecurityCode(ResendSecurityCode event, Emitter emit) async {
-    add(StartResendTimer());
-    (await _repo.sendSecurityCode(
-            SendSecurityCodeRequest(phoneNumber: event.phoneNumber)))
+    (await _repo.sendSecurityCode(SendSecurityCodeRequest(
+      phoneNumber: event.phoneNumber,
+      resendToken: _resendToken,
+    )))
         .fold(
       (l) {
         if (l.message == ManagerStrings.noInternetConnection) {
@@ -43,6 +40,7 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
         }
       },
       (r) {
+        _resendToken = r.resendToken;
         _verificationId = r.verificationId;
       },
     );
@@ -58,8 +56,12 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
       sixthCode.text,
     )) {
       emit(VerifiedSecurityCodeLoading());
-      (await _repo.verifySecurityCode(VerifySecurityCodeRequest(
-              securityCode: event.code, verificationId: _verificationId)))
+      (await _repo.verifySecurityCode(
+        VerifySecurityCodeRequest(
+          securityCode: event.code,
+          verificationId: _verificationId,
+        ),
+      ))
           .fold(
         (l) async {
           emit(VerifiedSecurityCodeFailed(l.message));
@@ -73,30 +75,8 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
     }
   }
 
-  void _startResendTimer(StartResendTimer event, Emitter emit) async {
-    _seconds = 45;
-    timer?.cancel();
-    emit(SecurityCodeTimerState(seconds: _seconds, canResend: false));
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      if (!isClosed) {
-        add(TickResendTimer());
-      }
-    });
-  }
-
-  void _tickResendTimer(TickResendTimer event, Emitter emit) async {
-    if (_seconds > 0) {
-      _seconds--;
-      emit(SecurityCodeTimerState(seconds: _seconds, canResend: false));
-    } else {
-      timer?.cancel();
-      emit(SecurityCodeTimerState(seconds: 00, canResend: true));
-    }
-  }
-
   @override
   Future<void> close() {
-    timer?.cancel();
     firstCode.clear();
     secondCode.clear();
     thirdCode.clear();
