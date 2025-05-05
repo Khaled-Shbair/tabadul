@@ -1,7 +1,7 @@
-class LoginRequest {
+class AuthRequest {
   final String phoneNumber;
 
-  LoginRequest({
+  AuthRequest({
     required this.phoneNumber,
   });
 }

@@ -7,17 +7,16 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(this._loginRepo) : super(LoginInitial()) {
+  LoginBloc(this._authRepo) : super(LoginInitial()) {
     phoneController.addListener(() => selectCursorPosition(phoneController));
     on<LoginProcess>(_loginProcess);
     on<SelectCodeCountry>(_selectCodeCountry);
   }
 
   final formKey = GlobalKey<FormState>();
-  final LoginRepo _loginRepo;
+  final AuthRepo _authRepo;
 
-  final TapGestureRecognizer tapGestureRecognizer = TapGestureRecognizer()
-    ..onTap = () => Get.toNamed(Routes.createAccountScreen);
+  final TapGestureRecognizer tapGestureRecognizer = TapGestureRecognizer();
 
   final TextEditingController phoneController = TextEditingController();
 
@@ -30,7 +29,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _loginProcess(LoginProcess event, Emitter emit) async {
     if (formKey.currentState!.validate()) {
       emit(LoginLoading());
-      (await _loginRepo.login(LoginRequest(phoneNumber: phoneController.text)))
+      (await _authRepo.login(AuthRequest(phoneNumber: phoneController.text)))
           .fold(
         (l) {
           emit(LoginFailure(l.message));
@@ -44,6 +43,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   Future<void> close() {
+    phoneController.clear();
     phoneController.dispose();
     tapGestureRecognizer.dispose();
     return super.close();

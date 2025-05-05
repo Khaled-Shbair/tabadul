@@ -246,7 +246,7 @@ Project_BINARY_DIR:STATIC=K:/tabadul/android/app/.cxx/Debug/124b4r13/armeabi-v7a
 Project_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-Project_SOURCE_DIR:STATIC=C:/Flutter_3.27.3/flutter/packages/flutter_tools/gradle/src/main/groovy
+Project_SOURCE_DIR:STATIC=C:/Flutter_3.27.3/flutter/packages/flutter_tools/gradle/src/home/groovy
 
 
 ########################
@@ -331,7 +331,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=C:/Flutter_3.27.3/flutter/packages/flutter_tools/gradle/src/main/groovy
+CMAKE_HOME_DIRECTORY:INTERNAL=C:/Flutter_3.27.3/flutter/packages/flutter_tools/gradle/src/home/groovy
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
 //ADVANCED property for variable: CMAKE_LINKER
