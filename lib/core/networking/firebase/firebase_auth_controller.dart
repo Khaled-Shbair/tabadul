@@ -8,26 +8,29 @@ class FbAuthController {
   FbAuthController(this._auth);
 
   Future<SendSecurityCodeResponse> sendSecurityCode(
-    String phoneNumber,
-  ) async {
+    String phoneNumber, {
+    int? resendToken,
+  }) async {
     Completer<SendSecurityCodeResponse> completer = Completer();
     await _auth.verifyPhoneNumber(
       phoneNumber: '+97$phoneNumber',
       timeout: Duration(seconds: AppConstants.timeoutVerifyPhoneNumber),
-      verificationCompleted: (PhoneAuthCredential credential) async {
-        await _signIn(credential);
-      },
+      verificationCompleted: (PhoneAuthCredential credential) async {},
       codeSent: (String verificationId, int? resendToken) {
-        completer
-            .complete(SendSecurityCodeResponse(verificationId: verificationId));
+        completer.complete(
+          SendSecurityCodeResponse(
+            verificationId: verificationId,
+            resendToken: resendToken,
+            status: true,
+          ),
+        );
       },
-      codeAutoRetrievalTimeout: (String verificationId) {
-        completer
-            .complete(SendSecurityCodeResponse(verificationId: verificationId));
-      },
-      verificationFailed: (FirebaseAuthException error) {
-      },
+      codeAutoRetrievalTimeout: (String verificationId) {},
+      verificationFailed: (FirebaseAuthException error) {},
+      forceResendingToken: resendToken,
+
     );
+
     return completer.future;
   }
 
@@ -52,8 +55,10 @@ class FbAuthController {
         result = true;
         PrefController().login = true;
       }
+    } on FirebaseAuthException catch (e) {
+      debugPrint('FirebaseAuthException');
     } catch (e) {
-      result = false;
+      debugPrint('catch');
     }
     return result;
   }
