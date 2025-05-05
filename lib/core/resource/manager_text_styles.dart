@@ -54,11 +54,18 @@ class ManagerTextStyles {
     height: 1.6,
   );
 
-  static TextStyle font14PrimaryColorMedium = TextStyle(
+  static TextStyle font14PrimaryColorMedium = _mainTextStyle(
     fontSize: ManagerFontsSizes.f14,
     color: ManagerColors.primaryColor,
     fontWeight: ManagerFontWeight.medium,
   );
+
+  static TextStyle font17SpaceCadetBold = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f17,
+    color: ManagerColors.spaceCadet,
+    fontWeight: ManagerFontWeight.bold,
+  );
+
   static TextStyle font12ErrorColorBold = TextStyle(
     fontSize: ManagerFontsSizes.f12,
     color: ManagerColors.errorColor,

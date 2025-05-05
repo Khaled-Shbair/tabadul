@@ -2,7 +2,9 @@ import '/config/all_imports.dart';
 
 class ManagerTextThemeLight extends TextTheme {
   @override
-  TextStyle get titleLarge => TextStyle();
+
+  /// [title] created account successfully screen
+  TextStyle get titleLarge => ManagerTextStyles.font17SpaceCadetBold;
 
   @override
   TextStyle get titleMedium => ManagerTextStyles.font20PrimaryColorBold;
@@ -17,11 +19,11 @@ class ManagerTextThemeLight extends TextTheme {
   @override
   TextStyle get labelLarge => ManagerTextStyles.font12WhiteBold;
 
-  /// [phone number of country in login screen]
+  /// [phone number of country in auth screen]
   @override
   TextStyle get displaySmall => ManagerTextStyles.font14PrimaryColorMedium;
 
-  /// richText button in login and create account
+  /// richText button in auth and create account
   @override
   TextStyle get displayMedium => ManagerTextStyles.font14SpaceCadetBold;
 
