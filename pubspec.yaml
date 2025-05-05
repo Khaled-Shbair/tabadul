@@ -29,6 +29,7 @@ dependencies:
   flutter_svg: ^2.0.7
   percent_indicator: ^4.2.3
   animate_do: ^4.2.0
+  dropdown_search: ^6.0.2
 
   #local Storage
   shared_preferences: ^2.2.0
@@ -75,11 +76,13 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/icons_images/
-    - assets/images/departments/
-    - assets/images/login_and_create_account/
     - assets/images/splash/
     - assets/images/on_boarding/
+    - assets/images/auth/
+    - assets/images/add_personal_information/
+
+    - assets/images/icons_images/
+    - assets/images/departments/
 
   fonts:
     - family: HelveticaLTArabic
