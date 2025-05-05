@@ -1,5 +1,14 @@
 import '/config/all_imports.dart';
 
+class CustomLoading extends StatelessWidget {
+  const CustomLoading({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CircularProgressIndicator();
+  }
+}
+
 void customLoading(BuildContext context) {
   showDialog(
     context: context,
