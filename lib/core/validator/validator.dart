@@ -10,6 +10,38 @@ class Validator {
     return null;
   }
 
+  static String? firstNameValidator(String? name) {
+    if (name == null || name.isEmpty) {
+      return ManagerStrings.pleaseEnterFirstName;
+    }
+
+    return null;
+  }
+
+  static String? lastNameValidator(String? name) {
+    if (name == null || name.isEmpty) {
+      return ManagerStrings.pleaseEnterLastName;
+    }
+
+    return null;
+  }
+
+  static String? dropdownSearchCity(String? choose) {
+    if (choose == null || choose.isEmpty) {
+      return ManagerStrings.pleaseSelectCity;
+    }
+
+    return null;
+  }
+
+  static String? dropdownSearchRegionStreet(String? choose) {
+    if (choose == null || choose.isEmpty) {
+      return ManagerStrings.pleaseSelectRegionStreet;
+    }
+
+    return null;
+  }
+
   static bool securityCodeValidator(
     String? firstCode,
     String? secondCode,
@@ -18,12 +50,12 @@ class Validator {
     String? fifthCode,
     String? sixthCode,
   ) {
-    if (firstCode != null &&
-        secondCode != null &&
-        thirdCode != null &&
-        fourthCode != null &&
-        fifthCode != null &&
-        sixthCode != null) {
+    if (firstCode == null &&
+        secondCode == null &&
+        thirdCode == null &&
+        fourthCode == null &&
+        fifthCode == null &&
+        sixthCode == null) {
       return false;
     }
     return true;
