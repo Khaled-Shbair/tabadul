@@ -58,6 +58,7 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
       emit(VerifiedSecurityCodeLoading());
       (await _repo.verifySecurityCode(
         VerifySecurityCodeRequest(
+          phoneNumber: event.phoneNumber,
           securityCode: event.code,
           verificationId: _verificationId,
         ),

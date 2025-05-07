@@ -10,6 +10,7 @@ class ResendSecurityCode extends SecurityCodeEvent {
 
 class VerifySecurityCode extends SecurityCodeEvent {
   final String code;
+  final String phoneNumber;
 
-  VerifySecurityCode(this.code);
+  VerifySecurityCode(this.code, this.phoneNumber);
 }

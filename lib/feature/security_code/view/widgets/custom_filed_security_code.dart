@@ -88,7 +88,7 @@ class CustomFiledSecurityCode extends StatelessWidget {
                   controller.fifthCode.text +
                   controller.sixthCode.text;
               controller.sixthFocusNode.unfocus();
-              controller.add(VerifySecurityCode(code));
+              controller.add(VerifySecurityCode(code, phoneNumber));
             },
             onChanged: (String value) {
               if (value.isEmpty) {
@@ -101,7 +101,7 @@ class CustomFiledSecurityCode extends StatelessWidget {
                     controller.fifthCode.text +
                     controller.sixthCode.text;
                 controller.sixthFocusNode.unfocus();
-                controller.add(VerifySecurityCode(code));
+                controller.add(VerifySecurityCode(code, phoneNumber));
               }
             },
           ),

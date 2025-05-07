@@ -10,8 +10,9 @@ abstract class RemoteSecurityCodeDataSource {
 
 class RemoteSecurityCodeDataSourceImpl extends RemoteSecurityCodeDataSource {
   final FbAuthController _firebaseAuth;
+  final FbFirestoreController _firestore;
 
-  RemoteSecurityCodeDataSourceImpl(this._firebaseAuth);
+  RemoteSecurityCodeDataSourceImpl(this._firebaseAuth, this._firestore);
 
   @override
   Future<SendSecurityCodeResponse> sendSecurityCode(request) async {
@@ -23,9 +24,19 @@ class RemoteSecurityCodeDataSourceImpl extends RemoteSecurityCodeDataSource {
 
   @override
   Future<VerifySecurityCodeResponse> verifySecurityCode(request) async {
-    return await _firebaseAuth.verifySecurityCode(
+    _firestore.getUserData(request.phoneNumber);
+    var result = await _firebaseAuth.verifySecurityCode(
       request.securityCode,
       request.verificationId,
+    );
+    UserModel? userData;
+    if (result.status == true) {
+      userData = await _firestore.getUserData(request.phoneNumber);
+    }
+
+    return VerifySecurityCodeResponse(
+      status: result.status,
+      userData: userData,
     );
   }
 }

@@ -11,8 +11,9 @@ abstract class SecurityCodeRepo {
 class SecurityCodeRepoImpl extends SecurityCodeRepo {
   final RemoteSecurityCodeDataSource _dataSource;
   final NetworkInfo _networkInfo;
+  final SharedPreferencesController _sharedPref;
 
-  SecurityCodeRepoImpl(this._dataSource, this._networkInfo);
+  SecurityCodeRepoImpl(this._dataSource, this._networkInfo, this._sharedPref);
 
   @override
   Future<Either<Failure, SendSecurityCodeResponse>> sendSecurityCode(
@@ -41,7 +42,21 @@ class SecurityCodeRepoImpl extends SecurityCodeRepo {
       try {
         var response = await _dataSource.verifySecurityCode(request);
 
-        if (response.status) {
+        if (response.status == true) {
+          if (response.userData != null) {
+            _sharedPref.setData(SharedPreferenceKeys.loggedIn, true);
+            _sharedPref.setData(
+                SharedPreferenceKeys.name, response.userData!.name);
+            _sharedPref.setData(
+                SharedPreferenceKeys.city, response.userData!.city);
+            _sharedPref.setData(SharedPreferenceKeys.regionAndStreet,
+                response.userData!.regionAndStreet);
+            _sharedPref.setData(SharedPreferenceKeys.phoneNumber,
+                response.userData!.phoneNumber);
+            _sharedPref.setData(
+                SharedPreferenceKeys.image, response.userData!.image);
+            _sharedPref.setData(SharedPreferenceKeys.id, response.userData!.id);
+          }
           return Right(response);
         } else {
           return Left(
