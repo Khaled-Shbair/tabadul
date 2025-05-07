@@ -41,6 +41,36 @@ class RouteGenerator {
             child: SecurityCodeScreen(route: route, phoneNumber: phoneNumber),
           ),
         );
+      case Routes.addPersonalInformationScreen:
+        initAddPersonalInformation();
+        final phoneNumber = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => instance<AddPersonalInformationBloc>(),
+            child: AddPersonalInformationScreen(phoneNumber: phoneNumber),
+          ),
+        );
+      case Routes.accountCreatedSuccessfullyScreen:
+        return MaterialPageRoute(
+          builder: (context) => AccountCreatedSuccessfullyScreen(),
+        );
+      case Routes.mainScreen:
+        initMain();
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => instance<MainBloc>(),
+            child: MainScreen(),
+          ),
+        );
+      case Routes.homeScreen:
+        initHome();
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => instance<HomeBloc>(),
+            child: HomeScreen(),
+          ),
+        );
+
       case Routes.logoutScreen:
         initLogoutController();
         return MaterialPageRoute(
@@ -49,9 +79,6 @@ class RouteGenerator {
             child: LogoutScreen(),
           ),
         );
-      case Routes.mainScreen:
-        initMainController();
-        return MaterialPageRoute(builder: (context) => MainScreen());
 
       default:
         return unDefinedRoute();

@@ -9,7 +9,9 @@ class Routes {
   static const String securityCodeScreen = 'security_code_screen';
   static const String logoutScreen = 'logout_screen';
   static const String mainScreen = 'main_screen';
-
+  static const String homeScreen = 'home_screen';
+  static const String addPersonalInformationScreen =
+      'add_personal_information_screen';
 /////////////
   static const String infoScreen = 'info_screen';
   static const String menuScreen = 'menu_screen';
@@ -22,7 +24,7 @@ class Routes {
   static const String detailProductScreen = 'detail_product_screen';
   static const String waitForPickupScreen = 'wait_for_pickup_screen';
   static const String notificationsScreen = 'notifications_screen';
-  static const String addInformationScreen = 'add_information_screen';
+
   static const String readyToReceiveScreen = 'ready_to_receive_screen';
   static const String addedSuccessfullyScreen = 'added_successfully_screen';
   static const String computerDepartmentScreen = 'computer_department_screen';
