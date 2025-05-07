@@ -25,7 +25,8 @@ class AddPersonalInformationRequest {
       FirebaseConstants.image: image ??
           'https://firebasestorage.googleapis.com/v0/b/tabadul-34a2c.appspot.com/o/user.png?alt=media&token=bbae8920-b1ee-47be-b8d7-2af1e7187cee',
       FirebaseConstants.city: city,
-      FirebaseConstants.regionAndStreet: regionAndStreet
+      FirebaseConstants.regionAndStreet: regionAndStreet,
+      FirebaseConstants.id: phoneNumber
     };
   }
 }
