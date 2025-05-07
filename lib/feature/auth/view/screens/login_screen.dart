@@ -12,7 +12,7 @@ class LoginScreen extends StatelessWidget {
           context.pop();
           context.pushNamed(
             Routes.securityCodeScreen,
-            arguments: [Routes.homeScreen, state.phoneNumber],
+            arguments: [Routes.mainScreen, state.phoneNumber],
           );
         }
         if (state is LoginLoading) {

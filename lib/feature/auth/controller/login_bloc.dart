@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import '/config/all_imports.dart';
 
 part 'login_event.dart';
