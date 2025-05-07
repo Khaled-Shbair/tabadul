@@ -42,7 +42,7 @@ class AccountCreatedSuccessfullyScreen extends StatelessWidget {
               delay: const Duration(seconds: 5),
               child: FloatingActionButton(
                 onPressed: () =>
-                    context.pushNamedAndRemoveAllUntil(Routes.homeScreen),
+                    context.pushNamedAndRemoveAllUntil(Routes.mainScreen),
                 child: Icon(
                   Icons.arrow_right_alt,
                   textDirection: TextDirection.ltr,
