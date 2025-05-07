@@ -41,6 +41,19 @@ const Map<String, String> ar = {
   'logout': 'تسجيل خروج',
   'do_you_want_logout_of_your_account': 'هل تريد تسجيل الخروج\nمن الحساب ؟',
 
+  //home strings
+  'home': 'الرئيسية',
+
+  'furniture_department': 'قسم الأثاث',
+  'carpets_and_mattresses_department': 'قسم السجاد والمفارش',
+  'phone_department': 'قسم أجهزة الجوال',
+  'computer_department': 'قسم أجهزة الحاسوب',
+  'motorcycle_department': 'قسم الدراجات النارية',
+  'bicycle_department': 'قسم الدراجات الهوائية',
+  'car_department': 'قسم السيارات',
+  'electric_machines_department': 'قسم الأجهزة الكهربائية',
+
+
   //errors messages
   'no_internet_connection': 'لا يوجد اتصال بالإنترنت',
   'no_data': 'لا يوجد بيانات',
@@ -53,17 +66,8 @@ const Map<String, String> ar = {
   'the_time_has_been_set_successfully':
       'لقد تم تحديد الوقت بنجاح الرجاء الانتظار حتى انتهاء الوقت للاستلام',
   'notifications': 'الإشعارات',
-  'home': 'الرئيسية',
   'profile': 'الملف الشخصي',
 
-  'furniture_department': 'قسم الأثاث',
-  'carpets_and_mattresses_department': 'قسم السجاد والمفارش',
-  'phone_department': 'قسم أجهزة الجوال',
-  'computer_department': 'قسم أجهزة الحاسوب',
-  'motorcycle_department': 'قسم الدراجات النارية',
-  'bicycle_department': 'قسم الدراجات الهوائية',
-  'car_department': 'قسم السيارات',
-  'electric_machines_department': 'قسم الأجهزة الكهربائية',
   'add': 'إضافة',
   'buy': 'شراء',
   'added_successfully': 'لقد تم إضافة السلعة\nبنجاح',

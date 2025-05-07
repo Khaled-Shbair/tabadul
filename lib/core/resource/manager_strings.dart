@@ -44,6 +44,18 @@ class ManagerStrings {
   static String doYouWantLogoutOfYourAccount =
       'do_you_want_logout_of_your_account'.tr;
 
+  //home strings
+  static String home = 'home'.tr;
+  static String furnitureDepartment = 'furniture_department'.tr;
+  static String carpetsAndMattressesDepartment =
+      'carpets_and_mattresses_department'.tr;
+  static String phoneDepartment = 'phone_department'.tr;
+  static String computerDepartment = 'computer_department'.tr;
+  static String motorcycleDepartment = 'motorcycle_department'.tr;
+  static String bicycleDepartment = 'bicycle_department'.tr;
+  static String carDepartment = 'car_department'.tr;
+  static String electricMachinesDepartment = 'electric_machines_department'.tr;
+
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
   static String noInternetConnection = 'no_internet_connection'.tr;
