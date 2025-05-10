@@ -17,8 +17,13 @@ class SecurityCodeScreen extends StatelessWidget {
     return BlocListener<SecurityCodeBloc, SecurityCodeState>(
       listener: (_, state) async {
         if (state is VerifiedSecurityCodeSuccessfully) {
-          context.pop();
-          context.pushReplacementNamed(route, arguments: phoneNumber);
+          Navigator.pop(context);
+
+          Navigator.pushReplacementNamed(
+            context,
+            route,
+            arguments: phoneNumber,
+          );
           disposeSecurityCode();
         }
         if (state is VerifiedSecurityCodeLoading) {
@@ -26,7 +31,7 @@ class SecurityCodeScreen extends StatelessWidget {
         }
         if (state is VerifiedSecurityCodeFailed &&
             state.message != ManagerStrings.pleaseEnterCodeCorrectly) {
-          context.pop();
+          Navigator.pop(context);
         }
       },
       child: Scaffold(
@@ -36,7 +41,7 @@ class SecurityCodeScreen extends StatelessWidget {
           iconLeading: Icons.arrow_back_ios_new,
           functionLeadingButton: () {
             if (context.mounted) {
-              context.pop();
+              Navigator.pop(context);
               disposeSecurityCode();
             }
           },

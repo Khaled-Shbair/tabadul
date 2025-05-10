@@ -9,8 +9,9 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (_, state) {
         if (state is LoginSuccessfully) {
-          context.pop();
-          context.pushNamed(
+          Navigator.pop(context);
+          Navigator.pushNamed(
+            context,
             Routes.securityCodeScreen,
             arguments: [Routes.mainScreen, state.phoneNumber],
           );
@@ -19,7 +20,7 @@ class LoginScreen extends StatelessWidget {
           customLoading(context);
         }
         if (state is LoginFailure) {
-          context.pop();
+          Navigator.pop(context);
         }
       },
       child: Scaffold(
@@ -90,7 +91,8 @@ class LoginScreen extends StatelessWidget {
               ),
               CustomRichText(
                 recognizer: controller.tapGestureRecognizer
-                  ..onTap = () => context.pushNamed(Routes.createAccountScreen),
+                  ..onTap = () =>
+                      Navigator.pushNamed(context, Routes.createAccountScreen),
                 title: ManagerStrings.doNotHaveAnAccount,
                 subTitle: ManagerStrings.createAccount,
               ),
