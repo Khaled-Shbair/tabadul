@@ -1,3 +1,5 @@
+import 'package:tabadul/feature/main/view/screens/main_screen.dart';
+
 import '/config/all_imports.dart';
 
 class RouteGenerator {
@@ -55,24 +57,18 @@ class RouteGenerator {
           builder: (context) => AccountCreatedSuccessfullyScreen(),
         );
       case Routes.mainScreen:
+        return MaterialPageRoute(builder: (context) => MainScreen());
+      case Routes.homeScreen:
         initMain();
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => instance<MainBloc>(),
-            child: MainScreen(),
-          ),
-        );
-      case Routes.homeScreen:
-        initHome();
-        return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => instance<HomeBloc>(),
-            child: HomeScreen(),
+            child: CustomMainScreen(),
           ),
         );
 
       case Routes.logoutScreen:
-        initLogoutController();
+        initLogout();
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => instance<LogoutBloc>(),

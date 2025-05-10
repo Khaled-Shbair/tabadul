@@ -1,7 +1,11 @@
 import '/config/all_imports.dart';
 
 class Routes {
-  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> zoomDrawerNavigatorKey =
+      GlobalKey<NavigatorState>();
+
   static const String splashScreen = 'splash_screen';
   static const String onBoardingScreen = 'on_boarding_screen';
   static const String loginScreen = 'login_screen';
@@ -12,9 +16,9 @@ class Routes {
   static const String homeScreen = 'home_screen';
   static const String addPersonalInformationScreen =
       'add_personal_information_screen';
-/////////////
+
+  /////////////
   static const String infoScreen = 'info_screen';
-  static const String menuScreen = 'menu_screen';
   static const String profileScreen = 'profile_screen';
   static const String provideService = 'provide_service';
   static const String addAndBuyScreen = 'add_and_buy_screen ';
