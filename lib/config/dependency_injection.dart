@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:get_it/get_it.dart';
 import 'all_imports.dart';
 
 final instance = GetIt.instance;
@@ -13,11 +11,13 @@ Future<void> initModule() async {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 }
 
-initNetworkInfo() {
+initNetworkInfo() async {
   if (!GetIt.I.isRegistered<InternetConnection>()) {
     instance.registerLazySingleton<InternetConnection>(
       () => InternetConnection(),
     );
+    debugPrint(
+        'InternetConnection: ${await instance<InternetConnection>().hasInternetAccess}');
   }
   if (!GetIt.I.isRegistered<NetworkInfo>()) {
     instance.registerLazySingleton<NetworkInfo>(
@@ -37,29 +37,29 @@ initSharedPreference() async {
 }
 
 initFirebase() async {
-  if (!GetIt.I.isRegistered<OnBoardingBloc>()) {
-    instance.registerLazySingleton<OnBoardingBloc>(
-      () => OnBoardingBloc(instance<SharedPreferencesController>()),
+  if (!GetIt.I.isRegistered<FirebaseApp>()) {
+    final firebase = await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
     );
-  }
-
-  if (!GetIt.I.isRegistered<Firebase>()) {
-    final firebase = await Firebase.initializeApp();
+    FirebaseFirestore.instance.settings =
+        const Settings(persistenceEnabled: true);
     instance.registerLazySingleton<FirebaseApp>(() => firebase);
   }
   if (!GetIt.I.isRegistered<FirebaseAuth>()) {
-    final firebaseAuth = FirebaseAuth.instance;
-    instance.registerLazySingleton<FirebaseAuth>(() => firebaseAuth);
+    instance.registerLazySingleton<FirebaseAuth>(() => FirebaseAuth.instance);
   }
   if (!GetIt.I.isRegistered<FbAuthController>()) {
     instance.registerLazySingleton<FbAuthController>(
       () => FbAuthController(instance<FirebaseAuth>()),
     );
   }
+  if (!GetIt.I.isRegistered<FirebaseFirestore>()) {
+    instance.registerLazySingleton<FirebaseFirestore>(
+        () => FirebaseFirestore.instance);
+  }
   if (!GetIt.I.isRegistered<FbFirestoreController>()) {
-    final firestore = FirebaseFirestore.instance;
     instance.registerLazySingleton<FbFirestoreController>(
-        () => FbFirestoreController(firestore));
+        () => FbFirestoreController(instance<FirebaseFirestore>()));
   }
 }
 
@@ -73,49 +73,77 @@ initOnBoarding() {
 
 disposeOnBoarding() {
   if (GetIt.I.isRegistered<OnBoardingBloc>()) {
-    instance<OnBoardingBloc>().close();
     instance.unregister<OnBoardingBloc>();
   }
 }
 
 initLogin() {
-  if (!GetIt.I.isRegistered<RemoteLoginDataSource>()) {
-    instance.registerLazySingleton<RemoteLoginDataSource>(
-      () => RemoteLoginDataSourceImpl(instance<FbFirestoreController>()),
+  if (!GetIt.I.isRegistered<RemoteAuthDataSource>()) {
+    instance.registerLazySingleton<RemoteAuthDataSource>(
+      () => RemoteAuthDataSourceImpl(instance<FbFirestoreController>()),
     );
   }
-  if (!GetIt.I.isRegistered<LoginRepo>()) {
-    instance.registerLazySingleton<LoginRepo>(
-      () => LoginRepoImpl(
-        instance<RemoteLoginDataSource>(),
+  if (!GetIt.I.isRegistered<AuthRepo>()) {
+    instance.registerLazySingleton<AuthRepo>(
+      () => AuthRepoImpl(
+        instance<RemoteAuthDataSource>(),
         instance<NetworkInfo>(),
       ),
     );
   }
   if (!GetIt.I.isRegistered<LoginBloc>()) {
     instance.registerLazySingleton<LoginBloc>(
-      () => LoginBloc(instance<LoginRepo>()),
+      () => LoginBloc(instance<AuthRepo>()),
     );
   }
 }
 
 disposeLogin() {
-  if (GetIt.I.isRegistered<RemoteLoginDataSource>()) {
-    instance.unregister<RemoteLoginDataSource>();
+  if (GetIt.I.isRegistered<RemoteAuthDataSource>()) {
+    instance.unregister<RemoteAuthDataSource>();
   }
-  if (GetIt.I.isRegistered<LoginRepo>()) {
-    instance.unregister<LoginRepo>();
+  if (GetIt.I.isRegistered<AuthRepo>()) {
+    instance.unregister<AuthRepo>();
   }
   if (GetIt.I.isRegistered<LoginBloc>()) {
-    instance<LoginBloc>().close();
     instance.unregister<LoginBloc>();
+  }
+}
+
+initCreateAccount() {
+  if (!GetIt.I.isRegistered<RemoteAuthDataSource>()) {
+    instance.registerLazySingleton<RemoteAuthDataSource>(
+      () => RemoteAuthDataSourceImpl(instance<FbFirestoreController>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<AuthRepo>()) {
+    instance.registerLazySingleton<AuthRepo>(
+      () => AuthRepoImpl(
+        instance<RemoteAuthDataSource>(),
+        instance<NetworkInfo>(),
+      ),
+    );
+  }
+  if (!GetIt.I.isRegistered<CreateAccountBloc>()) {
+    instance.registerLazySingleton<CreateAccountBloc>(
+      () => CreateAccountBloc(instance<AuthRepo>()),
+    );
+  }
+}
+
+disposeCreateAccount() {
+  if (GetIt.I.isRegistered<CreateAccountBloc>()) {
+    instance.unregister<CreateAccountBloc>();
   }
 }
 
 initSecurityCode() {
   if (!GetIt.I.isRegistered<RemoteSecurityCodeDataSource>()) {
     instance.registerLazySingleton<RemoteSecurityCodeDataSource>(
-      () => RemoteSecurityCodeDataSourceImpl(instance<FbAuthController>()),
+      () => RemoteSecurityCodeDataSourceImpl(
+        instance<FbAuthController>(),
+        instance<FbFirestoreController>(),
+      ),
     );
   }
   if (!GetIt.I.isRegistered<SecurityCodeRepo>()) {
@@ -123,6 +151,7 @@ initSecurityCode() {
       () => SecurityCodeRepoImpl(
         instance<RemoteSecurityCodeDataSource>(),
         instance<NetworkInfo>(),
+        instance<SharedPreferencesController>(),
       ),
     );
   }
@@ -132,6 +161,9 @@ initSecurityCode() {
         instance<SecurityCodeRepo>(),
       ),
     );
+  }
+  if (!GetIt.I.isRegistered<TimerBloc>()) {
+    instance.registerLazySingleton<TimerBloc>(() => TimerBloc());
   }
 }
 
@@ -145,24 +177,85 @@ disposeSecurityCode() {
   if (GetIt.I.isRegistered<SecurityCodeBloc>()) {
     instance.unregister<SecurityCodeBloc>();
   }
+  if (GetIt.I.isRegistered<TimerBloc>()) {
+    instance.unregister<TimerBloc>();
+  }
 }
 
-initCreateAccount() {}
-
-disposeCreateAccount() {}
-
-initMainController() {
-  Get.put<MainController>(MainController());
+initAddPersonalInformation() {
+  if (!GetIt.I.isRegistered<RemoteAddPersonalInformationDataSource>()) {
+    instance.registerLazySingleton<RemoteAddPersonalInformationDataSource>(
+      () => RemoteAddPersonalInformationDataSourceImpl(
+        instance<FbFirestoreController>(),
+      ),
+    );
+  }
+  if (!GetIt.I.isRegistered<AddPersonalInformationRepo>()) {
+    instance.registerLazySingleton<AddPersonalInformationRepo>(
+        () => AddPersonalInformationRepoImpl(
+              instance<RemoteAddPersonalInformationDataSource>(),
+              instance<NetworkInfo>(),
+            ));
+  }
+  if (!GetIt.I.isRegistered<AddPersonalInformationBloc>()) {
+    instance.registerLazySingleton<AddPersonalInformationBloc>(() =>
+        AddPersonalInformationBloc(instance<AddPersonalInformationRepo>()));
+  }
 }
 
-disposeMainController() async {
-  await Get.delete<MainController>();
+disposeAddPersonalInformation() async {
+  if (GetIt.I.isRegistered<RemoteAddPersonalInformationDataSource>()) {
+    instance.unregister<RemoteAddPersonalInformationDataSource>();
+  }
+  if (GetIt.I.isRegistered<AddPersonalInformationRepo>()) {
+    instance.unregister<AddPersonalInformationRepo>();
+  }
+  if (GetIt.I.isRegistered<AddPersonalInformationBloc>()) {
+    instance.unregister<AddPersonalInformationBloc>();
+  }
 }
 
-initLogoutController() {
-  Get.put<LogoutController>(LogoutController());
+initMain() {
+  disposeLogin();
+  disposeCreateAccount();
+  if (!GetIt.I.isRegistered<MainBloc>()) {
+    instance.registerLazySingleton<MainBloc>(() => MainBloc());
+  }
 }
 
-disposeLogoutController() async {
-  await Get.delete<LogoutController>();
+disposeMain() {
+  if (GetIt.I.isRegistered<MainBloc>()) {
+    instance.unregister<MainBloc>();
+  }
+}
+
+initLogout() {
+  if (!GetIt.I.isRegistered<RemoteLogoutDataSource>()) {
+    instance.registerLazySingleton<RemoteLogoutDataSource>(
+        () => RemoteLogoutDataSourceImpl(instance<FbAuthController>()));
+  }
+  if (!GetIt.I.isRegistered<LogoutRepo>()) {
+    instance.registerLazySingleton<LogoutRepo>(() => LogoutRepoImpl(
+          instance<RemoteLogoutDataSource>(),
+          instance<NetworkInfo>(),
+        ));
+  }
+  if (!GetIt.I.isRegistered<LogoutBloc>()) {
+    instance.registerLazySingleton<LogoutBloc>(() => LogoutBloc(
+          instance<SharedPreferencesController>(),
+          instance<LogoutRepo>(),
+        ));
+  }
+}
+
+disposeLogout() async {
+  if (GetIt.I.isRegistered<RemoteLogoutDataSource>()) {
+    instance.unregister<RemoteLogoutDataSource>();
+  }
+  if (GetIt.I.isRegistered<LogoutRepo>()) {
+    instance.unregister<LogoutRepo>();
+  }
+  if (GetIt.I.isRegistered<LogoutBloc>()) {
+    instance.unregister<LogoutBloc>();
+  }
 }
