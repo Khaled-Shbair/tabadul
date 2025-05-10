@@ -48,7 +48,9 @@ class CustomMenuChooseCodeCountry extends StatelessWidget {
                 value: e.id.toString(),
                 child: Text(
                   e.name,
-                  style: context.textTheme.displaySmall,
+                  style: context.theme.inputDecorationTheme.hintStyle?.copyWith(
+                    color: context.theme.primaryColor,
+                  ),
                 ),
               ),
             )
