@@ -3,7 +3,14 @@ import '/config/all_imports.dart';
 class ManagerTextThemeLight extends TextTheme {
   @override
 
+  /// [name] profile screen
+  TextStyle get headlineLarge => ManagerTextStyles.font17PrimaryColorBold;
+
+  @override
+  TextStyle get headlineMedium => TextStyle();
+
   /// [title] created account successfully screen
+  @override
   TextStyle get titleLarge => ManagerTextStyles.font17SpaceCadetBold;
 
   @override
@@ -16,10 +23,8 @@ class ManagerTextThemeLight extends TextTheme {
   @override
   TextStyle get headlineSmall => ManagerTextStyles.font15SpaceCadetBold;
 
-  @override
-  TextStyle get labelLarge => ManagerTextStyles.font12WhiteBold;
-
   /// [phone number of country in auth screen]
+  /// [personal data] profile screen
   @override
   TextStyle get displaySmall => ManagerTextStyles.font14PrimaryColorMedium;
 
@@ -27,9 +32,19 @@ class ManagerTextThemeLight extends TextTheme {
   @override
   TextStyle get displayMedium => ManagerTextStyles.font14SpaceCadetBold;
 
+  @override
+  TextStyle get bodyLarge => TextStyle();
+
+  ///style name of department in [CustomDepartmentButton] widget
+  @override
+  TextStyle get bodyMedium => ManagerTextStyles.font11PrimaryColorBold;
+
   /// style of text error
   @override
   TextStyle get bodySmall => ManagerTextStyles.font12ErrorColorBold;
+
+  @override
+  TextStyle get labelLarge => ManagerTextStyles.font12WhiteBold;
 
   /// [logout button]
   @override
