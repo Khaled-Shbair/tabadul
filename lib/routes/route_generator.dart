@@ -10,6 +10,7 @@ class RouteGenerator {
       case Routes.onBoardingScreen:
         initOnBoarding();
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.onBoardingScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<OnBoardingBloc>(),
             child: OnBoardingScreen(),
@@ -18,6 +19,7 @@ class RouteGenerator {
       case Routes.loginScreen:
         initLogin();
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.loginScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<LoginBloc>(),
             child: LoginScreen(),
@@ -26,6 +28,7 @@ class RouteGenerator {
       case Routes.createAccountScreen:
         initCreateAccount();
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.createAccountScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<CreateAccountBloc>(),
             child: CreateAccountScreen(),
@@ -37,6 +40,7 @@ class RouteGenerator {
         String route = arguments[0] as String;
         String phoneNumber = arguments[1] as String;
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.securityCodeScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<SecurityCodeBloc>()
               ..add(ResendSecurityCode(phoneNumber)),
@@ -47,6 +51,7 @@ class RouteGenerator {
         initAddPersonalInformation();
         final phoneNumber = settings.arguments as String;
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.addPersonalInformationScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<AddPersonalInformationBloc>(),
             child: AddPersonalInformationScreen(phoneNumber: phoneNumber),
@@ -54,22 +59,28 @@ class RouteGenerator {
         );
       case Routes.accountCreatedSuccessfullyScreen:
         return MaterialPageRoute(
+          settings:
+              RouteSettings(name: Routes.accountCreatedSuccessfullyScreen),
           builder: (context) => AccountCreatedSuccessfullyScreen(),
         );
       case Routes.mainScreen:
-        return MaterialPageRoute(builder: (context) => MainScreen());
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.mainScreen),
+          builder: (context) => MainScreen(),
+        );
       case Routes.homeScreen:
         initMain();
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.homeScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<MainBloc>(),
             child: CustomMainScreen(),
           ),
         );
-
       case Routes.logoutScreen:
         initLogout();
         return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.logoutScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<LogoutBloc>(),
             child: LogoutScreen(),
