@@ -17,6 +17,9 @@ ThemeData managerLightTheme() {
       onPrimary: ManagerColors.spaceCadet,
       secondary: ManagerColors.antiFlashWhite,
       onSecondary: ManagerColors.primaryColor,
+      shadow: ManagerColors.primaryColor.withAlpha(80),
+      /// color of box in [Profile] screen
+      primaryContainer: ManagerColors.ghostWhite,
 
       /// coolGrey color
       onTertiary: ManagerColors.coolGrey,
@@ -24,8 +27,12 @@ ThemeData managerLightTheme() {
       error: ManagerColors.primaryColor,
       onError: ManagerColors.primaryColor,
       // any widget use white color (text, border, etc...)
-      surface: Colors.white,
+      surface: ManagerColors.white,
       onSurface: ManagerColors.primaryColor,
+
+      ///use in decoration [Logout] screen
+      surfaceContainerLow: ManagerColors.lavenderSoft,
+      surfaceContainerLowest: ManagerColors.lavenderBrightS6,
     ),
 
     /// Template [AppBar] to application
@@ -86,10 +93,57 @@ ThemeData managerLightTheme() {
 
     /// Template [Dropdown Menu] to application
     dropdownMenuTheme: DropdownMenuThemeData(
-        menuStyle: MenuStyle(),
-        textStyle: TextStyle(),
-        inputDecorationTheme: InputDecorationTheme()),
-
+      menuStyle: MenuStyle(),
+      textStyle: TextStyle(
+        fontSize: ManagerFontsSizes.f11,
+        fontFamily: ManagerFontFamily.kHelveticaL,
+        color: ManagerColors.primaryColor,
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        errorMaxLines: 1,
+        fillColor: ManagerColors.antiFlashWhite,
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(ManagerRadius.r4),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: ManagerColors.errorColor),
+          borderRadius: BorderRadius.circular(ManagerRadius.r4),
+        ),
+        errorStyle: TextStyle(
+          color: ManagerColors.errorColor,
+          fontFamily: ManagerFontFamily.kHelveticaL,
+          fontSize: ManagerFontsSizes.f11,
+          fontWeight: FontWeight.w100,
+          height: 3,
+        ),
+        contentPadding: EdgeInsetsDirectional.only(
+          top: ManagerHeight.h17,
+          bottom: ManagerHeight.h10,
+          start: ManagerWidth.w22,
+          end: ManagerWidth.w8,
+        ),
+        suffixIconColor: ManagerColors.primaryColor,
+        hintStyle: TextStyle(
+          fontSize: ManagerFontsSizes.f11,
+          fontFamily: ManagerFontFamily.kHelveticaL,
+          color: ManagerColors.primaryColor.withAlpha(80),
+        ),
+      ),
+    ),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: ManagerColors.primaryColor,
+      elevation: 0,
+      iconSize: ManagerIconsSizes.i30,
+      shape: CircleBorder(),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: ManagerColors.errorColor,
+      actionBackgroundColor: ManagerColors.successColor,
+      contentTextStyle: ManagerTextStyles.font9WhiteBold,
+      actionTextColor: ManagerColors.white,
+    ),
     textTheme: ManagerTextThemeLight(),
   );
 }
