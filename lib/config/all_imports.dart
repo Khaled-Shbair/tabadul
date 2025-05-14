@@ -7,13 +7,13 @@ export 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 export 'package:percent_indicator/circular_percent_indicator.dart';
 export 'package:dartz/dartz.dart' hide State, Order;
 export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:url_launcher/url_launcher.dart';
 
 export 'package:get_it/get_it.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/foundation.dart' hide kIsWasm;
-export 'package:dropdown_search/dropdown_search.dart'
-    hide defaultScrollNotificationPredicate;
+export 'package:dropdown_search/dropdown_search.dart' hide defaultScrollNotificationPredicate;
 
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:fluttertoast/fluttertoast.dart';
@@ -22,7 +22,7 @@ export 'package:firebase_core/firebase_core.dart';
 
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
-
+export 'package:cached_network_image/cached_network_image.dart';
 export 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 ///firebase_options file
@@ -31,6 +31,7 @@ export '/firebase_options.dart';
 ///routes file
 export '/routes/routes.dart';
 export '/routes/route_generator.dart';
+export '/routes/app_route_observer.dart';
 
 ///config file
 export '/config/all_imports.dart';
@@ -46,6 +47,7 @@ export '/core/language/en.dart';
 export '/core/util/size_util.dart';
 export '/core/models/user_model.dart';
 export '/core/validator/validator.dart';
+export '/core/helper/url_launcher.dart';
 export '/core/widgets/custom_toast.dart';
 export '/core/language/translation.dart';
 export '/core/widgets/custom_appBar.dart';
@@ -147,6 +149,9 @@ export '/feature/add_personal_information/data/request/add_personal_information_
 export '/feature/add_personal_information/data/response/add_personal_information_response.dart';
 export '/feature/add_personal_information/view/screens/account_created_successfully_screen.dart';
 export '/feature/add_personal_information/data/data_source/remote_add_personal_information_data_source.dart';
+
+//profile feature
+export '/feature/profile/view/widget/custom_personal_data.dart';
 
 ////////////////////////////////
 
