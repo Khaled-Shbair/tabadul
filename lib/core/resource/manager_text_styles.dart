@@ -65,14 +65,19 @@ class ManagerTextStyles {
     color: ManagerColors.spaceCadet,
     fontWeight: ManagerFontWeight.bold,
   );
+  static TextStyle font17PrimaryColorBold = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f17,
+    color: ManagerColors.primaryColor,
+    fontWeight: ManagerFontWeight.regular,
+  );
 
-  static TextStyle font12ErrorColorBold = TextStyle(
+  static TextStyle font12ErrorColorBold = _mainTextStyle(
     fontSize: ManagerFontsSizes.f12,
     color: ManagerColors.errorColor,
     fontWeight: ManagerFontWeight.bold,
   );
 
-  static TextStyle font20PrimaryColorBold = TextStyle(
+  static TextStyle font20PrimaryColorBold = _mainTextStyle(
     fontSize: ManagerFontsSizes.f20,
     color: ManagerColors.primaryColor,
     fontWeight: ManagerFontWeight.bold,
@@ -83,5 +88,11 @@ class ManagerTextStyles {
     fontWeight: ManagerFontWeight.bold,
     fontFamily: ManagerFontFamily.kHelveticaLNeeL,
     height: 1.5,
+  );
+  static TextStyle font11PrimaryColorBold = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f11,
+    color: ManagerColors.primaryColor,
+    fontWeight: ManagerFontWeight.bold,
+    fontFamily: ManagerFontFamily.kHelveticaL,
   );
 }
