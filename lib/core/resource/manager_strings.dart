@@ -27,7 +27,8 @@ class ManagerStrings {
   static String pleaseEnterTheNumberCorrectly =
       'please_enter_the_number_correctly'.tr;
 
-//add personal information strings
+//add personal information && profile strings
+
   static String addInformation = 'add_information'.tr;
   static String firstName = 'first_name'.tr;
   static String lastName = 'last_name'.tr;
@@ -38,6 +39,8 @@ class ManagerStrings {
   static String pleaseEnterFirstName = 'please_enter_first_name'.tr;
   static String pleaseEnterLastName = 'please_enter_last_name'.tr;
   static String pleaseSelectRegionStreet = 'please_select_region_street'.tr;
+  static String phoneNumber = 'phone_number'.tr;
+  static String region = 'region'.tr;
 
   // logout strings
   static String logout = 'logout'.tr;
@@ -56,6 +59,13 @@ class ManagerStrings {
   static String carDepartment = 'car_department'.tr;
   static String electricMachinesDepartment = 'electric_machines_department'.tr;
 
+  //menu strings
+  static String profile = 'profile'.tr;
+  static String listProvideService = 'list_provide_service'.tr;
+  static String profileProvideService = 'profile_provide_service'.tr;
+  static String contactUsOnWhatsapp = 'contact_us_on_whatsapp'.tr;
+  static String aboutApplication = 'about_application'.tr;
+
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
   static String noInternetConnection = 'no_internet_connection'.tr;
@@ -64,5 +74,6 @@ class ManagerStrings {
   static String noData = 'no_data'.tr;
 
   static String cancel = 'cancel'.tr;
+  static String messageWhatsapp = 'message_whatsapp'.tr;
   static String oopsThereIsSomethingWrong = 'oops_there_is_something_wrong'.tr;
 }
