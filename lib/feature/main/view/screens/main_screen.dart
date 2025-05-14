@@ -10,6 +10,7 @@ class MainScreen extends StatelessWidget {
         key: Routes.zoomDrawerNavigatorKey,
         onGenerateRoute: RouteGenerator.getRoute,
         initialRoute: Routes.homeScreen,
+        observers: [AppRouteObserver()],
       ),
       menuScreen: CustomMenuScreen(),
       borderRadius: ManagerRadius.r30,
