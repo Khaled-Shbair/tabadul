@@ -47,9 +47,11 @@ dependencies:
   sms_autofill: ^2.3.0
 
   # Networking
-  firebase_core: ^3.8.1
-  firebase_auth: ^5.3.4
-  cloud_firestore: ^5.5.1
+  firebase_core: ^3.13.0
+  firebase_auth: ^5.5.3
+  cloud_firestore: ^5.6.7
+  firebase_storage: ^12.4.5
+  firebase_app_check: ^0.3.2+5
 
 dev_dependencies:
   flutter_test:
