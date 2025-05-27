@@ -4,7 +4,8 @@ class SharedPreferenceKeys {
   static const String phoneNumber = 'phone_number';
   static const String id = 'id';
   static const String verificationId = 'verification_id';
-  static const String name = 'name';
+  static const String firstName = 'first_name';
+  static const String lastName = 'last_name';
   static const String city = 'city';
   static const String image = 'image';
   static const String regionAndStreet = 'region';
