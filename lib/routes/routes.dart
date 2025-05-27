@@ -16,10 +16,12 @@ class Routes {
   static const String homeScreen = 'home_screen';
   static const String addPersonalInformationScreen =
       'add_personal_information_screen';
-
-  /////////////
   static const String infoScreen = 'info_screen';
   static const String profileScreen = 'profile_screen';
+  static const String editProfileScreen = 'edit_profile_screen';
+
+
+  /////////////
   static const String provideService = 'provide_service';
   static const String addAndBuyScreen = 'add_and_buy_screen ';
   static const String addProductScreen = 'add_product_screen';

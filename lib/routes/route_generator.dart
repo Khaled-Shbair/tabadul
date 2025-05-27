@@ -1,5 +1,3 @@
-import 'package:tabadul/feature/main/view/screens/main_screen.dart';
-
 import '/config/all_imports.dart';
 
 class RouteGenerator {
@@ -86,7 +84,20 @@ class RouteGenerator {
             child: LogoutScreen(),
           ),
         );
-
+      case Routes.infoScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.infoScreen),
+          builder: (context) => InfoScreen(),
+        );
+      case Routes.editProfileScreen:
+        initEditProfile();
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.editProfileScreen),
+          builder: (context) => BlocProvider(
+            create: (context) => instance<EditProfileBloc>(),
+            child: EditProfileScreen(),
+          ),
+        );
       default:
         return unDefinedRoute();
     }
