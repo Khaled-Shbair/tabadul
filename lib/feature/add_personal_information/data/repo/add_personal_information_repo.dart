@@ -4,9 +4,9 @@ abstract class AddPersonalInformationRepo {
   Future<Either<Failure, AddPersonalInformationResponse>>
       addPersonalInformation(AddPersonalInformationRequest request);
 
-  Future<Either<Failure, CitiesResponse>> getCities();
+  Future<Either<Failure, CitiesModel>> getCities();
 
-  Future<Either<Failure, RegionsResponse>> getRegions();
+  Future<Either<Failure, RegionsModel>> getRegions();
 }
 
 class AddPersonalInformationRepoImpl extends AddPersonalInformationRepo {
@@ -36,7 +36,7 @@ class AddPersonalInformationRepoImpl extends AddPersonalInformationRepo {
   }
 
   @override
-  Future<Either<Failure, CitiesResponse>> getCities() async {
+  Future<Either<Failure, CitiesModel>> getCities() async {
     if (await _networkInfo.isConnected) {
       try {
         var response = await _dataSource.getCities();
@@ -55,7 +55,7 @@ class AddPersonalInformationRepoImpl extends AddPersonalInformationRepo {
   }
 
   @override
-  Future<Either<Failure, RegionsResponse>> getRegions() async {
+  Future<Either<Failure, RegionsModel>> getRegions() async {
     if (await _networkInfo.isConnected) {
       try {
         var response = await _dataSource.getRegions();
