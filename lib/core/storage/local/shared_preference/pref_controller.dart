@@ -27,11 +27,11 @@ class PrefController {
       _pref = await SharedPreferences.getInstance();
 
 ////////////////////////////////////////////////////////////////////////////////
-  set verificationId(String value) =>
-      _pref.setString(PrefKey.verificationId.toString(), value);
+//   set verificationId(String value) =>
+//       _pref.setString(PrefKey.verificationId.toString(), value);
 
-  String get verificationId =>
-      _pref.getString(PrefKey.verificationId.toString()) ?? '';
+  // String get verificationId =>
+  //     _pref.getString(PrefKey.verificationId.toString()) ?? '';
 
   set onBoarding(bool value) =>
       _pref.setBool(PrefKey.onBoarding.toString(), value);

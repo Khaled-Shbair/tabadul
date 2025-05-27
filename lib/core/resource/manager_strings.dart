@@ -27,7 +27,7 @@ class ManagerStrings {
   static String pleaseEnterTheNumberCorrectly =
       'please_enter_the_number_correctly'.tr;
 
-//add personal information && profile strings
+//add personal information && profile strings && edit profile
 
   static String addInformation = 'add_information'.tr;
   static String firstName = 'first_name'.tr;
@@ -41,6 +41,8 @@ class ManagerStrings {
   static String pleaseSelectRegionStreet = 'please_select_region_street'.tr;
   static String phoneNumber = 'phone_number'.tr;
   static String region = 'region'.tr;
+  static String editProfile = 'edit_profile'.tr;
+  static String save = 'save'.tr;
 
   // logout strings
   static String logout = 'logout'.tr;
@@ -68,6 +70,7 @@ class ManagerStrings {
 
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
+  static String failedPickImage = 'failed_pick_image'.tr;
   static String noInternetConnection = 'no_internet_connection'.tr;
   static String invalidVerificationCode = 'invalid_verification_code'.tr;
   static String badRequest = 'bad_request'.tr;
@@ -76,4 +79,10 @@ class ManagerStrings {
   static String cancel = 'cancel'.tr;
   static String messageWhatsapp = 'message_whatsapp'.tr;
   static String oopsThereIsSomethingWrong = 'oops_there_is_something_wrong'.tr;
+
+
+  static String camera = 'camera'.tr;
+  static String gallery = 'gallery'.tr;
+  static String personalImage = 'personal_image'.tr;
+  static String noDataHasBeenModified = 'no_data_has_been_modified'.tr;
 }
