@@ -29,7 +29,8 @@ class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
   void _clearUserDataFormSharedPreferences() {
     _sharedPref.removeData(SharedPreferenceKeys.loggedIn);
     _sharedPref.removeData(SharedPreferenceKeys.image);
-    _sharedPref.removeData(SharedPreferenceKeys.name);
+    _sharedPref.removeData(SharedPreferenceKeys.firstName);
+    _sharedPref.removeData(SharedPreferenceKeys.lastName);
     _sharedPref.removeData(SharedPreferenceKeys.city);
     _sharedPref.removeData(SharedPreferenceKeys.id);
     _sharedPref.removeData(SharedPreferenceKeys.regionAndStreet);
