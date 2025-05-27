@@ -46,7 +46,9 @@ class SecurityCodeRepoImpl extends SecurityCodeRepo {
           if (response.userData != null) {
             _sharedPref.setData(SharedPreferenceKeys.loggedIn, true);
             _sharedPref.setData(
-                SharedPreferenceKeys.name, response.userData!.name);
+                SharedPreferenceKeys.firstName, response.userData!.firstName);
+            _sharedPref.setData(
+                SharedPreferenceKeys.lastName, response.userData!.lastName);
             _sharedPref.setData(
                 SharedPreferenceKeys.city, response.userData!.city);
             _sharedPref.setData(SharedPreferenceKeys.regionAndStreet,
