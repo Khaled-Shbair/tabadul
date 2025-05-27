@@ -1,5 +1,3 @@
-import 'package:tabadul/core/widgets/custom_toast.dart';
-
 import '/config/all_imports.dart';
 
 class AddPersonalInformationScreen extends StatelessWidget with CustomToast {
@@ -17,12 +15,15 @@ class AddPersonalInformationScreen extends StatelessWidget with CustomToast {
         AddPersonalInformationState>(
       listener: (context, state) {
         if (state is AddPersonalInformationSuccessfully) {
-          context.pop();
-          context.pushReplacementNamed(Routes.accountCreatedSuccessfullyScreen);
+          Navigator.pop(context);
+          Navigator.pushReplacementNamed(
+              context, Routes.accountCreatedSuccessfullyScreen);
+
           disposeAddPersonalInformation();
         }
         if (state is AddPersonalInformationFailure) {
-          context.pop();
+          Navigator.pop(context);
+
           showToast(context: context, message: state.messageError, error: true);
         }
         if (state is AddPersonalInformationLoading) {
@@ -34,7 +35,7 @@ class AddPersonalInformationScreen extends StatelessWidget with CustomToast {
           title: ManagerStrings.addInformation,
           iconLeading: Icons.arrow_back_ios_new,
           functionLeadingButton: () {
-            context.pop();
+            Navigator.pop(context);
             disposeAddPersonalInformation();
           },
         ),
