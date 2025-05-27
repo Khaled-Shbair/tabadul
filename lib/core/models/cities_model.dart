@@ -1,23 +1,23 @@
 import '/config/all_imports.dart';
 
-class RegionsResponse {
-  final List<RegionResponse> regions;
+class CitiesModel {
+  final List<CityModel> cities;
 
-  RegionsResponse({
-    required this.regions,
+  CitiesModel({
+    required this.cities,
   });
 }
 
-class RegionResponse {
+class CityModel {
   String? nameAr;
   String? nameEn;
 
-  RegionResponse({
+  CityModel({
     required this.nameAr,
     required this.nameEn,
   });
 
-  RegionResponse.fromMap(Map<String, dynamic> map) {
+  CityModel.fromMap(Map<String, dynamic> map) {
     nameAr = map[FirebaseConstants.nameAr];
     nameEn = map[FirebaseConstants.nameEn];
   }
