@@ -4,9 +4,9 @@ abstract class RemoteAddPersonalInformationDataSource {
   Future<AddPersonalInformationResponse> addPersonalInformation(
       AddPersonalInformationRequest request);
 
-  Future<CitiesResponse> getCities();
+  Future<CitiesModel> getCities();
 
-  Future<RegionsResponse> getRegions();
+  Future<RegionsModel> getRegions();
 }
 
 class RemoteAddPersonalInformationDataSourceImpl
@@ -21,12 +21,12 @@ class RemoteAddPersonalInformationDataSourceImpl
   }
 
   @override
-  Future<CitiesResponse> getCities() async {
+  Future<CitiesModel> getCities() async {
     return await _firestore.getCities();
   }
 
   @override
-  Future<RegionsResponse> getRegions() async {
+  Future<RegionsModel> getRegions() async {
     return await _firestore.getRegions();
   }
 }
