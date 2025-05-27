@@ -25,7 +25,7 @@ const Map<String, String> ar = {
   'the_account_has_been_created_successfully': 'لقد تم إنشاء الحساب\n بنجاح',
   'the_number_is_already_registered': 'الرقم مسجل بالفعل',
 
-//add personal information strings
+//add personal information, profile and edit profile strings
   'add_information': 'إضافة معلومات',
   'first_name': 'الاسم الأول',
   'last_name': 'الاسم الأخير',
@@ -36,6 +36,8 @@ const Map<String, String> ar = {
   'please_enter_last_name': 'يرجى ادخال الاسم الأخير',
   'please_select_region_street': 'يرجى اختيار المنطقة و الشارع',
   'next': 'التالي',
+  'save': 'حفظ',
+  'edit_profile': 'تعديل الملف الشخصي',
 
 //home strings
   'home': 'الرئيسية',
@@ -59,8 +61,13 @@ const Map<String, String> ar = {
   'logout': 'تسجيل خروج',
   'do_you_want_logout_of_your_account': 'هل تريد تسجيل الخروج\nمن الحساب ؟',
 
+
+
   'phone_number': 'رقم الجوال',
   'region': 'المنطقة',
+  'personal_image': 'الصورة الشخصية',
+  'camera': 'الكاميرا',
+  'gallery': 'المعرض',
 
 //errors messages
   'no_internet_connection': 'لا يوجد اتصال بالإنترنت',
@@ -68,9 +75,11 @@ const Map<String, String> ar = {
   'oops_there_is_something_wrong': 'عذراً، هناك شي ما خطا',
 
   'cancel': 'إلغاء',
+  'failed_pick_image': 'فشل تحميل الصورة',
   'search': 'بحث',
   'no_result_found': 'لا توجد نتائج',
   'message_whatsapp': 'مرحبا، كيف يمكنني مساعدتك؟',
+  'no_data_has_been_modified': 'لم يتم تعديل أي بيانات',
 
 ////////////////////////////////////////////////
   'the_time_has_been_set_successfully':
