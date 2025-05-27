@@ -25,7 +25,10 @@ class CustomDropdownSearch extends StatelessWidget {
       validator: validator,
       itemAsString: (item) => item,
       compareFn: (item, selectedItem) => item == selectedItem,
-      onChanged: (v) => onChangedFunction(v),
+      onChanged: (v) {
+        FocusScope.of(context).unfocus();
+        onChangedFunction(v);
+      },
       selectedItem: selectedItem,
       suffixProps: DropdownSuffixProps(
         dropdownButtonProps: DropdownButtonProps(
