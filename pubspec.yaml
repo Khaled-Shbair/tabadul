@@ -31,7 +31,10 @@ dependencies:
   animate_do: ^4.2.0
   dropdown_search: ^6.0.2
   cached_network_image: ^3.4.1
-
+  flutter_image_compress: ^2.4.0
+  path_provider: ^2.1.5
+  path: ^1.9.1
+  
   #local Storage
   shared_preferences: ^2.2.0
 
@@ -83,10 +86,10 @@ flutter:
     - assets/images/on_boarding/
     - assets/images/auth/
     - assets/images/home/
+    - assets/images/info/
     - assets/images/icons_images/
     - assets/images/departments/
     - assets/images/add_personal_information/
-
 
   fonts:
     - family: HelveticaLTArabic
