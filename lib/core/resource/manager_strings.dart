@@ -68,6 +68,9 @@ class ManagerStrings {
   static String contactUsOnWhatsapp = 'contact_us_on_whatsapp'.tr;
   static String aboutApplication = 'about_application'.tr;
 
+  //info strings
+  static String infoApplication = 'info_application'.tr;
+
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
   static String failedPickImage = 'failed_pick_image'.tr;
@@ -79,7 +82,6 @@ class ManagerStrings {
   static String cancel = 'cancel'.tr;
   static String messageWhatsapp = 'message_whatsapp'.tr;
   static String oopsThereIsSomethingWrong = 'oops_there_is_something_wrong'.tr;
-
 
   static String camera = 'camera'.tr;
   static String gallery = 'gallery'.tr;
