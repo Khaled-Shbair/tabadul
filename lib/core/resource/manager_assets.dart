@@ -42,6 +42,11 @@ class ManagerAssets {
   static const String furniture = '$_imagePath/home/furniture.svg';
   static const String motorcycle = '$_imagePath/home/motorcycle.svg';
   static const String phone = '$_imagePath/home/phone.svg';
+  
+  //info image
+  static const String info = '$_imagePath/info/info.svg';
+
+  static const String backgroundBoxInfo = '$_imagePath/info/background_box_info.svg';
 
   //////////////
   static const String addProduct = '$_imagePath/add_product.svg';
