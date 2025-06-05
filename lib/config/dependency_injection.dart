@@ -1,14 +1,20 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
+
 import 'all_imports.dart';
 
 final instance = GetIt.instance;
 
-Future<void> initModule() async {
+void initModule() async {
   WidgetsFlutterBinding.ensureInitialized();
   initNetworkInfo();
   await PrefController().initializeApp();
   await initFirebase();
   await initSharedPreference();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await FirebaseAppCheck.instance.activate(
+    androidProvider: AndroidProvider.debug,
+    appleProvider: AppleProvider.debug,
+  );
 }
 
 initNetworkInfo() async {
@@ -37,6 +43,12 @@ initSharedPreference() async {
 }
 
 initFirebase() async {
+  // if (!GetIt.I.isRegistered<FirebaseAppCheck>()) {
+  //   await FirebaseAppCheck.instance.activate(
+  //     androidProvider: AndroidProvider.playIntegrity,
+  //   );
+  // }
+
   if (!GetIt.I.isRegistered<FirebaseApp>()) {
     final firebase = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -52,6 +64,14 @@ initFirebase() async {
     instance.registerLazySingleton<FbAuthController>(
       () => FbAuthController(instance<FirebaseAuth>()),
     );
+  }
+  if (!GetIt.I.isRegistered<FirebaseStorage>()) {
+    instance
+        .registerLazySingleton<FirebaseStorage>(() => FirebaseStorage.instance);
+  }
+  if (!GetIt.I.isRegistered<FirebaseStorageController>()) {
+    instance.registerLazySingleton<FirebaseStorageController>(
+        () => FirebaseStorageController(instance<FirebaseStorage>()));
   }
   if (!GetIt.I.isRegistered<FirebaseFirestore>()) {
     instance.registerLazySingleton<FirebaseFirestore>(
@@ -257,5 +277,77 @@ disposeLogout() async {
   }
   if (GetIt.I.isRegistered<LogoutBloc>()) {
     instance.unregister<LogoutBloc>();
+  }
+}
+
+initEditProfile() {
+  if (!GetIt.I.isRegistered<RemoteProfileDataSource>()) {
+    instance.registerLazySingleton<RemoteProfileDataSource>(
+        () => RemoteProfileDataSourceImpl(
+              instance<FbFirestoreController>(),
+              instance<FirebaseStorageController>(),
+            ));
+  }
+  if (!GetIt.I.isRegistered<ProfileRepo>()) {
+    instance.registerLazySingleton<ProfileRepo>(() => ProfileRepoImpl(
+          instance<RemoteProfileDataSource>(),
+          instance<NetworkInfo>(),
+        ));
+  }
+  if (!GetIt.I.isRegistered<EditProfileBloc>()) {
+    instance.registerLazySingleton<EditProfileBloc>(() => EditProfileBloc(
+          instance<ProfileRepo>(),
+          instance<SharedPreferencesController>(),
+        ));
+  }
+}
+
+disposeEditProfile() {
+  if (GetIt.I.isRegistered<RemoteProfileDataSource>()) {
+    instance.unregister<RemoteProfileDataSource>();
+  }
+  if (GetIt.I.isRegistered<ProfileRepo>()) {
+    instance.unregister<ProfileRepo>();
+  }
+  if (GetIt.I.isRegistered<EditProfileBloc>()) {
+    instance.unregister<EditProfileBloc>();
+  }
+}
+
+initNotifications() {
+  if (!GetIt.I.isRegistered<RemoteNotificationsDataSource>()) {
+    instance.registerLazySingleton<RemoteNotificationsDataSource>(
+      () =>
+          RemoteNotificationsDataSourceImpl(instance<FbFirestoreController>()),
+    );
+  }
+  if (!GetIt.I.isRegistered<NotificationsRepo>()) {
+    instance.registerLazySingleton<NotificationsRepo>(
+      () => NotificationsRepoImpl(
+        instance<RemoteNotificationsDataSource>(),
+        instance<NetworkInfo>(),
+      ),
+    );
+  }
+  if (!GetIt.I.isRegistered<NotificationsBloc>()) {
+    instance.registerLazySingleton<NotificationsBloc>(
+      () => NotificationsBloc(
+        instance<NotificationsRepo>(),
+        instance<SharedPreferencesController>(),
+        instance<InternetConnection>(),
+      ),
+    );
+  }
+}
+
+disposeNotifications() {
+  if (GetIt.I.isRegistered<RemoteNotificationsDataSource>()) {
+    instance.unregister<RemoteNotificationsDataSource>();
+  }
+  if (GetIt.I.isRegistered<NotificationsRepo>()) {
+    instance.unregister<NotificationsRepo>();
+  }
+  if (GetIt.I.isRegistered<NotificationsBloc>()) {
+    instance.unregister<NotificationsBloc>();
   }
 }
