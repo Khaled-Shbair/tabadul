@@ -71,6 +71,9 @@ class ManagerStrings {
   //info strings
   static String infoApplication = 'info_application'.tr;
 
+  //notifications string
+    static String notifications = 'notifications'.tr;
+
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
   static String failedPickImage = 'failed_pick_image'.tr;
@@ -87,4 +90,5 @@ class ManagerStrings {
   static String gallery = 'gallery'.tr;
   static String personalImage = 'personal_image'.tr;
   static String noDataHasBeenModified = 'no_data_has_been_modified'.tr;
+  static String noNotifications = 'no_notifications'.tr;
 }

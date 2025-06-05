@@ -78,7 +78,7 @@ const Map<String, String> ar = {
   'failed_pick_image': 'فشل تحميل الصورة',
   'no_result_found': 'لا توجد نتائج',
   'no_data_has_been_modified': 'لم يتم تعديل أي بيانات',
-
+  'no_notifications': 'لا يوجد إشعارات',
   'search': 'بحث',
   'message_whatsapp': 'مرحبا، كيف يمكنني مساعدتك؟',
   'cancel': 'إلغاء',
