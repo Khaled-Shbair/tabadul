@@ -173,8 +173,15 @@ export '/feature/profile/data/data_source/remote_profile_data_source.dart';
 //info feature
 export '/feature/info/view/screens/info_screen.dart';
 
+//notifications feature
+export '/feature/notifications/data/repo/notifications_repo.dart';
+export '/feature/notifications/controller/notifications_bloc.dart';
+export '/feature/notifications/view/screens/notifications_screen.dart';
+export '/feature/notifications/data/request/notifications_request.dart';
+export '/feature/notifications/data/response/notifications_response.dart';
+export '/feature/notifications/data/data_source/remote_notifications_data_source.dart';
+
 ////////////////////////////////
 
-export 'package:tabadul/Widget/custom_menu_choose.dart';
-export '/feature/notifications/view/screens/notifications_screen.dart';
+export '/Widget/custom_menu_choose.dart';
 export '/Screen/Provide_Service_Screen/List_Provide_Service_Screen.dart';
