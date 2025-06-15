@@ -72,4 +72,11 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
       },
     );
   }
+
+  @override
+  Future<void> close() async {
+    _internetSubscription?.cancel();
+    await _internetSubscription?.cancel();
+    return super.close();
+  }
 }

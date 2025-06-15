@@ -91,7 +91,7 @@ class NotificationsScreen extends StatelessWidget with CustomToast {
                 },
               );
             } else if (state is NotificationsLoading) {
-              return Center(child: CustomLoading());
+              return CustomLoading();
             }
             return Center(
               child: Text(
