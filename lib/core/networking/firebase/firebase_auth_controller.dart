@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import '/config/all_imports.dart';
 
 class FbAuthController {
@@ -28,16 +26,13 @@ class FbAuthController {
       codeAutoRetrievalTimeout: (String verificationId) {},
       verificationFailed: (FirebaseAuthException error) {},
       forceResendingToken: resendToken,
-
     );
 
     return completer.future;
   }
 
   Future<VerifySecurityCodeResponse> verifySecurityCode(
-    String code,
-    String verificationId,
-  ) async {
+      String code, String verificationId) async {
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
       verificationId: verificationId,
       smsCode: code,
@@ -55,7 +50,7 @@ class FbAuthController {
         result = true;
         PrefController().login = true;
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       debugPrint('FirebaseAuthException');
     } catch (e) {
       debugPrint('catch');
@@ -63,10 +58,17 @@ class FbAuthController {
     return result;
   }
 
-  Future<void> logout() async => await _auth.signOut();
-
-  User getLoggedInUser() {
-    User firebaseUser = _auth.currentUser!;
-    return firebaseUser;
+  Future<bool> logout() async {
+    try {
+      await _auth.signOut();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
+
+  // User getLoggedInUser() {
+  //   User firebaseUser = _auth.currentUser!;
+  //   return firebaseUser;
+  // }
 }
