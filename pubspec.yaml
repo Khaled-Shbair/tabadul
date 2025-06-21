@@ -88,8 +88,10 @@ flutter:
     - assets/images/home/
     - assets/images/info/
     - assets/images/icons_images/
-    - assets/images/departments/
     - assets/images/add_personal_information/
+    - assets/images/add_and_buy_product/
+
+    
 
   fonts:
     - family: HelveticaLTArabic
