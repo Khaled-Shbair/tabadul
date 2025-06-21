@@ -20,8 +20,6 @@ class CustomMainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = context.read<MainBloc>();
-    
-    
     return Scaffold(
       bottomNavigationBar: Container(
         height: ManagerHeight.h49,

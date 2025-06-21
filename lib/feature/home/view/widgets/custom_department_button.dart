@@ -5,17 +5,20 @@ class CustomDepartmentBox extends StatelessWidget {
     super.key,
     required this.pathImage,
     required this.nameDepartment,
+    required this.tableName,
   });
 
   final String nameDepartment;
+  final String tableName;
   final String pathImage;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.pushNamed(Routes.addAndBuyScreen, arguments: nameDepartment);
-      },
+      onTap: () => context.pushNamed(
+        Routes.shopAndAddProductScreen,
+        arguments: [nameDepartment, tableName],
+      ),
       child: Container(
         decoration: BoxDecoration(
           color: context.theme.colorScheme.secondary,
