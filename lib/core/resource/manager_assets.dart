@@ -26,7 +26,6 @@ class ManagerAssets {
   //add personal information images
   static const String addPersonalInformation =
       '$_imagePath/add_personal_information/add_personal_information.svg';
-
   static const String addedPersonalInformationSuccessfully =
       '$_imagePath/add_personal_information/added_successfully.svg';
   static const String partyDecoration =
@@ -42,28 +41,33 @@ class ManagerAssets {
   static const String furniture = '$_imagePath/home/furniture.svg';
   static const String motorcycle = '$_imagePath/home/motorcycle.svg';
   static const String phone = '$_imagePath/home/phone.svg';
-  
+
   //info image
   static const String info = '$_imagePath/info/info.svg';
+  static const String backgroundBoxInfo =
+      '$_imagePath/info/background_box_info.svg';
 
-  static const String backgroundBoxInfo = '$_imagePath/info/background_box_info.svg';
+  //add and buy product images paths
+  static const String addProduct = '$_imagePath/add_and_buy_product/add_product.svg';
+  static const String answerIsYes = '$_imagePath/add_and_buy_product/answer_is_yes.svg';
+  static const String readyToReceive = '$_imagePath/add_and_buy_product/ready_to_receive.svg';
+  static const String waitToReceive = '$_imagePath/add_and_buy_product/wait_to_receive.svg';
+  static const String addedProductSuccessfully =
 
-  //////////////
-  static const String addProduct = '$_imagePath/add_product.svg';
+      '$_imagePath/add_and_buy_product/added_product_successfully.svg';
 
   //icons image
   static const String homeIcon = '$_imagePath/icons_images/home_icon.svg';
   static const String closeIcon = '$_imagePath/icons_images/close_icon.svg';
-  static const String notificationIcon =
-      '$_imagePath/icons_images/notification_icon.svg';
   static const String userIcon = '$_imagePath/icons_images/user_icon.svg';
   static const String infoIcon = '$_imagePath/icons_images/info_icon.svg';
-
   static const String logoutIcon = '$_imagePath/icons_images/logout_icon.svg';
   static const String profileProvideServiceIcon =
       '$_imagePath/icons_images/profile_provide_service_icon.svg';
   static const String whatsAppIcon =
       '$_imagePath/icons_images/whatsapp_icon.svg';
+  static const String notificationIcon =
+      '$_imagePath/icons_images/notification_icon.svg';
   static const String registerAsServiceProviderIcon =
       '$_imagePath/icons_images/register_as_service_provider_icon.svg';
 

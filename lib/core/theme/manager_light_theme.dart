@@ -18,6 +18,7 @@ ThemeData managerLightTheme() {
       secondary: ManagerColors.antiFlashWhite,
       onSecondary: ManagerColors.primaryColor,
       shadow: ManagerColors.primaryColor.withAlpha(80),
+
       /// color of box in [Profile] screen
       primaryContainer: ManagerColors.ghostWhite,
 
@@ -145,5 +146,20 @@ ThemeData managerLightTheme() {
       actionTextColor: ManagerColors.white,
     ),
     textTheme: ManagerTextThemeLight(),
+    tabBarTheme: TabBarTheme(
+      dividerColor: ManagerColors.transparent,
+      unselectedLabelColor: ManagerColors.primaryColor,
+      labelStyle: ManagerTextStyles.font15AntiFlashWhiteBold,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicator: BoxDecoration(
+        color: ManagerColors.primaryColor,
+        borderRadius: BorderRadius.circular(ManagerRadius.r22),
+      ),
+    ),
+    listTileTheme: ListTileThemeData(
+      titleTextStyle: ManagerTextStyles.font12PrimaryColorBold,
+      subtitleTextStyle: ManagerTextStyles.font12PrimaryColorRegular,
+      
+    ),
   );
 }

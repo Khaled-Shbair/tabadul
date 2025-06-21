@@ -22,6 +22,13 @@ class ManagerTextStyles {
     fontWeight: ManagerFontWeight.bold,
     color: ManagerColors.black,
   );
+  static TextStyle font15AntiFlashWhiteBold = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f15,
+    fontWeight: ManagerFontWeight.bold,
+    color: ManagerColors.antiFlashWhite,
+    
+  );
+
 
   static TextStyle font15WhiteBold = _mainTextStyle(
     fontSize: ManagerFontsSizes.f15,
@@ -94,5 +101,18 @@ class ManagerTextStyles {
     color: ManagerColors.primaryColor,
     fontWeight: ManagerFontWeight.bold,
     fontFamily: ManagerFontFamily.kHelveticaL,
+  );
+
+    static TextStyle font12PrimaryColorRegular = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f12,
+    fontWeight: ManagerFontWeight.regular,
+    color: ManagerColors.primaryColor,
+    fontFamily: ManagerFontFamily.kHelveticaLNeeL,
+  );
+    static TextStyle font12PrimaryColorBold = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f12,
+    fontWeight: ManagerFontWeight.bold,
+    color: ManagerColors.primaryColor,
+    fontFamily: ManagerFontFamily.kHelveticaLNeeL,
   );
 }
