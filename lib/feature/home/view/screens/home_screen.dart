@@ -30,6 +30,7 @@ class HomeScreen extends StatelessWidget {
               return CustomDepartmentBox(
                 nameDepartment: _allDepartments[index].nameDepartment,
                 pathImage: _allDepartments[index].pathImage,
+                tableName: _allDepartments[index].tableName,
               );
             },
           ),
@@ -43,33 +44,41 @@ List<CustomDepartmentBox> _allDepartments = <CustomDepartmentBox>[
   CustomDepartmentBox(
     pathImage: ManagerAssets.furniture,
     nameDepartment: ManagerStrings.furnitureDepartment,
+    tableName: FirebaseConstants.furnitureDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.carpet,
     nameDepartment: ManagerStrings.carpetsAndMattressesDepartment,
+    tableName: FirebaseConstants.carpetsAndMattressesDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.phone,
     nameDepartment: ManagerStrings.phoneDepartment,
+    tableName: FirebaseConstants.phoneDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.computer,
     nameDepartment: ManagerStrings.computerDepartment,
+    tableName: FirebaseConstants.computerDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.motorcycle,
     nameDepartment: ManagerStrings.motorcycleDepartment,
+    tableName: FirebaseConstants.motorcycleDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.bicycle,
     nameDepartment: ManagerStrings.bicycleDepartment,
+    tableName: FirebaseConstants.bicycleDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.car,
     nameDepartment: ManagerStrings.carDepartment,
+    tableName: FirebaseConstants.carDepartmentTable,
   ),
   CustomDepartmentBox(
     pathImage: ManagerAssets.electricMachines,
     nameDepartment: ManagerStrings.electricMachinesDepartment,
+    tableName: FirebaseConstants.electricMachinesDepartmentTable,
   ),
 ];
