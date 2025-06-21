@@ -15,6 +15,7 @@ void customImageSelectionBox(
       return BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
         child: BottomSheet(
+          enableDrag: false,
           backgroundColor: context.theme.colorScheme.secondary,
           elevation: 4,
           shape: RoundedRectangleBorder(
