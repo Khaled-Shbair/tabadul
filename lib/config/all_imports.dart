@@ -7,6 +7,7 @@ export 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 export 'package:percent_indicator/circular_percent_indicator.dart';
 export 'package:dartz/dartz.dart' hide State, Order;
 export 'package:cloud_firestore/cloud_firestore.dart';
+export 'dart:io' hide HeaderValue;
 
 export 'package:url_launcher/url_launcher.dart';
 
@@ -54,7 +55,7 @@ export '/core/validator/validator.dart';
 export '/core/helper/url_launcher.dart';
 export '/core/widgets/custom_toast.dart';
 export '/core/language/translation.dart';
-export '/core/widgets/custom_appBar.dart';
+export '../core/widgets/custom_app_bar.dart';
 export '/core/extensions/extensions.dart';
 export '/core/service/theme_service.dart';
 export '/core/widgets/custom_button.dart';
@@ -113,6 +114,7 @@ export '/feature/auth/data/request/auth_request.dart';
 export '/feature/auth/data/response/auth_response.dart';
 export '/feature/auth/controller/create_account_bloc.dart';
 export '/feature/auth/view/screens/create_account_screen.dart';
+export '/feature/auth/view/widgets/custom_menu_choose_code_country.dart';
 export '/feature/auth/data/data_source/remote_auth_data_source.dart';
 export '/feature/auth/view/widgets/custom_enter_phone_number_filed.dart';
 
@@ -160,12 +162,11 @@ export '/feature/add_personal_information/data/data_source/remote_add_personal_i
 
 //profile feature
 export '/feature/profile/data/repo/profile_repo.dart';
-
-export '/feature/profile/view/screens/edit_profile_screen.dart';
 export '/feature/profile/view/screens/profile_screen.dart';
 export '/feature/profile/controller/edit_profile_bloc.dart'
     show EditProfileBloc;
 export '/feature/profile/view/widget/custom_personal_data.dart';
+export '/feature/profile/view/screens/edit_profile_screen.dart';
 export '/feature/profile/data/request/edit_profile_request.dart';
 export '/feature/profile/data/response/edit_profile_response.dart';
 export '/feature/profile/data/data_source/remote_profile_data_source.dart';
@@ -181,7 +182,27 @@ export '/feature/notifications/data/request/notifications_request.dart';
 export '/feature/notifications/data/response/notifications_response.dart';
 export '/feature/notifications/data/data_source/remote_notifications_data_source.dart';
 
-////////////////////////////////
+//products feature
+export '/feature/products/data/repo/products_repo.dart';
+export '/feature/products/controller/add_product_bloc.dart';
+export '/feature/products/controller/shop_products_bloc.dart';
+export '/feature/products/data/response/product_response.dart';
+export '/feature/products/data/response/products_response.dart';
+export '/feature/products/view/screens/add_product_screen.dart';
+export '/feature/buy_product/view/screens/answer_is_no_screen.dart';
+export '/feature/products/data/request/add_product_request.dart';
+export '/feature/products/data/request/get_products_request.dart';
+export '/feature/buy_product/view/screens/answer_is_yes_screen.dart';
+export '/feature/products/data/response/add_product_response.dart';
+export '/feature/products/view/widgets/custom_add_product_tap.dart';
+export '/feature/products/view/widgets/custom_image_of_product.dart';
+export '/feature/products/view/widgets/custom_shop_products_tap.dart';
+export '/feature/products/view/screens/shop_and_add_products_screen.dart';
+export '/feature/products/view/widgets/custom_box_of_product_details.dart';
+export '/feature/products/data/data_source/remote_products_data_source.dart';
+export '/feature/products/view/screens/added_product_successfully_screen.dart';
+export '/feature/products/view/widgets/custom_box_of_add_photo_of_product.dart';
 
-export '/Widget/custom_menu_choose.dart';
-export '/Screen/Provide_Service_Screen/List_Provide_Service_Screen.dart';
+//provides_services feature
+export '/feature/services_provides/controller/list_provides_services_bloc.dart';
+export '/feature/services_provides/view/screens/list_provides_services_screen.dart';
