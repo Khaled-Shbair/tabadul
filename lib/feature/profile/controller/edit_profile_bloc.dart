@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import '/config/all_imports.dart';
 
 part 'edit_profile_event.dart';

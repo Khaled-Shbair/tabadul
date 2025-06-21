@@ -1,7 +1,4 @@
-import 'dart:io';
-
-import 'package:tabadul/feature/profile/controller/edit_profile_bloc.dart'
-    as edit;
+import '/feature/profile/controller/edit_profile_bloc.dart' as edit;
 
 import '/config/all_imports.dart';
 
