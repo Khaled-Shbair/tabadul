@@ -18,10 +18,7 @@ class RouteGenerator {
         initLogin();
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.loginScreen),
-          builder: (context) => BlocProvider(
-            create: (context) => instance<LoginBloc>(),
-            child: LoginScreen(),
-          ),
+          builder: (context) => const LoginScreen(),
         );
       case Routes.createAccountScreen:
         initCreateAccount();
@@ -97,6 +94,44 @@ class RouteGenerator {
             create: (context) => instance<EditProfileBloc>(),
             child: EditProfileScreen(),
           ),
+        );
+      case Routes.shopAndAddProductScreen:
+        initShopAndAddProduct();
+        var arguments = settings.arguments as List;
+        String nameDepartment = arguments[0] as String;
+        String tableName = arguments[1] as String;
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.shopAndAddProductScreen),
+          builder: (context) => ShopAndAddProductsScreen(
+            nameDepartment: nameDepartment,
+            tableName: tableName,
+          ),
+        );
+      case Routes.addProductScreen:
+        initAddProduct();
+        var arguments = settings.arguments as List;
+        String tableName = arguments[0] as String;
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.shopAndAddProductScreen),
+          builder: (context) => BlocProvider(
+            create: (context) => instance<AddProductBloc>(),
+            child: AddProductScreen(tableName: tableName),
+          ),
+        );
+      case Routes.addedProductSuccessfullyScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.addedProductSuccessfullyScreen),
+          builder: (context) => const AddedProductSuccessfullyScreen(),
+        );
+      case Routes.answerIsYesScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.answerIsYesScreen),
+          builder: (context) => const AnswerIsYesScreen(),
+        );
+      case Routes.answerIsNoScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.answerIsNoScreen),
+          builder: (context) => const AnswerIsNoScreen(),
         );
       default:
         return unDefinedRoute();
