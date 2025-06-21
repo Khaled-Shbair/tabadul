@@ -10,6 +10,30 @@ class Validator {
     return null;
   }
 
+  static String? descriptionOfProductValidator(String? description) {
+    if (description == null || description.isEmpty || description.length < 30) {
+      return ManagerStrings.pleaseEnterProductName;
+    }
+
+    return null;
+  }
+
+  static String? priceValidator(String? price) {
+    if (price == null || price.isEmpty || price == '0') {
+      return ManagerStrings.pleaseEnterPriceOfProduct;
+    }
+
+    return null;
+  }
+
+  static String? productNameValidator(String? productName) {
+    if (productName == null || productName.isEmpty) {
+      return ManagerStrings.pleaseEnterProductName;
+    }
+
+    return null;
+  }
+
   static String? firstNameValidator(String? name) {
     if (name == null || name.isEmpty) {
       return ManagerStrings.pleaseEnterFirstName;
