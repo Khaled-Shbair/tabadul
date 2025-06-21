@@ -2,6 +2,7 @@ class FirebaseConstants {
   static const String usersTable = 'users';
   static const String citiesTable = 'cities';
   static const String regionsTable = 'regions';
+  static const String notificationsTable = 'notifications';
   static const String carDepartmentTable = 'car_department';
   static const String phoneDepartmentTable = 'phone_department';
   static const String bicycleDepartmentTable = 'bicycle_department';
@@ -24,4 +25,11 @@ class FirebaseConstants {
   static const String id = 'id';
   static const String nameAr = 'name_ar';
   static const String nameEn = 'name_en';
+  static const String content = 'content';
+  static const String createdAt = 'created_at';
+  static const String title = 'title';
+  static const String productName = 'product_name';
+  static const String price = 'price';
+  static const String description = 'description';
+  static const String images = 'images';
 }
