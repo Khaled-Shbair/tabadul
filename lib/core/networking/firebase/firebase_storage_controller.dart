@@ -1,4 +1,3 @@
-import 'dart:io';
 import '/config/all_imports.dart';
 
 class FirebaseStorageController {
@@ -24,5 +23,17 @@ class FirebaseStorageController {
       debugPrint("📌 Stack: $stack");
       return null;
     }
+  }
+
+  Future<List<String>> uploadMultipleImagesToFirebase(List<File> images) async {
+    List<String> downloadUrls = [];
+    for (var i in images) {
+      final url = await uploadImageToFirebase(i, 'product_images/$i.jpg');
+      if (url != null) {
+        downloadUrls.add(url);
+      }
+    }
+
+    return downloadUrls;
   }
 }
