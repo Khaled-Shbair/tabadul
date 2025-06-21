@@ -4,8 +4,7 @@ import 'all_imports.dart';
 
 final instance = GetIt.instance;
 
-void initModule() async {
-  WidgetsFlutterBinding.ensureInitialized();
+Future<void> initModule() async {
   initNetworkInfo();
   await PrefController().initializeApp();
   await initFirebase();
@@ -43,12 +42,6 @@ initSharedPreference() async {
 }
 
 initFirebase() async {
-  // if (!GetIt.I.isRegistered<FirebaseAppCheck>()) {
-  //   await FirebaseAppCheck.instance.activate(
-  //     androidProvider: AndroidProvider.playIntegrity,
-  //   );
-  // }
-
   if (!GetIt.I.isRegistered<FirebaseApp>()) {
     final firebase = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -111,11 +104,6 @@ initLogin() {
       ),
     );
   }
-  if (!GetIt.I.isRegistered<LoginBloc>()) {
-    instance.registerLazySingleton<LoginBloc>(
-      () => LoginBloc(instance<AuthRepo>()),
-    );
-  }
 }
 
 disposeLogin() {
@@ -124,9 +112,6 @@ disposeLogin() {
   }
   if (GetIt.I.isRegistered<AuthRepo>()) {
     instance.unregister<AuthRepo>();
-  }
-  if (GetIt.I.isRegistered<LoginBloc>()) {
-    instance.unregister<LoginBloc>();
   }
 }
 
@@ -333,7 +318,8 @@ initNotifications() {
     instance.registerLazySingleton<NotificationsBloc>(
       () => NotificationsBloc(
         instance<NotificationsRepo>(),
-        instance<SharedPreferencesController>(),
+        instance
+        <SharedPreferencesController>(),
         instance<InternetConnection>(),
       ),
     );
@@ -349,5 +335,63 @@ disposeNotifications() {
   }
   if (GetIt.I.isRegistered<NotificationsBloc>()) {
     instance.unregister<NotificationsBloc>();
+  }
+}
+
+initShopAndAddProduct() {
+  if (!GetIt.I.isRegistered<RemoteProductsDataSource>()) {
+    instance.registerLazySingleton<RemoteProductsDataSource>(
+      () => RemoteProductsDataSourceImpl(instance<FbFirestoreController>(),
+      instance<FirebaseStorageController>()
+      ),
+    );
+  }
+  if (!GetIt.I.isRegistered<ProductsRepo>()) {
+    instance.registerLazySingleton<ProductsRepo>(
+      () => ProductsRepoImpl(
+        instance<RemoteProductsDataSource>(),
+        instance<NetworkInfo>(),
+      ),
+    );
+  }
+}
+
+disposeShopAndAddProduct() {
+  if (GetIt.I.isRegistered<RemoteProductsDataSource>()) {
+    instance.unregister<RemoteProductsDataSource>();
+  }
+  if (GetIt.I.isRegistered<ProductsRepo>()) {
+    instance.unregister<ProductsRepo>();
+  }
+}
+
+initShopProducts() {
+  if (!GetIt.I.isRegistered<ShopProductsBloc>()) {
+    instance.registerLazySingleton<ShopProductsBloc>(
+      () => ShopProductsBloc(
+        instance<ProductsRepo>(),
+        instance<InternetConnection>(),
+      ),
+    );
+  }
+}
+
+disposeShopProducts() {
+  if (GetIt.I.isRegistered<ShopProductsBloc>()) {
+    instance.unregister<ShopProductsBloc>();
+  }
+}
+
+initAddProduct() {
+  if (!GetIt.I.isRegistered<AddProductBloc>()) {
+    instance.registerLazySingleton<AddProductBloc>(
+      () => AddProductBloc(instance<ProductsRepo>()),
+    );
+  }
+}
+
+disposeAddProduct() {
+  if (GetIt.I.isRegistered<AddProductBloc>()) {
+    instance.unregister<AddProductBloc>();
   }
 }
