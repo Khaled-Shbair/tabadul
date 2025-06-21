@@ -5,7 +5,7 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.textEditingController,
     this.keyboardType = TextInputType.datetime,
-     this.hintText,
+    this.hintText,
     this.maxLength,
     this.focusNode,
     this.validator,
@@ -17,6 +17,8 @@ class CustomTextField extends StatelessWidget {
     this.helperText,
     this.hintTextStyle,
     this.helperStyle,
+    this.hintMaxLines,
+    this.maxLines = 1,
     this.enabled = true,
     this.errorText,
     this.textInputStyle,
@@ -45,6 +47,8 @@ class CustomTextField extends StatelessWidget {
   final InputBorder? errorBorder;
   final TextInputAction? textInputAction;
   final Function(String)? onFieldSubmitted;
+  final int maxLines;
+  final int? hintMaxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +58,7 @@ class CustomTextField extends StatelessWidget {
       onChanged: onChanged,
       focusNode: focusNode,
       maxLength: maxLength,
+      maxLines: maxLines,
       textAlign: textAlign,
       expands: expands,
       autofocus: autofocus,
@@ -68,10 +73,14 @@ class CustomTextField extends StatelessWidget {
             color: context.theme.primaryColor,
           ),
       decoration: InputDecoration(
-        enabled:enabled,
+        enabled: enabled,
+      
         errorText: errorText,
         hintText: hintText,
+        helperMaxLines: 1,
+        
         isDense: true,
+        hintMaxLines: hintMaxLines,
         counterText: '',
         helperText: helperText,
         helperStyle: helperStyle,
