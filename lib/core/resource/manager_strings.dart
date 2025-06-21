@@ -71,8 +71,38 @@ class ManagerStrings {
   //info strings
   static String infoApplication = 'info_application'.tr;
 
-  //notifications string
-    static String notifications = 'notifications'.tr;
+  //notifications strings
+  static String notifications = 'notifications'.tr;
+
+  //add_and_buy_product strings
+  static String add = 'add'.tr;
+  static String buy = 'buy'.tr;
+  static String addProduct = 'add_product'.tr;
+  static String productDetails = 'product_details'.tr;
+  static String addedProductSuccessfully = 'added_product_successfully'.tr;
+  static String nameProduct = 'name_product'.tr;
+  static String price = 'price'.tr;
+  static String descriptionOfProduct = 'description_of_product'.tr;
+  static String timeHasBeenSetSuccessfully =
+      'the_time_has_been_set_successfully'.tr;
+  static String titleAnswerIsNoScreen = 'title_answer_is_no_screen'.tr;
+  static String done = 'done'.tr;
+  static String titleAnswerIsYesScreen = 'title_answer_is_yes_screen'.tr;
+  static String buyNow = 'buy_now'.tr;
+  static String pleaseAddProductImage = 'please_add_product_image'.tr;
+    static String shekel = 'shekel'.tr;
+        static String name = 'name'.tr;
+                static String description = 'description'.tr;
+
+
+
+  //services provides strings
+  static String listServiceProvide = 'list_service_provide'.tr;
+  static String profileServiceProvide = 'profile_service_provide'.tr;
+  static String registerAsServiceProvide = 'register_as_service_provide'.tr;
+  static String editProfileServiceProvide = 'edit_profile_service_provide'.tr;
+  static String noServicesProvides = 'no_services_provides'.tr;
+  static String call = 'call'.tr;
 
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
@@ -81,6 +111,7 @@ class ManagerStrings {
   static String invalidVerificationCode = 'invalid_verification_code'.tr;
   static String badRequest = 'bad_request'.tr;
   static String noData = 'no_data'.tr;
+  static String successfully = 'successfully'.tr;
 
   static String cancel = 'cancel'.tr;
   static String messageWhatsapp = 'message_whatsapp'.tr;
@@ -91,4 +122,9 @@ class ManagerStrings {
   static String personalImage = 'personal_image'.tr;
   static String noDataHasBeenModified = 'no_data_has_been_modified'.tr;
   static String noNotifications = 'no_notifications'.tr;
+  static String noMore = 'no_more'.tr;
+  static String pleaseEnterProductName = 'please_enter_product_name'.tr;
+  static String pleaseEnterPriceOfProduct = 'please_enter_price_of_product'.tr;
+  static String pleaseEnterDescriptionOfProduct =
+      'please_enter_description_of_product'.tr;
 }

@@ -50,16 +50,18 @@ const Map<String, String> ar = {
   'car_department': 'قسم السيارات',
   'electric_machines_department': 'قسم الأجهزة الكهربائية',
 
-//menu stringa
+//menu strings
   'profile': 'الملف الشخصي',
   'list_provide_service': 'قائمة مزودي الخدمات',
   'profile_provide_service': 'الملف الشخصي(مزود الخدمات)',
   'contact_us_on_whatsapp': 'راسلنا على الواتس',
   'about_application': 'عن التطبيق',
 
-//logout string
+// logout strings
   'logout': 'تسجيل خروج',
   'do_you_want_logout_of_your_account': 'هل تريد تسجيل الخروج\nمن الحساب ؟',
+// notifications strings,
+  'notifications': 'الإشعارات',
 
 // info strings
   'info_application':
@@ -71,6 +73,35 @@ const Map<String, String> ar = {
   'camera': 'الكاميرا',
   'gallery': 'المعرض',
 
+//add and buy product strings
+  'add': 'إضافة',
+  'buy': 'شراء',
+  'product_details': 'تفاصيل السلعة',
+  'added_product_successfully': 'لقد تم إضافة السلعة بنجاح',
+  'add_product': 'إضافة سلعة',
+  'name_product': 'اسم السلعة',
+  'price': 'السعر',
+  'description_of_product': 'وصف عن السلعة',
+  'the_time_has_been_set_successfully':
+      'لقد تم تحديد الوقت بنجاح الرجاء الانتظار حتى انتهاء الوقت للاستلام',
+  'title_answer_is_no_screen': 'حدد الوقت الذي تريده خلال 24 ساعة فقط',
+  'done': 'تم',
+  'title_answer_is_yes_screen':
+      'أهلاً وسهلاً بك عزيزي سيتم التواصل معك خلال ساعات',
+  'buy_now': 'شراء الآن',
+  'please_add_product_image': 'يرجي إضافة صور المنتج',
+  'shekel': 'شيكل',
+  'name':'الاسم',
+    'description':'الوصف',
+
+
+//services_provides string
+  'list_service_provide': 'قائمة مزودي الخدمات',
+  'profile_service_provide': 'الملف الشخصي(مزود الخدمة)',
+  'register_as_service_provide': 'تسجيل كمزود خدمة',
+  'edit_profile_service_provide': 'تعديل الملف الشخصي(مزود الخدمة)',
+  'no_services_provides': 'لا يوجد مزودي خدمات',
+  'call': 'اتصل',
 //errors messages
   'no_internet_connection': 'لا يوجد اتصال بالإنترنت',
   'no_data': 'لا يوجد بيانات',
@@ -82,18 +113,10 @@ const Map<String, String> ar = {
   'search': 'بحث',
   'message_whatsapp': 'مرحبا، كيف يمكنني مساعدتك؟',
   'cancel': 'إلغاء',
+  'successfully': 'تمت بنجاح',
+  'please_enter_product_name': 'يرجي إدخال اسم المنتج',
+  'please_enter_price_of_product': 'يرجي إدخال سعر المنتج',
+  'please_enter_description_of_product': 'يرجي إدخال وصف عن المنتج',
 
 ////////////////////////////////////////////////
-  'the_time_has_been_set_successfully':
-      'لقد تم تحديد الوقت بنجاح الرجاء الانتظار حتى انتهاء الوقت للاستلام',
-  'notifications': 'الإشعارات',
-
-  'add': 'إضافة',
-  'buy': 'شراء',
-  'added_successfully': 'لقد تم إضافة السلعة\nبنجاح',
-  'add_product': 'إضافة سلعة',
-  'name_product': 'اسم السلعة',
-  'price': 'السعر',
-  'description_of_product': 'وصف عن السلعة',
-  'call': 'اتصل',
 };
