@@ -1,9 +1,4 @@
-import 'package:tabadul/feature/add_personal_information/data/response/cities_response.dart';
-
 import '/config/all_imports.dart';
-
-import '../../../config/constants/tables.dart';
-import '../../../models/product_model.dart';
 
 class FbFirestoreController {
   final FirebaseFirestore _firestore;
@@ -26,6 +21,18 @@ class FbFirestoreController {
     }
   }
 
+  Future<EditProfileResponse> editProfile(EditProfileRequest request) async {
+    try {
+      await _firestore
+          .collection(FirebaseConstants.usersTable)
+          .doc(request.phoneNumber)
+          .update(request.toMap());
+      return EditProfileResponse(status: true);
+    } catch (e) {
+      return EditProfileResponse(status: false, error: e.toString());
+    }
+  }
+
   Future<AuthResponse> isUserExists(String phoneNumber) async {
     try {
       DocumentSnapshot<Map<String, dynamic>> snapshot = await _firestore
@@ -38,28 +45,27 @@ class FbFirestoreController {
     }
   }
 
-  Future<AuthResponse?> getUserData(String phoneNumber) async {
+  Future<UserModel?> getUserData(String phoneNumber) async {
     var snapshot = await _firestore
         .collection(FirebaseConstants.usersTable)
         .doc(phoneNumber)
         .get();
     if (snapshot.exists && snapshot.data() != null) {
-      // return AuthResponse.fromMap(snapshot.data()!);
+      return UserModel.formMap(snapshot.data()!);
     } else {
       return null;
     }
   }
 
-  Future<CitiesResponse> getCities() async {
+  Future<CitiesModel> getCities() async {
     try {
       var snapshot =
           await _firestore.collection(FirebaseConstants.citiesTable).get();
       if (snapshot.docs.isNotEmpty) {
-        List<CityResponse> cities = snapshot.docs
-            .map((doc) => CityResponse.fromMap(doc.data()))
-            .toList();
+        List<CityModel> cities =
+            snapshot.docs.map((doc) => CityModel.fromMap(doc.data())).toList();
 
-        return CitiesResponse(cities: cities);
+        return CitiesModel(cities: cities);
       } else {
         throw Exception(ManagerStrings.noData);
       }
@@ -68,16 +74,16 @@ class FbFirestoreController {
     }
   }
 
-  Future<RegionsResponse> getRegions() async {
+  Future<RegionsModel> getRegions() async {
     try {
       var snapshot =
           await _firestore.collection(FirebaseConstants.regionsTable).get();
       if (snapshot.docs.isNotEmpty) {
-        List<RegionResponse> regions = snapshot.docs
-            .map((doc) => RegionResponse.fromMap(doc.data()))
+        List<RegionModel> regions = snapshot.docs
+            .map((doc) => RegionModel.fromMap(doc.data()))
             .toList();
 
-        return RegionsResponse(regions: regions);
+        return RegionsModel(regions: regions);
       } else {
         throw Exception(ManagerStrings.noData);
       }
@@ -86,127 +92,86 @@ class FbFirestoreController {
     }
   }
 
-  Future<void> addToFurnitureDepartment(ProductModel product) async {
-    await _firestore.collection(furnitureDepartmentTable).add(product.toMap());
+  Future<NotificationsResponse> getNotifications(
+    String id,
+    DocumentSnapshot? lastDocument,
+  ) async {
+    try {
+      var query = _firestore
+          .collection(FirebaseConstants.usersTable)
+          .doc(id)
+          .collection(FirebaseConstants.notificationsTable)
+          .orderBy(FirebaseConstants.createdAt, descending: true)
+          .limit(15);
+      if (lastDocument != null) {
+        query = query.startAfterDocument(lastDocument);
+      }
+      var snapshot = await query.get();
+      if (snapshot.docs.isNotEmpty) {
+        List<NotificationResponse> notifications = snapshot.docs
+            .map((doc) => NotificationResponse.fromMap(doc.data(), doc.id))
+            .toList();
+        return NotificationsResponse(notifications,
+            snapshot.docs.isNotEmpty ? snapshot.docs.last : null);
+      } else {
+        return NotificationsResponse([]);
+      }
+    } catch (e) {
+      throw Exception(ManagerStrings.oopsThereIsSomethingWrong);
+    }
   }
 
-  Future<void> getFurnitureDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(furnitureDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
+  Future<ProductsResponse> getProducts(
+    String departmentName,
+    DocumentSnapshot? lastDocument,
+  ) async {
+    try {
+      var query = _firestore
+          .collection(departmentName)
+          .orderBy(FirebaseConstants.createdAt, descending: true)
+          .limit(15);
+
+      if (lastDocument != null) {
+        query = query.startAfterDocument(lastDocument);
+      }
+
+      var snapshot = await query.get();
+      debugPrint('Fetched ${snapshot.docs.length} products');
+
+      if (snapshot.docs.isNotEmpty) {
+        List<ProductResponse> products = snapshot.docs
+            .map((doc) => ProductResponse.fromMap(doc.data()))
+            .toList();
+
+        return ProductsResponse(
+          lastDocument: snapshot.docs.last,
+          message: ManagerStrings.successfully,
+          status: true,
+          products: products,
+        );
+      } else {
+        return ProductsResponse(
+          message: ManagerStrings.noMore,
+          status: false,
+          products: [],
+        );
+      }
+    } catch (e) {
+      throw Exception(ManagerStrings.oopsThereIsSomethingWrong);
+    }
   }
 
-  Future<void> addToCarpetsAndMattressesDepartment(ProductModel product) async {
-    await _firestore
-        .collection(carpetsAndMattressesDepartmentTable)
-        .add(product.toMap());
-  }
-
-  Future<void> getCarpetsAndMattressesDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(carpetsAndMattressesDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
-  }
-
-  Future<void> addToPhoneDepartment(ProductModel product) async {
-    await _firestore.collection(phoneDepartmentTable).add(product.toMap());
-  }
-
-  Future<void> getPhoneDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(phoneDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
-  }
-
-  Future<void> addToComputerDepartment(ProductModel product) async {
-    await _firestore.collection(computerDepartmentTable).add(product.toMap());
-  }
-
-  Future<void> getComputerDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(computerDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
-  }
-
-  Future<void> addToMotorcycleDepartment(ProductModel product) async {
-    await _firestore.collection(motorcycleDepartmentTable).add(product.toMap());
-  }
-
-  Future<void> getMotorcycleDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(motorcycleDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
-  }
-
-  Future<void> addToBicycleDepartment(ProductModel product) async {
-    await _firestore.collection(bicycleDepartmentTable).add(product.toMap());
-  }
-
-  Future<void> getBicycleDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(bicycleDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
-  }
-
-  Future<void> addToCarDepartment(ProductModel product) async {
-    await _firestore.collection(carDepartmentTable).add(product.toMap());
-  }
-
-  Future<void> getCarDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(carDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
-  }
-
-  Future<void> addToElectricMachinesDepartment(ProductModel product) async {
-    await _firestore
-        .collection(electricMachinesDepartmentTable)
-        .add(product.toMap());
-  }
-
-  Future<void> getElectricMachinesDepartment({
-    required Function(QuerySnapshot<Map<String, dynamic>>) then,
-    required Function(Object) catchError,
-  }) async {
-    await _firestore
-        .collection(electricMachinesDepartmentTable)
-        .get()
-        .then(then)
-        .catchError(catchError);
+  Future<AddProductResponse> addProduct(AddProductRequest product) async {
+    try {
+      await _firestore
+          .collection(product.tableName)
+          .doc()
+          .set(product.toJson());
+      return AddProductResponse(
+          message: ManagerStrings.successfully, status: true);
+    } catch (e) {
+      return AddProductResponse(
+          message: ManagerStrings.badRequest, status: false);
+    }
   }
 }
