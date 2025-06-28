@@ -135,7 +135,7 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
     if (formKey.currentState!.validate()) {
       String? imagePath = state.image;
       emit(EditProfileLoading(image: state.image));
-      var request = EditProfileRequest(
+      var request = UserModel(
         firstName: firstName.text.trim() ==
                 _sharedPref.getString(SharedPreferenceKeys.firstName)
             ? null
@@ -144,14 +144,14 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
                 _sharedPref.getString(SharedPreferenceKeys.lastName)
             ? null
             : lastName.text.trim(),
-        region: selectedRegion ==
+        regionAndStreet: selectedRegion ==
                 _sharedPref.getString(SharedPreferenceKeys.regionAndStreet)
             ? null
             : selectedRegion,
         city: selectedCity == _sharedPref.getString(SharedPreferenceKeys.city)
             ? null
             : selectedCity,
-        uploadImage:
+        updateImage:
             imagePath == _sharedPref.getString(SharedPreferenceKeys.image)
                 ? null
                 : File(imagePath),
@@ -159,9 +159,9 @@ class EditProfileBloc extends Bloc<EditProfileEvent, EditProfileState> {
       );
       if (request.firstName == null &&
           request.lastName == null &&
-          request.region == null &&
+          request.regionAndStreet == null &&
           request.city == null &&
-          request.uploadImage == null) {
+          request.updateImage == null) {
         emit(EditProfileFailure(ManagerStrings.noDataHasBeenModified,
             image: state.image));
         return;

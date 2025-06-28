@@ -1,7 +1,7 @@
 import '/config/all_imports.dart';
 
 abstract class RemoteProfileDataSource {
-  Future<EditProfileResponse> editProfile(EditProfileRequest request);
+  Future<EditProfileResponse> editProfile(UserModel request);
 
   Future<String?> editImageProfile(File image, String phoneNumber);
 
@@ -18,7 +18,8 @@ class RemoteProfileDataSourceImpl extends RemoteProfileDataSource {
 
   @override
   Future<String?> editImageProfile(File image, String phoneNumber) async {
-    return await _storage.uploadImageToFirebase(image, phoneNumber);
+    return await _storage.uploadImageToFirebase(
+        image, FirebaseConstants.profileImages, phoneNumber);
   }
 
   @override

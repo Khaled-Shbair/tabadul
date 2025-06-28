@@ -1,8 +1,7 @@
 import '/config/all_imports.dart';
 
 abstract class ProfileRepo {
-  Future<Either<Failure, EditProfileResponse>> editProfile(
-      EditProfileRequest request);
+  Future<Either<Failure, EditProfileResponse>> editProfile(UserModel request);
 
   Future<Either<Failure, CitiesModel>> getCities();
 
@@ -20,18 +19,18 @@ class ProfileRepoImpl extends ProfileRepo {
     if (await _networkInfo.isConnected) {
       try {
         String? pathImage;
-        if (request.uploadImage != null) {
+        if (request.updateImage != null) {
           final compressed =
-              await ImageCompressor.compressImage(request.uploadImage!);
+              await ImageCompressor.compressImage(request.updateImage!);
           if (compressed != null) {
             pathImage = await _dataSource.editImageProfile(
-                compressed, request.phoneNumber);
+                compressed, request.phoneNumber!);
           }
         }
 
         if (pathImage != null) {
           request.image = pathImage;
-          request.uploadImage = null;
+          request.updateImage = null;
         }
         var response = await _dataSource.editProfile(request);
         if (response.status == true) {
