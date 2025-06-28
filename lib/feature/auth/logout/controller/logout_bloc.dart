@@ -11,7 +11,7 @@ class LogoutBloc extends Bloc<LogoutEvent, LogoutState> {
 
   final SharedPreferencesController _sharedPref;
 
-  final LogoutRepo _repo;
+  final AuthRepo _repo;
 
   void _logoutProcess(LogoutProcess event, Emitter emit) async {
     emit(LogoutLoading());

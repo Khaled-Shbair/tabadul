@@ -28,6 +28,7 @@ class LogoutScreen extends StatelessWidget with CustomToast {
           functionLeadingButton: () {
             Navigator.pop(context);
             disposeLogout();
+            disposeAuth();
           },
           functionActionButton: () {
             ZoomDrawer.of(context)?.open();

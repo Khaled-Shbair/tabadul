@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (_, state) {
         if (state is LoginSuccessfully) {
-          Navigator.pop(context);
+          Navigator.of(context, rootNavigator: true).pop();
           Navigator.pushNamed(
             context,
             Routes.securityCodeScreen,
@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
           customLoading(context);
         }
         if (state is LoginFailure) {
-          Navigator.pop(context);
+          Navigator.of(context, rootNavigator: true).pop();
         }
       },
       child: Scaffold(

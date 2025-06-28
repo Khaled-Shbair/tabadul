@@ -10,7 +10,7 @@ class SecurityCodeBloc extends Bloc<SecurityCodeEvent, SecurityCodeState> {
     on<VerifySecurityCode>(_verifySecurityCode);
   }
 
-  final SecurityCodeRepo _repo;
+  final AuthRepo _repo;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final TextEditingController firstCode = TextEditingController();
   final TextEditingController secondCode = TextEditingController();

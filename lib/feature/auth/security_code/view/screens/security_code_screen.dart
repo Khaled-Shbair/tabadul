@@ -1,5 +1,3 @@
-import 'package:tabadul/feature/security_code/view/widgets/custom_timer.dart';
-
 import '/config/all_imports.dart';
 
 class SecurityCodeScreen extends StatelessWidget {
@@ -18,13 +16,15 @@ class SecurityCodeScreen extends StatelessWidget {
       listener: (_, state) async {
         if (state is VerifiedSecurityCodeSuccessfully) {
           Navigator.pop(context);
-
           Navigator.pushReplacementNamed(
             context,
             route,
             arguments: phoneNumber,
           );
           disposeSecurityCode();
+          disposeAuth();
+          disposeLogin();
+          disposeCreateAccount();
         }
         if (state is VerifiedSecurityCodeLoading) {
           customLoading(context);
