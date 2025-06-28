@@ -1,9 +1,7 @@
 import '/config/all_imports.dart';
 
 class NotificationsScreen extends StatelessWidget with CustomToast {
-  NotificationsScreen({super.key}) {
-    initNotifications();
-  }
+  const NotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

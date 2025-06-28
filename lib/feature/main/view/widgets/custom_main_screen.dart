@@ -13,7 +13,13 @@ class CustomMainScreen extends StatelessWidget {
   final List<Widget> _screen = [
     HomeScreen(),
     NotificationsScreen(),
-    ListProvideServiceScreen(),
+    if (instance<SharedPreferencesController>()
+        .getString(SharedPreferenceKeys.job)
+        .isNotEmpty) ...{
+      ProfileProvideServiceScreen()
+    } else ...{
+      RegisterAsServiceProvideScreen()
+    },
     ProfileScreen(),
   ];
 
