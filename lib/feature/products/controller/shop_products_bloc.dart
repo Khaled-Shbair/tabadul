@@ -20,6 +20,7 @@ class ShopProductsBloc extends Bloc<ShopProductsEvent, ShopProductsState> {
   final InternetConnection _internetConnection;
   final ScrollController scrollController = ScrollController();
   bool _productsLoadingFailure = false;
+  bool loaded = false;
 
   // Trigger load more products when reaching near the bottom
   void _onScroll() {

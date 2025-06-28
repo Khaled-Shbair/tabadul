@@ -1,7 +1,7 @@
 import '/config/all_imports.dart';
 
-class CustomAddProductDepartment extends StatelessWidget {
-  const CustomAddProductDepartment({
+class CustomAddProductTap  extends StatelessWidget {
+  const CustomAddProductTap({
     required this.nameDepartment,
     required this.tableName,
     super.key,
@@ -10,8 +10,7 @@ class CustomAddProductDepartment extends StatelessWidget {
   final String tableName;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView(
+    return ListView(
         physics: const NeverScrollableScrollPhysics(),
         padding: EdgeInsetsDirectional.only(
           top: ManagerHeight.h52,
@@ -65,7 +64,6 @@ class CustomAddProductDepartment extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
   }
 }

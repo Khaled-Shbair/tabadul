@@ -48,7 +48,6 @@ class AddedProductSuccessfullyScreen extends StatelessWidget {
               minWidth: ManagerWidth.w106,
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.pop(context);
                 disposeAddProduct();
               },
               child: Text(

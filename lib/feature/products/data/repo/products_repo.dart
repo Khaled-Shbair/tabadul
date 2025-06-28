@@ -6,7 +6,8 @@ abstract class ProductsRepo {
 
   Future<Either<Failure, AddProductResponse>> addProduct(
       AddProductRequest request);
-  Future<List<String>> uploadProductImages(List<File> request);
+  Future<List<String>> uploadProductImages(
+      List<File> request, String tableName);
 }
 
 class ProductsRepoImpl extends ProductsRepo {
@@ -43,10 +44,10 @@ class ProductsRepoImpl extends ProductsRepo {
   }
 
   @override
-  Future<List<String>> uploadProductImages(List<File> request) async {
+  Future<List<String>> uploadProductImages(
+      List<File> request, String tableName) async {
     try {
       List<File> imageCompressed = [];
-
       for (var e in request) {
         final compressed = await ImageCompressor.compressImage(e);
         if (compressed != null) {
@@ -54,7 +55,8 @@ class ProductsRepoImpl extends ProductsRepo {
         }
       }
 
-      var response = await _dataSource.uploadProductImages(imageCompressed);
+      var response =
+          await _dataSource.uploadProductImages(imageCompressed, tableName);
       if (response.isNotEmpty) {
         return response;
       } else {
@@ -70,8 +72,8 @@ class ProductsRepoImpl extends ProductsRepo {
       AddProductRequest request) async {
     if (await _networkInfo.isConnected) {
       try {
-        List<String> urlProductImages =
-            await uploadProductImages(request.imageFilesList);
+        List<String> urlProductImages = await uploadProductImages(
+            request.imageFilesList, request.tableName);
         if (urlProductImages.isNotEmpty) {
           request.images = urlProductImages;
           var response = await _dataSource.addProduct(request);

@@ -7,11 +7,12 @@ class CustomImageOfProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: context.theme.colorScheme.secondary,
-          borderRadius: BorderRadius.circular(ManagerRadius.r4),
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(imageUrl),
-          )),
+        color: context.theme.colorScheme.secondary,
+        borderRadius: BorderRadius.circular(ManagerRadius.r4),
+        image: DecorationImage(
+          image: CachedNetworkImageProvider(imageUrl),
+        ),
+      ),
     );
   }
 }

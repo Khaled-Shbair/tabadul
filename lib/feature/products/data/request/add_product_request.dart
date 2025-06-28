@@ -18,10 +18,11 @@ class AddProductRequest {
 
   Map<String, dynamic> toJson() {
     return {
-      FirebaseConstants.productName: productName,
+      FirebaseConstants.name: productName,
       FirebaseConstants.price: price,
       FirebaseConstants.description: description,
-      FirebaseConstants.images : images,
+      FirebaseConstants.images: images,
+      FirebaseConstants.createdAt: FieldValue.serverTimestamp(),
     };
   }
 }

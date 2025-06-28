@@ -4,7 +4,8 @@ abstract class RemoteProductsDataSource {
   Future<ProductsResponse> getProducts(GetProductsRequest request);
   Future<AddProductResponse> addProduct(AddProductRequest request);
 
-  Future<List<String>> uploadProductImages(List<File> request);
+  Future<List<String>> uploadProductImages(
+      List<File> request, String tableName);
 }
 
 class RemoteProductsDataSourceImpl extends RemoteProductsDataSource {
@@ -22,7 +23,8 @@ class RemoteProductsDataSourceImpl extends RemoteProductsDataSource {
   }
 
   @override
-  Future<List<String>> uploadProductImages(List<File> request) {
-    return _storage.uploadMultipleImagesToFirebase(request);
+  Future<List<String>> uploadProductImages(
+      List<File> request, String tableName) {
+    return _storage.uploadMultipleImagesToFirebase(request, tableName);
   }
 }
