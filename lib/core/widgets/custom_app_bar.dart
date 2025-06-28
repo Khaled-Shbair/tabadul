@@ -5,6 +5,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.functionLeadingButton,
     this.functionActionButton,
+    this.titleStyle,
     this.iconLeading = Icons.arrow_back_ios_new,
     this.iconAction = Icons.menu,
     super.key,
@@ -15,6 +16,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function()? functionActionButton;
   final IconData iconLeading;
   final IconData iconAction;
+  final TextStyle? titleStyle;
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -22,7 +24,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: Text(title,style:titleStyle ,),
       leading: functionLeadingButton != null
           ? CustomAppBarButton(
               icon: iconLeading,

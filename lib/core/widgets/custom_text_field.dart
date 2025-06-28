@@ -3,7 +3,7 @@ import '/config/all_imports.dart';
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
-    required this.textEditingController,
+    this.textEditingController,
     this.keyboardType = TextInputType.datetime,
     this.hintText,
     this.maxLength,
@@ -13,6 +13,7 @@ class CustomTextField extends StatelessWidget {
     this.contentPadding,
     this.errorBorder,
     this.textInputAction,
+    this.suffixIcon,
     this.onFieldSubmitted,
     this.helperText,
     this.hintTextStyle,
@@ -24,7 +25,9 @@ class CustomTextField extends StatelessWidget {
     this.textInputStyle,
     this.expands = false,
     this.autofocus = false,
+    this.readOnly = false,
     this.textAlign = TextAlign.start,
+    this.initialValue,
   });
 
   final TextInputType keyboardType;
@@ -36,7 +39,7 @@ class CustomTextField extends StatelessWidget {
   final String? hintText;
   final String? errorText;
   final String? helperText;
-  final TextEditingController textEditingController;
+  final TextEditingController? textEditingController;
   final FocusNode? focusNode;
   final int? maxLength;
   final String? Function(String?)? validator;
@@ -49,12 +52,16 @@ class CustomTextField extends StatelessWidget {
   final Function(String)? onFieldSubmitted;
   final int maxLines;
   final int? hintMaxLines;
-
+  final bool readOnly;
+  final String? initialValue;
+  final Widget? suffixIcon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: textEditingController,
       validator: validator,
+      initialValue: initialValue,
+      readOnly: readOnly,
       onChanged: onChanged,
       focusNode: focusNode,
       maxLength: maxLength,
@@ -74,16 +81,16 @@ class CustomTextField extends StatelessWidget {
           ),
       decoration: InputDecoration(
         enabled: enabled,
-      
         errorText: errorText,
         hintText: hintText,
         helperMaxLines: 1,
-        
         isDense: true,
         hintMaxLines: hintMaxLines,
         counterText: '',
         helperText: helperText,
         helperStyle: helperStyle,
+        suffixIcon: suffixIcon,
+        suffixIconColor: context.theme.primaryColor,
         contentPadding:
             contentPadding ?? context.theme.inputDecorationTheme.contentPadding,
         hintStyle:
