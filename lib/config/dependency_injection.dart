@@ -90,23 +90,28 @@ disposeOnBoarding() {
   }
 }
 
-initLogin() {
+initAuth() {
   if (!GetIt.I.isRegistered<RemoteAuthDataSource>()) {
     instance.registerLazySingleton<RemoteAuthDataSource>(
-      () => RemoteAuthDataSourceImpl(instance<FbFirestoreController>()),
+      () => RemoteAuthDataSourceImpl(
+        instance<FbFirestoreController>(),
+        instance<FbAuthController>(),
+      ),
     );
   }
+
   if (!GetIt.I.isRegistered<AuthRepo>()) {
     instance.registerLazySingleton<AuthRepo>(
       () => AuthRepoImpl(
         instance<RemoteAuthDataSource>(),
         instance<NetworkInfo>(),
+        instance<SharedPreferencesController>(),
       ),
     );
   }
 }
 
-disposeLogin() {
+disposeAuth() {
   if (GetIt.I.isRegistered<RemoteAuthDataSource>()) {
     instance.unregister<RemoteAuthDataSource>();
   }
@@ -115,20 +120,21 @@ disposeLogin() {
   }
 }
 
+initLogin() {
+  if (!GetIt.I.isRegistered<LoginBloc>()) {
+    instance.registerLazySingleton<LoginBloc>(
+      () => LoginBloc(instance<AuthRepo>()),
+    );
+  }
+}
+
+disposeLogin() {
+  if (GetIt.I.isRegistered<LoginBloc>()) {
+    instance.unregister<LoginBloc>();
+  }
+}
+
 initCreateAccount() {
-  if (!GetIt.I.isRegistered<RemoteAuthDataSource>()) {
-    instance.registerLazySingleton<RemoteAuthDataSource>(
-      () => RemoteAuthDataSourceImpl(instance<FbFirestoreController>()),
-    );
-  }
-  if (!GetIt.I.isRegistered<AuthRepo>()) {
-    instance.registerLazySingleton<AuthRepo>(
-      () => AuthRepoImpl(
-        instance<RemoteAuthDataSource>(),
-        instance<NetworkInfo>(),
-      ),
-    );
-  }
   if (!GetIt.I.isRegistered<CreateAccountBloc>()) {
     instance.registerLazySingleton<CreateAccountBloc>(
       () => CreateAccountBloc(instance<AuthRepo>()),
@@ -143,28 +149,9 @@ disposeCreateAccount() {
 }
 
 initSecurityCode() {
-  if (!GetIt.I.isRegistered<RemoteSecurityCodeDataSource>()) {
-    instance.registerLazySingleton<RemoteSecurityCodeDataSource>(
-      () => RemoteSecurityCodeDataSourceImpl(
-        instance<FbAuthController>(),
-        instance<FbFirestoreController>(),
-      ),
-    );
-  }
-  if (!GetIt.I.isRegistered<SecurityCodeRepo>()) {
-    instance.registerLazySingleton<SecurityCodeRepo>(
-      () => SecurityCodeRepoImpl(
-        instance<RemoteSecurityCodeDataSource>(),
-        instance<NetworkInfo>(),
-        instance<SharedPreferencesController>(),
-      ),
-    );
-  }
   if (!GetIt.I.isRegistered<SecurityCodeBloc>()) {
     instance.registerLazySingleton<SecurityCodeBloc>(
-      () => SecurityCodeBloc(
-        instance<SecurityCodeRepo>(),
-      ),
+      () => SecurityCodeBloc(instance<AuthRepo>()),
     );
   }
   if (!GetIt.I.isRegistered<TimerBloc>()) {
@@ -173,12 +160,6 @@ initSecurityCode() {
 }
 
 disposeSecurityCode() {
-  if (GetIt.I.isRegistered<RemoteSecurityCodeDataSource>()) {
-    instance.unregister<RemoteSecurityCodeDataSource>();
-  }
-  if (GetIt.I.isRegistered<SecurityCodeRepo>()) {
-    instance.unregister<SecurityCodeRepo>();
-  }
   if (GetIt.I.isRegistered<SecurityCodeBloc>()) {
     instance.unregister<SecurityCodeBloc>();
   }
@@ -224,7 +205,8 @@ initMain() {
   disposeLogin();
   disposeCreateAccount();
   if (!GetIt.I.isRegistered<MainBloc>()) {
-    instance.registerLazySingleton<MainBloc>(() => MainBloc());
+    instance.registerLazySingleton<MainBloc>(
+        () => MainBloc(instance<SharedPreferencesController>()));
   }
 }
 
@@ -235,31 +217,15 @@ disposeMain() {
 }
 
 initLogout() {
-  if (!GetIt.I.isRegistered<RemoteLogoutDataSource>()) {
-    instance.registerLazySingleton<RemoteLogoutDataSource>(
-        () => RemoteLogoutDataSourceImpl(instance<FbAuthController>()));
-  }
-  if (!GetIt.I.isRegistered<LogoutRepo>()) {
-    instance.registerLazySingleton<LogoutRepo>(() => LogoutRepoImpl(
-          instance<RemoteLogoutDataSource>(),
-          instance<NetworkInfo>(),
-        ));
-  }
   if (!GetIt.I.isRegistered<LogoutBloc>()) {
     instance.registerLazySingleton<LogoutBloc>(() => LogoutBloc(
           instance<SharedPreferencesController>(),
-          instance<LogoutRepo>(),
+          instance<AuthRepo>(),
         ));
   }
 }
 
 disposeLogout() async {
-  if (GetIt.I.isRegistered<RemoteLogoutDataSource>()) {
-    instance.unregister<RemoteLogoutDataSource>();
-  }
-  if (GetIt.I.isRegistered<LogoutRepo>()) {
-    instance.unregister<LogoutRepo>();
-  }
   if (GetIt.I.isRegistered<LogoutBloc>()) {
     instance.unregister<LogoutBloc>();
   }
@@ -318,8 +284,7 @@ initNotifications() {
     instance.registerLazySingleton<NotificationsBloc>(
       () => NotificationsBloc(
         instance<NotificationsRepo>(),
-        instance
-        <SharedPreferencesController>(),
+        instance<SharedPreferencesController>(),
         instance<InternetConnection>(),
       ),
     );
@@ -342,8 +307,7 @@ initShopAndAddProduct() {
   if (!GetIt.I.isRegistered<RemoteProductsDataSource>()) {
     instance.registerLazySingleton<RemoteProductsDataSource>(
       () => RemoteProductsDataSourceImpl(instance<FbFirestoreController>(),
-      instance<FirebaseStorageController>()
-      ),
+          instance<FirebaseStorageController>()),
     );
   }
   if (!GetIt.I.isRegistered<ProductsRepo>()) {
@@ -393,5 +357,92 @@ initAddProduct() {
 disposeAddProduct() {
   if (GetIt.I.isRegistered<AddProductBloc>()) {
     instance.unregister<AddProductBloc>();
+  }
+}
+
+initDeliveryTime() {
+  if (!GetIt.I.isRegistered<DeliveryTimeBloc>()) {
+    instance.registerLazySingleton<DeliveryTimeBloc>(() => DeliveryTimeBloc());
+  }
+}
+
+disposeDeliveryTime() {
+  if (GetIt.I.isRegistered<DeliveryTimeBloc>()) {
+    instance.unregister<DeliveryTimeBloc>();
+  }
+}
+
+initRegisterAsServiceProvide() {
+  if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
+    instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
+        () => RemoteProvidesServicesDataSourceImpl(
+              instance<FbFirestoreController>(),
+              instance<FirebaseStorageController>(),
+            ));
+  }
+  if (!GetIt.I.isRegistered<ServicesProvidesRepo>()) {
+    instance.registerLazySingleton<ServicesProvidesRepo>(
+        () => ServicesProvidesRepoImpl(
+              instance<NetworkInfo>(),
+              instance<RemoteProvidesServicesDataSource>(),
+            ));
+  }
+  if (!GetIt.I.isRegistered<RegisterAsServiceProvideBloc>()) {
+    instance.registerLazySingleton<RegisterAsServiceProvideBloc>(
+        () => RegisterAsServiceProvideBloc(
+              instance<SharedPreferencesController>(),
+              instance<ServicesProvidesRepo>(),
+            ));
+  }
+}
+
+disposeRegisterAsServiceProvide() {
+  if (GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
+    instance.unregister<RemoteProvidesServicesDataSource>();
+  }
+  if (GetIt.I.isRegistered<ServicesProvidesRepo>()) {
+    instance.unregister<ServicesProvidesRepo>();
+  }
+  if (GetIt.I.isRegistered<RegisterAsServiceProvideBloc>()) {
+    instance.unregister<RegisterAsServiceProvideBloc>();
+  }
+}
+
+// initProfileServiceProvide() {}
+// disposeProfileServiceProvide() {}
+
+initEditProfileProvideService() {
+  if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
+    instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
+        () => RemoteProvidesServicesDataSourceImpl(
+              instance<FbFirestoreController>(),
+              instance<FirebaseStorageController>(),
+            ));
+  }
+  if (!GetIt.I.isRegistered<ServicesProvidesRepo>()) {
+    instance.registerLazySingleton<ServicesProvidesRepo>(
+        () => ServicesProvidesRepoImpl(
+              instance<NetworkInfo>(),
+              instance<RemoteProvidesServicesDataSource>(),
+            ));
+  }
+  if (!GetIt.I.isRegistered<EditProfileProvideServiceBloc>()) {
+    instance.registerLazySingleton<EditProfileProvideServiceBloc>(
+        () => EditProfileProvideServiceBloc(
+              instance<ServicesProvidesRepo>(),
+              instance<SharedPreferencesController>(),
+            ));
+  }
+}
+
+disposeEditProfileProvideService() {
+  if (GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
+    instance.unregister<RemoteProvidesServicesDataSource>();
+  }
+  if (GetIt.I.isRegistered<ServicesProvidesRepo>()) {
+    instance.unregister<ServicesProvidesRepo>();
+  }
+  if (GetIt.I.isRegistered<EditProfileProvideServiceBloc>()) {
+    instance.unregister<EditProfileProvideServiceBloc>();
   }
 }
