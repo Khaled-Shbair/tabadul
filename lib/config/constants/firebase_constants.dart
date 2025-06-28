@@ -9,6 +9,7 @@ class FirebaseConstants {
   static const String computerDepartmentTable = 'computer_department';
   static const String furnitureDepartmentTable = 'furniture_department';
   static const String motorcycleDepartmentTable = 'motorcycle_department';
+  static const String profileImages = 'profile_images';
   static const String electricMachinesDepartmentTable =
       'electric_machines_department';
   static const String carpetsAndMattressesDepartmentTable =
@@ -28,8 +29,11 @@ class FirebaseConstants {
   static const String content = 'content';
   static const String createdAt = 'created_at';
   static const String title = 'title';
-  static const String productName = 'product_name';
+  static const String name = 'name';
   static const String price = 'price';
   static const String description = 'description';
   static const String images = 'images';
+  static const String message = 'message';
+  static const String status = 'status';
+  static const String imageOfProvideService = 'image_of_provide_service';
 }

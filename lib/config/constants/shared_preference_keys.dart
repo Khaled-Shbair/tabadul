@@ -10,4 +10,8 @@ class SharedPreferenceKeys {
   static const String image = 'image';
   static const String regionAndStreet = 'region';
   static const String language = 'language';
+  static const String job = 'job';
+  static const String description = 'description';
+  static const String imageOfProvideService = 'image_of_provide_service';
+
 }
