@@ -6,11 +6,10 @@ class FirebaseStorageController {
   FirebaseStorageController(this._storage);
 
   Future<String?> uploadImageToFirebase(
-      File uploadImage, String phoneNumber) async {
+      File uploadImage, String folderName, String nameImage) async {
     try {
       debugPrint('📤 Starting upload for ...');
-      final storageRef =
-          _storage.ref().child('profile_images/$phoneNumber.jpg');
+      final storageRef = _storage.ref().child('$folderName/$nameImage.jpg');
       final uploadTask = await storageRef
           .putFile(uploadImage)
           .whenComplete(() => debugPrint('✅ Upload completed'));
@@ -25,10 +24,15 @@ class FirebaseStorageController {
     }
   }
 
-  Future<List<String>> uploadMultipleImagesToFirebase(List<File> images) async {
+  Future<List<String>> uploadMultipleImagesToFirebase(
+      List<File> images, String folderName) async {
     List<String> downloadUrls = [];
     for (var i in images) {
-      final url = await uploadImageToFirebase(i, 'product_images/$i.jpg');
+      final url = await uploadImageToFirebase(
+        i,
+        folderName,
+        DateTime.now().millisecondsSinceEpoch.toString(),
+      );
       if (url != null) {
         downloadUrls.add(url);
       }

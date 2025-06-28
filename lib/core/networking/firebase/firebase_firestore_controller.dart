@@ -21,7 +21,7 @@ class FbFirestoreController {
     }
   }
 
-  Future<EditProfileResponse> editProfile(EditProfileRequest request) async {
+  Future<EditProfileResponse> editProfile(UserModel request) async {
     try {
       await _firestore
           .collection(FirebaseConstants.usersTable)
@@ -30,6 +30,21 @@ class FbFirestoreController {
       return EditProfileResponse(status: true);
     } catch (e) {
       return EditProfileResponse(status: false, error: e.toString());
+    }
+  }
+
+  Future<RegisterAsServiceProvideResponse> registerAsServiceProvide(
+      UserModel request) async {
+    try {
+      await _firestore
+          .collection(FirebaseConstants.usersTable)
+          .doc('0599724037')
+          .set(request.toMap(), SetOptions(merge: true));
+      return RegisterAsServiceProvideResponse(
+          status: true, message: ManagerStrings.successfully);
+    } catch (e) {
+      return RegisterAsServiceProvideResponse(
+          status: false, message: e.toString());
     }
   }
 
@@ -130,14 +145,11 @@ class FbFirestoreController {
           .collection(departmentName)
           .orderBy(FirebaseConstants.createdAt, descending: true)
           .limit(15);
-
       if (lastDocument != null) {
         query = query.startAfterDocument(lastDocument);
       }
 
       var snapshot = await query.get();
-      debugPrint('Fetched ${snapshot.docs.length} products');
-
       if (snapshot.docs.isNotEmpty) {
         List<ProductResponse> products = snapshot.docs
             .map((doc) => ProductResponse.fromMap(doc.data()))
@@ -163,10 +175,9 @@ class FbFirestoreController {
 
   Future<AddProductResponse> addProduct(AddProductRequest product) async {
     try {
-      await _firestore
-          .collection(product.tableName)
-          .doc()
-          .set(product.toJson());
+      final docRef = _firestore.collection(product.tableName).doc();
+      final data = product.toJson()..[FirebaseConstants.id] = docRef.id;
+      await docRef.set(data);
       return AddProductResponse(
           message: ManagerStrings.successfully, status: true);
     } catch (e) {
