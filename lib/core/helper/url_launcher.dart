@@ -12,3 +12,13 @@ void openWhatsAppChat(String phoneNumber, {String message = ''}) async {
     debugPrint("Could not open WhatsApp.");
   }
 }
+
+/// - [PhoneNumber] {Ex:0599123456}
+///
+/// - Go to call app then put phone number to call
+void callPhone(String phoneNumber) async {
+  await launchUrl(
+    Uri(scheme: 'tel', path: phoneNumber),
+    mode: LaunchMode.externalApplication,
+  );
+}
