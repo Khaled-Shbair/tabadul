@@ -18,6 +18,22 @@ class Validator {
     return null;
   }
 
+  static String? jobValidator(String? job) {
+    if (job == null || job.isEmpty || job.length < 3) {
+      return ManagerStrings.pleaseEnterJob;
+    }
+
+    return null;
+  }
+
+  static String? descriptionOfJobValidator(String? description) {
+    if (description == null || description.isEmpty || description.length < 30) {
+      return ManagerStrings.pleaseEnterDescriptionOfJob;
+    }
+
+    return null;
+  }
+
   static String? priceValidator(String? price) {
     if (price == null || price.isEmpty || price == '0') {
       return ManagerStrings.pleaseEnterPriceOfProduct;
