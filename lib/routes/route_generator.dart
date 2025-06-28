@@ -1,3 +1,4 @@
+
 import '/config/all_imports.dart';
 
 class RouteGenerator {
@@ -15,10 +16,14 @@ class RouteGenerator {
           ),
         );
       case Routes.loginScreen:
+        initAuth();
         initLogin();
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.loginScreen),
-          builder: (context) => const LoginScreen(),
+          builder: (context) => BlocProvider<LoginBloc>(
+            create: (context) => instance<LoginBloc>(),
+            child: const LoginScreen(),
+          ),
         );
       case Routes.createAccountScreen:
         initCreateAccount();
@@ -73,6 +78,7 @@ class RouteGenerator {
           ),
         );
       case Routes.logoutScreen:
+        initAuth();
         initLogout();
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.logoutScreen),
@@ -97,14 +103,18 @@ class RouteGenerator {
         );
       case Routes.shopAndAddProductScreen:
         initShopAndAddProduct();
+        initShopProducts();
         var arguments = settings.arguments as List;
         String nameDepartment = arguments[0] as String;
         String tableName = arguments[1] as String;
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.shopAndAddProductScreen),
-          builder: (context) => ShopAndAddProductsScreen(
-            nameDepartment: nameDepartment,
-            tableName: tableName,
+          builder: (context) => BlocProvider(
+            create: (context) => instance<ShopProductsBloc>(),
+            child: ShopAndAddProductsScreen(
+              tableName: tableName,
+              nameDepartment: nameDepartment,
+            ),
           ),
         );
       case Routes.addProductScreen:
@@ -123,15 +133,59 @@ class RouteGenerator {
           settings: RouteSettings(name: Routes.addedProductSuccessfullyScreen),
           builder: (context) => const AddedProductSuccessfullyScreen(),
         );
+      case Routes.productDetailsScreen:
+        var arguments = settings.arguments as List;
+        var product = arguments[0];
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.productDetailsScreen),
+          builder: (context) => ProductDetailsScreen(product: product),
+        );
       case Routes.answerIsYesScreen:
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.answerIsYesScreen),
           builder: (context) => const AnswerIsYesScreen(),
         );
-      case Routes.answerIsNoScreen:
+      case Routes.readyToReceiveScreen:
         return MaterialPageRoute(
-          settings: RouteSettings(name: Routes.answerIsNoScreen),
-          builder: (context) => const AnswerIsNoScreen(),
+          settings: RouteSettings(name: Routes.readyToReceiveScreen),
+          builder: (context) => const ReadyToReceiveScreen(),
+        );
+      case Routes.deliveryTimeScreen:
+        initDeliveryTime();
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.deliveryTimeScreen),
+          builder: (context) => BlocProvider(
+            create: (context) => instance<DeliveryTimeBloc>(),
+            child: const DeliveryTimeScreen(),
+          ),
+        );
+
+      case Routes.waitForPickupScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.waitForPickupScreen),
+          builder: (context) => const WaitForPickupScreen(),
+        );
+
+      case Routes.editProfileProvideServiceScreen:
+        initEditProfileProvideService();
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.editProfileProvideServiceScreen),
+          builder: (context) => BlocProvider<EditProfileProvideServiceBloc>(
+            create: (context) => instance<EditProfileProvideServiceBloc>(),
+            child: EditProfileProvideServiceScreen(),
+          
+          ),
+        );
+      case Routes.registerAsServiceProvideSuccessfullyScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(
+              name: Routes.registerAsServiceProvideSuccessfullyScreen),
+          builder: (context) => RegisterAsServiceProvideSuccessfullyScreen(),
+        );
+      case Routes.listServicesProvidesScreen:
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.listServicesProvidesScreen),
+          builder: (context) => ListServicesProvidesScreen(),
         );
       default:
         return unDefinedRoute();
