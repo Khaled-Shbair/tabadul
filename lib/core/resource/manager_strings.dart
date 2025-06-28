@@ -85,16 +85,28 @@ class ManagerStrings {
   static String descriptionOfProduct = 'description_of_product'.tr;
   static String timeHasBeenSetSuccessfully =
       'the_time_has_been_set_successfully'.tr;
-  static String titleAnswerIsNoScreen = 'title_answer_is_no_screen'.tr;
   static String done = 'done'.tr;
   static String titleAnswerIsYesScreen = 'title_answer_is_yes_screen'.tr;
   static String buyNow = 'buy_now'.tr;
   static String pleaseAddProductImage = 'please_add_product_image'.tr;
-    static String shekel = 'shekel'.tr;
-        static String name = 'name'.tr;
-                static String description = 'description'.tr;
+  static String shekel = 'shekel'.tr;
+  static String name = 'name'.tr;
+  static String description = 'description'.tr;
+  static String areYouReadyToReceiveWithinHours =
+      'are_you_ready_to_receive_within_hours'.tr;
+  static String yes = 'yes'.tr;
+  static String no = 'no'.tr;
+  static String welcomeDearWeWillContactYouWithinFewHours =
+      'welcome_dear_we_will_contact_you_within_few_hours'.tr;
+  static String timeSelectedSuccessfully =
+      'the_time_has_been_set_successfully'.tr;
+  static String okay = 'okay'.tr;
+  static String selectTime = 'select_time'.tr;
 
-
+  static String minutes = 'minutes'.tr;
+  static String hours = 'hours'.tr;
+  static String specifyTimeYouWantWithin24HoursOnly =
+      'specify_time_you_want_within_24_hours_only'.tr;
 
   //services provides strings
   static String listServiceProvide = 'list_service_provide'.tr;
@@ -103,6 +115,10 @@ class ManagerStrings {
   static String editProfileServiceProvide = 'edit_profile_service_provide'.tr;
   static String noServicesProvides = 'no_services_provides'.tr;
   static String call = 'call'.tr;
+  static String register = 'register'.tr;
+  static String job = 'job'.tr;
+  static String descriptionOfJob = 'description_of_job'.tr;
+    static String registeredAsServiceProvideSuccessfully = 'registered_as_service_provide_successfully'.tr;
 
   //errors messages
   static String noRouteFound = 'no_route_found'.tr;
@@ -116,6 +132,8 @@ class ManagerStrings {
   static String cancel = 'cancel'.tr;
   static String messageWhatsapp = 'message_whatsapp'.tr;
   static String oopsThereIsSomethingWrong = 'oops_there_is_something_wrong'.tr;
+  static String pleaseEnterJob = 'please_enter_job'.tr;
+  static String pleaseEnterDescriptionOfJob = 'please_enter_description_of_job'.tr;
 
   static String camera = 'camera'.tr;
   static String gallery = 'gallery'.tr;

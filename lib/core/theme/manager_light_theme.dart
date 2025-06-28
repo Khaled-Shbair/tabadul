@@ -159,7 +159,6 @@ ThemeData managerLightTheme() {
     listTileTheme: ListTileThemeData(
       titleTextStyle: ManagerTextStyles.font12PrimaryColorBold,
       subtitleTextStyle: ManagerTextStyles.font12PrimaryColorRegular,
-      
     ),
   );
 }

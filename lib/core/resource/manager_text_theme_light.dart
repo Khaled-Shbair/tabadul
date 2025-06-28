@@ -7,7 +7,7 @@ class ManagerTextThemeLight extends TextTheme {
   TextStyle get headlineLarge => ManagerTextStyles.font17PrimaryColorBold;
 
   @override
-  TextStyle get headlineMedium => TextStyle();
+  TextStyle get headlineMedium => ManagerTextStyles.font16PrimaryColorBold;
 
   /// [title] created account successfully screen
   @override
@@ -33,7 +33,7 @@ class ManagerTextThemeLight extends TextTheme {
   TextStyle get displayMedium => ManagerTextStyles.font14SpaceCadetBold;
 
   @override
-  TextStyle get bodyLarge => TextStyle();
+  TextStyle get bodyLarge =>  ManagerTextStyles.font12PrimaryColorBold;
 
   ///style name of department in [CustomDepartmentButton] widget
   @override

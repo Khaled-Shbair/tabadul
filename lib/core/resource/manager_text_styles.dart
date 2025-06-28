@@ -26,9 +26,7 @@ class ManagerTextStyles {
     fontSize: ManagerFontsSizes.f15,
     fontWeight: ManagerFontWeight.bold,
     color: ManagerColors.antiFlashWhite,
-    
   );
-
 
   static TextStyle font15WhiteBold = _mainTextStyle(
     fontSize: ManagerFontsSizes.f15,
@@ -75,7 +73,12 @@ class ManagerTextStyles {
   static TextStyle font17PrimaryColorBold = _mainTextStyle(
     fontSize: ManagerFontsSizes.f17,
     color: ManagerColors.primaryColor,
-    fontWeight: ManagerFontWeight.regular,
+    fontWeight: ManagerFontWeight.bold,
+  );
+  static TextStyle font16PrimaryColorBold = _mainTextStyle(
+    fontSize: ManagerFontsSizes.f16,
+    color: ManagerColors.primaryColor,
+    fontWeight: ManagerFontWeight.bold,
   );
 
   static TextStyle font12ErrorColorBold = _mainTextStyle(
@@ -103,13 +106,13 @@ class ManagerTextStyles {
     fontFamily: ManagerFontFamily.kHelveticaL,
   );
 
-    static TextStyle font12PrimaryColorRegular = _mainTextStyle(
+  static TextStyle font12PrimaryColorRegular = _mainTextStyle(
     fontSize: ManagerFontsSizes.f12,
     fontWeight: ManagerFontWeight.regular,
     color: ManagerColors.primaryColor,
     fontFamily: ManagerFontFamily.kHelveticaLNeeL,
   );
-    static TextStyle font12PrimaryColorBold = _mainTextStyle(
+  static TextStyle font12PrimaryColorBold = _mainTextStyle(
     fontSize: ManagerFontsSizes.f12,
     fontWeight: ManagerFontWeight.bold,
     color: ManagerColors.primaryColor,

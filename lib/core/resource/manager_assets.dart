@@ -70,6 +70,8 @@ class ManagerAssets {
       '$_imagePath/icons_images/notification_icon.svg';
   static const String registerAsServiceProviderIcon =
       '$_imagePath/icons_images/register_as_service_provider_icon.svg';
+  static const String registeredAsProvideServiceSuccessfully =
+      '$_imagePath/services_provides/registered_as_provide_service_successfully.svg';
 
   ///////////
 

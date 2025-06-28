@@ -83,17 +83,24 @@ const Map<String, String> ar = {
   'price': 'السعر',
   'description_of_product': 'وصف عن السلعة',
   'the_time_has_been_set_successfully':
-      'لقد تم تحديد الوقت بنجاح الرجاء الانتظار حتى انتهاء الوقت للاستلام',
-  'title_answer_is_no_screen': 'حدد الوقت الذي تريده خلال 24 ساعة فقط',
+      'لقد تم تحديد الوقت بنجاح\nالرجاء الانتظار حتى انتهاء الوقت\nللاستلام',
   'done': 'تم',
-  'title_answer_is_yes_screen':
-      'أهلاً وسهلاً بك عزيزي سيتم التواصل معك خلال ساعات',
   'buy_now': 'شراء الآن',
   'please_add_product_image': 'يرجي إضافة صور المنتج',
   'shekel': 'شيكل',
-  'name':'الاسم',
-    'description':'الوصف',
-
+  'name': 'الاسم',
+  'description': 'الوصف',
+  'are_you_ready_to_receive_within_hours': 'هل أنت مستعد للاستلام خلال ساعات ؟',
+  'yes': 'نعم',
+  'no': 'لا',
+  'welcome_dear_we_will_contact_you_within_few_hours':
+      'أهلاً وسهلاً بك عزيزي\nسيتم التواصل معك خلال ساعات',
+  'specify_time_you_want_within_24_hours_only':
+      'حدد الوقت الذي تريده خلال 24ساعة فقط',
+  'okay': 'حسناً',
+  'select_time':'حدد الوقت',
+    'minutes':'الدقائق',
+    'hours':'الساعات',
 
 //services_provides string
   'list_service_provide': 'قائمة مزودي الخدمات',
@@ -102,6 +109,10 @@ const Map<String, String> ar = {
   'edit_profile_service_provide': 'تعديل الملف الشخصي(مزود الخدمة)',
   'no_services_provides': 'لا يوجد مزودي خدمات',
   'call': 'اتصل',
+  'register': 'تسجيل',
+  'job': 'المهنة',
+  'description_of_job': 'لمحة عن مهنتك',
+'registered_as_service_provide_successfully': 'لقد تم تسجيلك في قسم\n مزودي الخدمات بنجاح',
 //errors messages
   'no_internet_connection': 'لا يوجد اتصال بالإنترنت',
   'no_data': 'لا يوجد بيانات',
@@ -117,6 +128,8 @@ const Map<String, String> ar = {
   'please_enter_product_name': 'يرجي إدخال اسم المنتج',
   'please_enter_price_of_product': 'يرجي إدخال سعر المنتج',
   'please_enter_description_of_product': 'يرجي إدخال وصف عن المنتج',
+  'please_enter_job': 'يرجى ادخال المهنة',
+  'please_enter_description_of_job': 'يرجى ادخال لمحة عن مهنتك',
 
 ////////////////////////////////////////////////
 };
