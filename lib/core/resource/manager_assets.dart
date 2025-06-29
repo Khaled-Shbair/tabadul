@@ -1,6 +1,8 @@
 const String _imagePath = 'assets/images';
 
 class ManagerAssets {
+  static const String languages = 'assets/languages';
+
   static const String logo = '$_imagePath/logo.svg';
 
   //splash images
@@ -48,12 +50,15 @@ class ManagerAssets {
       '$_imagePath/info/background_box_info.svg';
 
   //add and buy product images paths
-  static const String addProduct = '$_imagePath/add_and_buy_product/add_product.svg';
-  static const String answerIsYes = '$_imagePath/add_and_buy_product/answer_is_yes.svg';
-  static const String readyToReceive = '$_imagePath/add_and_buy_product/ready_to_receive.svg';
-  static const String waitToReceive = '$_imagePath/add_and_buy_product/wait_to_receive.svg';
+  static const String addProduct =
+      '$_imagePath/add_and_buy_product/add_product.svg';
+  static const String answerIsYes =
+      '$_imagePath/add_and_buy_product/answer_is_yes.svg';
+  static const String readyToReceive =
+      '$_imagePath/add_and_buy_product/ready_to_receive.svg';
+  static const String waitToReceive =
+      '$_imagePath/add_and_buy_product/wait_to_receive.svg';
   static const String addedProductSuccessfully =
-
       '$_imagePath/add_and_buy_product/added_product_successfully.svg';
 
   //icons image

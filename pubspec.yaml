@@ -16,55 +16,50 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
-  # State management
-  flutter_bloc: ^9.1.0
-
-  # Dependency injection
-  get_it: ^8.0.3
-
-  # Ui && Design
-  flutter_screenutil: ^5.8.4
-  fluttertoast: ^8.2.2
-  flutter_zoom_drawer: ^3.2.0
-  flutter_svg: ^2.0.7
-  percent_indicator: ^4.2.3
-  animate_do: ^4.2.0
-  dropdown_search: ^6.0.2
-  cached_network_image: ^3.4.1
-  flutter_image_compress: ^2.4.0
-  path_provider: ^2.1.5
-  path: ^1.9.1
+  flutter_bloc: ^9.1.0 # Bloc pattern for state management
+  get_it: ^8.0.3 # Simple service locator for dependency injection
+  flutter_screenutil: ^5.8.4 # Responsive UI design
+  fluttertoast: ^8.2.2 # Toast notifications
+  flutter_zoom_drawer: ^3.2.0 # Drawer navigation with zoom effect
+  flutter_svg: ^2.0.7 # SVG image support
+  percent_indicator: ^4.2.3 # Circular and linear percent indicators
+  animate_do: ^4.2.0 # Animation utilities
+  dropdown_search: ^6.0.2 # Dropdown search widget
+  cached_network_image: ^3.4.1 # Caching network images
+  flutter_image_compress: ^2.4.0 # Compress images
+  path_provider: ^2.1.5 # Access device file system paths
+  path: ^1.9.1 # Path manipulation utilities
+  
+  # localization 
+  easy_localization: ^3.0.7+1 # Easy localization and internationalization
   
   #local Storage
-  shared_preferences: ^2.2.0
+  shared_preferences: ^2.2.0 # Store simple data locally
 
   # Functional Programming
-  dartz: ^0.10.1
+  dartz: ^0.10.1 # Functional programming tools (Either, Option, etc.)
 
   # Check your internet connection
-  internet_connection_checker_plus: ^2.7.1
+  internet_connection_checker_plus: ^2.7.1 # Internet connection status
 
-  get: ^4.6.5
-  url_launcher: ^6.3.1
-  image_picker: ^1.0.0
-  sms_autofill: ^2.3.0
+  get: ^4.6.5 # State management and navigation
+  url_launcher: ^6.3.1 # Launch URLs in browser or apps
+  image_picker: ^1.0.0 # Pick images from gallery or camera
+  sms_autofill: ^2.3.0 # SMS code autofill
 
-  # Networking
-  firebase_core: ^3.13.0
-  firebase_auth: ^5.5.3
-  cloud_firestore: ^5.6.7
-  firebase_storage: ^12.4.5
-  firebase_app_check: ^0.3.2+5
+  firebase_core: ^3.13.0 # Firebase core services
+  firebase_auth: ^5.5.3 # Firebase authentication
+  cloud_firestore: ^5.6.7 # Cloud Firestore database
+  firebase_storage: ^12.4.5 # Firebase cloud storage
+  firebase_app_check: ^0.3.2+5 # Protects access to backend resources
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
 
-  flutter_native_splash: ^2.4.5
-
-  # Change launcher icon app
-  flutter_launcher_icons: ^0.14.3
+  flutter_native_splash: ^2.4.5 # Generate native splash screens
+  flutter_launcher_icons: ^0.14.3 # Generate app launcher icons
 
 flutter_launcher_icons:
   ios: true
@@ -91,6 +86,7 @@ flutter:
     - assets/images/add_personal_information/
     - assets/images/add_and_buy_product/
     - assets/images/services_provides/
+    - assets/languages/
 
     
 

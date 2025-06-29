@@ -98,9 +98,9 @@ const Map<String, String> ar = {
   'specify_time_you_want_within_24_hours_only':
       'حدد الوقت الذي تريده خلال 24ساعة فقط',
   'okay': 'حسناً',
-  'select_time':'حدد الوقت',
-    'minutes':'الدقائق',
-    'hours':'الساعات',
+  'select_time': 'حدد الوقت',
+  'minutes': 'الدقائق',
+  'hours': 'الساعات',
 
 //services_provides string
   'list_service_provide': 'قائمة مزودي الخدمات',
@@ -112,7 +112,8 @@ const Map<String, String> ar = {
   'register': 'تسجيل',
   'job': 'المهنة',
   'description_of_job': 'لمحة عن مهنتك',
-'registered_as_service_provide_successfully': 'لقد تم تسجيلك في قسم\n مزودي الخدمات بنجاح',
+  'registered_as_service_provide_successfully':
+      'لقد تم تسجيلك في قسم\n مزودي الخدمات بنجاح',
 //errors messages
   'no_internet_connection': 'لا يوجد اتصال بالإنترنت',
   'no_data': 'لا يوجد بيانات',
@@ -130,6 +131,4 @@ const Map<String, String> ar = {
   'please_enter_description_of_product': 'يرجي إدخال وصف عن المنتج',
   'please_enter_job': 'يرجى ادخال المهنة',
   'please_enter_description_of_job': 'يرجى ادخال لمحة عن مهنتك',
-
-////////////////////////////////////////////////
 };

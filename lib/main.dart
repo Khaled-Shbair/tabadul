@@ -1,13 +1,19 @@
-import 'package:tabadul/core/bloc_observer/app_bloc_observer.dart';
-
 import 'config/all_imports.dart';
+
 final AppRouteObserver appRouteObserver = AppRouteObserver();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initModule();
-  Bloc.observer = AppBlocObserver();
-  runApp(MyApp());
+  runApp(
+    EasyLocalization(
+      path: ManagerAssets.languages,
+      fallbackLocale: Locale(LocaleConstants.ar),
+      supportedLocales: [Locale(LocaleConstants.ar)],
+      startLocale: Locale(LocaleConstants.ar),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -25,7 +31,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return GetMaterialApp(
+        return MaterialApp(
           navigatorKey: Routes.navigatorKey,
           debugShowCheckedModeBanner: false,
           themeMode: themeService.getThemeMode(),
@@ -33,18 +39,9 @@ class MyApp extends StatelessWidget {
           darkTheme: managerDarkTheme(),
           onGenerateRoute: RouteGenerator.getRoute,
           initialRoute: RouteMiddleware.initialRoute(),
-          translations: Translation(),
-          locale: Locale('ar'),
-          // locale: Locale(
-          //   SharedPreferencesController.getString(
-          //     SharedPreferenceConstants.language,
-          //   ),
-          // ),
-          // fallbackLocale: Locale(
-          //   SharedPreferencesController.getString(
-          //     SharedPreferenceConstants.language,
-          //   ),
-          // ),
+          locale: context.locale,
+          supportedLocales: context.supportedLocales,
+          localizationsDelegates: context.localizationDelegates,
         );
       },
     );

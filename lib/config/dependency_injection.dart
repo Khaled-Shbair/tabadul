@@ -5,6 +5,10 @@ import 'all_imports.dart';
 final instance = GetIt.instance;
 
 Future<void> initModule() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  Bloc.observer = AppBlocObserver();
+
   initNetworkInfo();
   await PrefController().initializeApp();
   await initFirebase();

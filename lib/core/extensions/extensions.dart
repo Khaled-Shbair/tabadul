@@ -50,6 +50,11 @@ extension NonNullInt on int? {
   }
 }
 
+extension Themes on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  ThemeData get theme => Theme.of(this);
+}
+
 extension Navigators on BuildContext {
   pushNamed(String routeName, {Object? arguments}) {
     return Navigator.of(this).pushNamed(routeName, arguments: arguments);

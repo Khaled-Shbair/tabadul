@@ -1,33 +1,29 @@
 export 'dart:async';
-export 'package:get/get.dart';
-export 'package:flutter/services.dart';
-export 'package:flutter_bloc/flutter_bloc.dart' hide Transition;
-export 'package:animate_do/animate_do.dart';
-export 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-export 'package:percent_indicator/circular_percent_indicator.dart';
-export 'package:dartz/dartz.dart' hide State, Order;
-export 'package:cloud_firestore/cloud_firestore.dart';
 export 'dart:io' hide HeaderValue;
-
-export 'package:url_launcher/url_launcher.dart';
-
 export 'package:get_it/get_it.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
-export 'package:flutter/foundation.dart' hide kIsWasm;
+export 'package:flutter/services.dart';
+export 'package:animate_do/animate_do.dart';
 export 'package:dropdown_search/dropdown_search.dart'
     hide defaultScrollNotificationPredicate;
-export 'package:image_picker/image_picker.dart';
-
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:fluttertoast/fluttertoast.dart';
+export 'package:image_picker/image_picker.dart';
+export 'package:url_launcher/url_launcher.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:firebase_core/firebase_core.dart';
-export 'package:firebase_storage/firebase_storage.dart' hide Task;
-
+export 'package:dartz/dartz.dart' hide State, Order;
+export 'package:flutter/foundation.dart' hide kIsWasm;
+export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+export 'package:flutter_bloc/flutter_bloc.dart' hide Transition;
 export 'package:cached_network_image/cached_network_image.dart';
+export 'package:firebase_storage/firebase_storage.dart' hide Task;
+export 'package:percent_indicator/circular_percent_indicator.dart';
+export 'package:easy_localization/easy_localization.dart' hide TextDirection;
 export 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 ///firebase_options file
@@ -55,10 +51,10 @@ export '/core/validator/validator.dart';
 export '/core/helper/url_launcher.dart';
 export '/core/widgets/custom_toast.dart';
 export '/core/language/translation.dart';
-export '../core/widgets/custom_app_bar.dart';
 export '/core/extensions/extensions.dart';
 export '/core/service/theme_service.dart';
 export '/core/widgets/custom_button.dart';
+export '/core/widgets/custom_app_bar.dart';
 export '/core/widgets/custom_loading.dart';
 export '/core/widgets/custom_spacing.dart';
 export '/core/helper/function_helper.dart';
@@ -78,6 +74,7 @@ export '/core/error_handler/error_handler.dart';
 export '/core/error_handler/response_code.dart';
 export '/core/resource/manager_text_styles.dart';
 export '/core/widgets/custom_dropdown_search.dart';
+export '/core/bloc_observer/app_bloc_observer.dart';
 export '/core/resource/manager_text_theme_dark.dart';
 export '/core/resource/manager_text_theme_light.dart';
 export '/core/internet_checker/internet_checker.dart';
