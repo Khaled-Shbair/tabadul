@@ -210,3 +210,4 @@ export '/feature/services_provides/data/response/register_as_service_provide_res
 export '/feature/services_provides/view/widgets/custom_widget_details_service_provide.dart';
 export '/feature/services_provides/data/data_source/remote_provides_services_data_source.dart';
 export '/feature/services_provides/view/screens/register_as_service_provide_successfully_screen.dart';
+export '/feature/services_provides/view/screens/details_service_provide_screen.dart';
