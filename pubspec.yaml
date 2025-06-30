@@ -42,7 +42,6 @@ dependencies:
   # Check your internet connection
   internet_connection_checker_plus: ^2.7.1 # Internet connection status
 
-  get: ^4.6.5 # State management and navigation
   url_launcher: ^6.3.1 # Launch URLs in browser or apps
   image_picker: ^1.0.0 # Pick images from gallery or camera
   sms_autofill: ^2.3.0 # SMS code autofill
