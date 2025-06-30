@@ -1,4 +1,3 @@
-
 import '/config/all_imports.dart';
 
 class RouteGenerator {
@@ -173,7 +172,6 @@ class RouteGenerator {
           builder: (context) => BlocProvider<EditProfileProvideServiceBloc>(
             create: (context) => instance<EditProfileProvideServiceBloc>(),
             child: EditProfileProvideServiceScreen(),
-          
           ),
         );
       case Routes.registerAsServiceProvideSuccessfullyScreen:
@@ -181,6 +179,12 @@ class RouteGenerator {
           settings: RouteSettings(
               name: Routes.registerAsServiceProvideSuccessfullyScreen),
           builder: (context) => RegisterAsServiceProvideSuccessfullyScreen(),
+        );
+      case Routes.detailServiceProvideScreen:
+        UserModel user = settings.arguments as UserModel ;
+        return MaterialPageRoute(
+          settings: RouteSettings(name: Routes.detailServiceProvideScreen),
+          builder: (context) => DetailsServiceProvideScreen(user:user),
         );
       case Routes.listServicesProvidesScreen:
         return MaterialPageRoute(
