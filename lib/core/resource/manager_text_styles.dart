@@ -116,6 +116,6 @@ class ManagerTextStyles {
     fontSize: ManagerFontsSizes.f12,
     fontWeight: ManagerFontWeight.bold,
     color: ManagerColors.primaryColor,
-    fontFamily: ManagerFontFamily.kHelveticaLNeeL,
+    fontFamily: ManagerFontFamily.kHelveticaL,
   );
 }
