@@ -105,7 +105,7 @@ class ManagerStrings {
   static String specifyTimeYouWantWithin24HoursOnly =
       'specify_time_you_want_within_24_hours_only'.tr();
   static String titleAnswerIsYesScreen = 'title_answer_is_yes_screen';
-    static String timeSelectedSuccessfully = 'title_answer_is_yes_screen';
+  static String timeSelectedSuccessfully = 'title_answer_is_yes_screen';
 
   //services provides strings
   static String listServiceProvide = 'list_service_provide'.tr();
@@ -114,6 +114,7 @@ class ManagerStrings {
   static String editProfileServiceProvide = 'edit_profile_service_provide'.tr();
   static String noServicesProvides = 'no_services_provides'.tr();
   static String call = 'call'.tr();
+  static String details = 'details'.tr();
   static String register = 'register'.tr();
   static String job = 'job'.tr();
   static String descriptionOfJob = 'description_of_job'.tr();
