@@ -107,5 +107,6 @@
     "please_enter_description_of_product": "يرجي إدخال وصف عن المنتج",
     "please_enter_job": "يرجى ادخال المهنة",
     "please_enter_description_of_job": "يرجى ادخال لمحة عن مهنتك",
-    "details":"تفاصيل"
+    "details":"تفاصيل",
+    "failed_buy_product":"فشل شراء المنتج"
 }

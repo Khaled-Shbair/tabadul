@@ -104,8 +104,11 @@ class ManagerStrings {
   static String hours = 'hours'.tr();
   static String specifyTimeYouWantWithin24HoursOnly =
       'specify_time_you_want_within_24_hours_only'.tr();
-  static String titleAnswerIsYesScreen = 'title_answer_is_yes_screen';
-  static String timeSelectedSuccessfully = 'title_answer_is_yes_screen';
+  static String titleAnswerIsYesScreen = 'title_answer_is_yes_screen'.tr();
+  static String timeSelectedSuccessfully = 'time_selected_successfully'.tr();
+  static String failedBuyProduct = 'failed_buy_product'.tr();
+
+
 
   //services provides strings
   static String listServiceProvide = 'list_service_provide'.tr();
