@@ -358,6 +358,20 @@ initAddProduct() {
   }
 }
 
+initBuyProduct() {
+  if (!GetIt.I.isRegistered<BuyProductBloc>()) {
+    instance.registerLazySingleton<BuyProductBloc>(
+      () => BuyProductBloc(instance<ProductsRepo>()),
+    );
+  }
+}
+
+disposeBuyProduct() {
+  if (GetIt.I.isRegistered<BuyProductBloc>()) {
+    instance.unregister<BuyProductBloc>();
+  }
+}
+
 disposeAddProduct() {
   if (GetIt.I.isRegistered<AddProductBloc>()) {
     instance.unregister<AddProductBloc>();

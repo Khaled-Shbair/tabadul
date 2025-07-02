@@ -35,5 +35,8 @@ class FirebaseConstants {
   static const String images = 'images';
   static const String message = 'message';
   static const String status = 'status';
+  static const String isSold = 'is_sold';
+  static const String soldAt = 'sold_at';
+  static const String buyerId = 'buyer_id';
   static const String imageOfProvideService = 'image_of_provide_service';
 }

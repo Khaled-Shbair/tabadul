@@ -6,14 +6,44 @@ abstract class ProductsRepo {
 
   Future<Either<Failure, AddProductResponse>> addProduct(
       AddProductRequest request);
-  Future<List<String>> uploadProductImages(
-      List<File> request, String tableName);
+  Future<Either<Failure, BuyProductResponse>> buyProduct(
+      BuyProductRequest request);
 }
 
 class ProductsRepoImpl extends ProductsRepo {
   ProductsRepoImpl(this._dataSource, this._networkInfo);
   final RemoteProductsDataSource _dataSource;
   final NetworkInfo _networkInfo;
+
+  @override
+  Future<Either<Failure, BuyProductResponse>> buyProduct(
+      BuyProductRequest request) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        var response = await _dataSource.buyProduct(request);
+        if (response.status) {
+          return Right(response);
+        } else {
+          return Left(
+            Failure(
+              code: ResponseCode.FAILED.value,
+              message: response.message,
+            ),
+          );
+        }
+      } catch (e) {
+        return Left(ErrorHandler.handle(e).failure);
+      }
+    } else {
+      return Left(
+        Failure(
+          code: ResponseCode.NO_INTERNET_CONNECTION.value,
+          message: ManagerStrings.noInternetConnection,
+        ),
+      );
+    }
+  }
+
   @override
   Future<Either<Failure, ProductsResponse>> getProducts(
       GetProductsRequest request) async {
@@ -43,7 +73,6 @@ class ProductsRepoImpl extends ProductsRepo {
     }
   }
 
-  @override
   Future<List<String>> uploadProductImages(
       List<File> request, String tableName) async {
     try {

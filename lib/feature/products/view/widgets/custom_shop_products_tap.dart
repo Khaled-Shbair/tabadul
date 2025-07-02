@@ -65,7 +65,11 @@ class CustomShopProductsTap extends StatelessWidget with CustomToast {
                     return InkWell(
                       onTap: () => Navigator.of(context).pushNamed(
                         Routes.productDetailsScreen,
-                        arguments: [product],
+                        arguments: [
+                          product,
+                          nameDepartment,
+                          tableName,
+                        ],
                       ),
                       child: Container(
                         width: ManagerWidth.w136,

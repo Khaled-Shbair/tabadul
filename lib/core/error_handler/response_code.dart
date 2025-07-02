@@ -17,7 +17,8 @@ enum ResponseCode {
   SERVICE_UNAVAILABLE,
   GATEWAY_TIMEOUT,
   NO_INTERNET_CONNECTION,
-  INVALID_VERIFICATION_CODE
+  INVALID_VERIFICATION_CODE,
+  FAILED
 }
 
 extension ResponseCodeExtension on ResponseCode {
@@ -45,6 +46,8 @@ extension ResponseCodeExtension on ResponseCode {
         return 405;
       case ResponseCode.CONFLICT:
         return 409;
+        case ResponseCode.FAILED:
+        return 411;
       case ResponseCode.INTERNAL_SERVER_ERROR:
         return 500;
       case ResponseCode.BAD_GATEWAY:

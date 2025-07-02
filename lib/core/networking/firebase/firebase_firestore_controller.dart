@@ -38,7 +38,7 @@ class FbFirestoreController {
     try {
       await _firestore
           .collection(FirebaseConstants.usersTable)
-          .doc('0599724037')
+          .doc(request.id)
           .set(request.toMap(), SetOptions(merge: true));
       return RegisterAsServiceProvideResponse(
           status: true, message: ManagerStrings.successfully);
@@ -143,13 +143,16 @@ class FbFirestoreController {
     try {
       var query = _firestore
           .collection(departmentName)
+          .where(FirebaseConstants.isSold, isEqualTo: false)
           .orderBy(FirebaseConstants.createdAt, descending: true)
           .limit(15);
+
       if (lastDocument != null) {
         query = query.startAfterDocument(lastDocument);
       }
 
       var snapshot = await query.get();
+
       if (snapshot.docs.isNotEmpty) {
         List<ProductResponse> products = snapshot.docs
             .map((doc) => ProductResponse.fromMap(doc.data()))
@@ -183,6 +186,24 @@ class FbFirestoreController {
     } catch (e) {
       return AddProductResponse(
           message: ManagerStrings.badRequest, status: false);
+    }
+  }
+
+  Future<BuyProductResponse> buyProduct(BuyProductRequest request) async {
+    try {
+      await _firestore
+          .collection(request.tableName)
+          .doc(request.productId)
+          .set(request.toMap(), SetOptions(merge: true));
+      return BuyProductResponse(
+        message: ManagerStrings.successfully,
+        status: true,
+      );
+    } catch (e) {
+      return BuyProductResponse(
+        message: ManagerStrings.failedBuyProduct,
+        status: false,
+      );
     }
   }
 }

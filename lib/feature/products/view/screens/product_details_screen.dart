@@ -1,8 +1,17 @@
 import '/config/all_imports.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({required this.product, super.key});
+  const ProductDetailsScreen({
+    required this.product,
+    required this.nameDepartment,
+    required this.tableName,
+    super.key,
+  });
+
+  final String nameDepartment;
+  final String tableName;
   final ProductResponse product;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,6 +19,7 @@ class ProductDetailsScreen extends StatelessWidget {
         title: ManagerStrings.productDetails,
         functionLeadingButton: () {
           Navigator.pop(context);
+          disposeBuyProduct();
         },
       ),
       body: ListView(
@@ -87,7 +97,14 @@ class ProductDetailsScreen extends StatelessWidget {
           verticalSpace(ManagerHeight.h30),
           CustomButton(
             onPressed: () {
-              Navigator.pushNamed(context, Routes.readyToReceiveScreen);
+              Navigator.pushNamed(
+                context,
+                Routes.readyToReceiveScreen,
+                arguments: [
+                  product.id,
+                  tableName,
+                ],
+              );
             },
             child: Text(
               ManagerStrings.buyNow,
