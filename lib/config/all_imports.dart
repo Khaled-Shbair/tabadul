@@ -173,7 +173,9 @@ export '/feature/notifications/data/data_source/remote_notifications_data_source
 
 //products feature
 export '/feature/products/data/repo/products_repo.dart';
+export '../feature/products/data/request/buy_product_request.dart';
 export '/feature/products/controller/add_product_bloc.dart';
+export '/feature/products/controller/buy_product_bloc.dart';
 export '/feature/products/view/widgets/custom_time_box.dart';
 export '/feature/products/controller/shop_products_bloc.dart';
 export '/feature/products/controller/delivery_time_bloc.dart';
@@ -185,6 +187,7 @@ export '/feature/products/view/screens/delivery_time_screen.dart';
 export '/feature/products/data/request/get_products_request.dart';
 export '/feature/products/view/screens/answer_is_yes_screen.dart';
 export '/feature/products/data/response/add_product_response.dart';
+export '/feature/products/data/response/buy_product_response.dart';
 export '/feature/products/view/screens/wait_for_pickup_screen.dart';
 export '/feature/products/view/widgets/custom_add_product_tap.dart';
 export '/feature/products/view/screens/product_details_screen.dart';
