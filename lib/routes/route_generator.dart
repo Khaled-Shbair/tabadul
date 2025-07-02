@@ -135,9 +135,15 @@ class RouteGenerator {
       case Routes.productDetailsScreen:
         var arguments = settings.arguments as List;
         var product = arguments[0];
+        String nameDepartment = arguments[1];
+        String tableName = arguments[2];
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.productDetailsScreen),
-          builder: (context) => ProductDetailsScreen(product: product),
+          builder: (context) => ProductDetailsScreen(
+            product: product,
+            nameDepartment: nameDepartment,
+            tableName: tableName,
+          ),
         );
       case Routes.answerIsYesScreen:
         return MaterialPageRoute(
@@ -145,17 +151,33 @@ class RouteGenerator {
           builder: (context) => const AnswerIsYesScreen(),
         );
       case Routes.readyToReceiveScreen:
+        initBuyProduct();
+        var arguments = settings.arguments as List;
+        String tableName = arguments[0];
+        String productId = arguments[1];
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.readyToReceiveScreen),
-          builder: (context) => const ReadyToReceiveScreen(),
+          builder: (context) => BlocProvider.value(
+            value: instance<BuyProductBloc>(),
+            child: ReadyToReceiveScreen(
+              productId: productId,
+              tableName: tableName,
+            ),
+          ),
         );
       case Routes.deliveryTimeScreen:
         initDeliveryTime();
+        var arguments = settings.arguments as List;
+        String tableName = arguments[0];
+        String productId = arguments[1];
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.deliveryTimeScreen),
           builder: (context) => BlocProvider(
             create: (context) => instance<DeliveryTimeBloc>(),
-            child: const DeliveryTimeScreen(),
+            child: DeliveryTimeScreen(
+              productId: productId,
+              tableName: tableName,
+            ),
           ),
         );
 
@@ -181,10 +203,10 @@ class RouteGenerator {
           builder: (context) => RegisterAsServiceProvideSuccessfullyScreen(),
         );
       case Routes.detailServiceProvideScreen:
-        UserModel user = settings.arguments as UserModel ;
+        UserModel user = settings.arguments as UserModel;
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.detailServiceProvideScreen),
-          builder: (context) => DetailsServiceProvideScreen(user:user),
+          builder: (context) => DetailsServiceProvideScreen(user: user),
         );
       case Routes.listServicesProvidesScreen:
         return MaterialPageRoute(
