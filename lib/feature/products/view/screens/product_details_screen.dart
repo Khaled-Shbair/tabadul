@@ -101,8 +101,8 @@ class ProductDetailsScreen extends StatelessWidget {
                 context,
                 Routes.readyToReceiveScreen,
                 arguments: [
-                  product.id,
                   tableName,
+                  product.id,
                 ],
               );
             },
