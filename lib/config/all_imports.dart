@@ -203,7 +203,7 @@ export '/feature/products/view/widgets/custom_box_of_add_photo_of_product.dart';
 
 //provides_services feature
 export '/feature/services_provides/data/repo/provides_services_repo.dart';
-export '/feature/services_provides/view/screens/list_provides_services_screen.dart';
+export '../feature/services_provides/view/screens/list_services_provides_screen.dart';
 export '/feature/services_provides/view/screens/profile_provide_service_screen.dart';
 export '/feature/services_provides/controller/register_as_service_provide_bloc.dart';
 export '/feature/services_provides/controller/edit_profile_provide_service_bloc.dart';
