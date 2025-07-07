@@ -63,7 +63,6 @@ class ManagerStrings {
 
   //menu strings
   static String profile = 'profile'.tr();
-  static String listProvideService = 'list_provide_service'.tr();
   static String profileProvideService = 'profile_provide_service'.tr();
   static String contactUsOnWhatsapp = 'contact_us_on_whatsapp'.tr();
   static String aboutApplication = 'about_application'.tr();
