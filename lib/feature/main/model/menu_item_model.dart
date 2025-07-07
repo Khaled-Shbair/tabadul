@@ -12,7 +12,7 @@ final List<MenuItemModel> items = <MenuItemModel>[
   MenuItemModel(
       ManagerAssets.userIcon, ManagerStrings.profile, Routes.profileScreen),
   MenuItemModel(ManagerAssets.registerAsServiceProviderIcon,
-      ManagerStrings.listProvideService, Routes.listServicesProvidesScreen),
+      ManagerStrings.listServiceProvide, Routes.listServicesProvidesScreen),
   MenuItemModel(ManagerAssets.profileProvideServiceIcon,
       ManagerStrings.profileProvideService, Routes.profileProvideServiceScreen),
   MenuItemModel(ManagerAssets.whatsAppIcon, ManagerStrings.contactUsOnWhatsapp,
