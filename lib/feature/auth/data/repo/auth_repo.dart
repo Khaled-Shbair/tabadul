@@ -118,6 +118,12 @@ class AuthRepoImpl extends AuthRepo {
             _sharedPref.setData(
                 SharedPreferenceKeys.image, response.userData!.image);
             _sharedPref.setData(SharedPreferenceKeys.id, response.userData!.id);
+            _sharedPref.setData(SharedPreferenceKeys.description,
+                response.userData!.description ?? '');
+            _sharedPref.setData(
+                SharedPreferenceKeys.job, response.userData!.job ?? '');
+            _sharedPref.setData(SharedPreferenceKeys.imageOfProvideService,
+                response.userData!.imageOfProvideService ?? '');
           }
           return Right(response);
         } else {
@@ -140,6 +146,7 @@ class AuthRepoImpl extends AuthRepo {
       );
     }
   }
+
   @override
   Future<Either<Failure, bool>> logout() async {
     if (await _networkInfo.isConnected) {
