@@ -206,4 +206,41 @@ class FbFirestoreController {
       );
     }
   }
+
+  Future<GetServicesProvidesResponse> getServiceProvide(
+      DocumentSnapshot? lastDocument) async {
+    try {
+      var query = _firestore
+          .collection(FirebaseConstants.usersTable)
+          .where(FirebaseConstants.job, isNotEqualTo: "")
+          .orderBy(FirebaseConstants.createdAt, descending: true)
+          .limit(30);
+
+      if (lastDocument != null) {
+        query = query.startAfterDocument(lastDocument);
+      }
+
+      var snapshot = await query.get();
+
+      if (snapshot.docs.isNotEmpty) {
+        List<UserModel> users =
+            snapshot.docs.map((doc) => UserModel.formMap(doc.data())).toList();
+
+        return GetServicesProvidesResponse(
+          lastDocument: snapshot.docs.last,
+          message: ManagerStrings.successfully,
+          status: true,
+          users: users,
+        );
+      } else {
+        return GetServicesProvidesResponse(
+          message: ManagerStrings.noMore,
+          status: false,
+          users: [],
+        );
+      }
+    } catch (e) {
+      throw Exception(ManagerStrings.oopsThereIsSomethingWrong);
+    }
+  }
 }
