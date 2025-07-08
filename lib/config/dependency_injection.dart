@@ -426,8 +426,8 @@ disposeRegisterAsServiceProvide() {
   }
 }
 
-// initProfileServiceProvide() {}
-// disposeProfileServiceProvide() {}
+initListServiceProvide() {}
+disposeListServiceProvide() {}
 
 initEditProfileProvideService() {
   if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
