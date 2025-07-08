@@ -11,8 +11,6 @@ class ListServicesProvidesScreen extends StatelessWidget {
           disposeListServiceProvide();
           Navigator.pop(context);
         },
-        // functionActionButton: () =>
-        //   ZoomDrawer.of(context)?.open(),
       ),
       body: ListView.builder(
         itemCount: 10,
@@ -24,7 +22,6 @@ class ListServicesProvidesScreen extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           return ListTile(
-
             contentPadding: EdgeInsetsDirectional.zero,
             leading: Container(
               height: ManagerHeight.h70,
@@ -34,7 +31,9 @@ class ListServicesProvidesScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(ManagerRadius.r10),
                 image: DecorationImage(
                   fit: BoxFit.fill,
-                  image: CachedNetworkImageProvider(instance<SharedPreferencesController>().getString(SharedPreferenceKeys.imageOfProvideService)),
+                  image: CachedNetworkImageProvider(
+                      instance<SharedPreferencesController>().getString(
+                          SharedPreferenceKeys.imageOfProvideService)),
                 ),
               ),
             ),
@@ -60,10 +59,8 @@ class ListServicesProvidesScreen extends StatelessWidget {
                     // arguments: userModel, // data of user
                   );
                 },
-                child: Text(
-                  ManagerStrings.call,
-                  style: context.textTheme.labelLarge
-                ),
+                child: Text(ManagerStrings.call,
+                    style: context.textTheme.labelLarge),
               ),
             ),
           );
