@@ -1,3 +1,5 @@
+import 'package:tabadul/feature/services_provides/data/request/get_services_provides_request.dart';
+
 import '/config/all_imports.dart';
 
 class FbFirestoreController {
@@ -208,7 +210,7 @@ class FbFirestoreController {
   }
 
   Future<GetServicesProvidesResponse> getServiceProvide(
-      DocumentSnapshot? lastDocument) async {
+      GetServicesProvidesRequest request) async {
     try {
       var query = _firestore
           .collection(FirebaseConstants.usersTable)
@@ -216,8 +218,8 @@ class FbFirestoreController {
           .orderBy(FirebaseConstants.createdAt, descending: true)
           .limit(30);
 
-      if (lastDocument != null) {
-        query = query.startAfterDocument(lastDocument);
+      if (request.lastDocument != null) {
+        query = query.startAfterDocument(request.lastDocument!);
       }
 
       var snapshot = await query.get();

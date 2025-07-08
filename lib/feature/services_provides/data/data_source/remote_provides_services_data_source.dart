@@ -1,8 +1,7 @@
 import '/config/all_imports.dart';
 
 abstract class RemoteProvidesServicesDataSource {
-  Future<RegisterAsServiceProvideResponse> registerAsServiceProvide(
-      UserModel request);
+  Future<RegisterAsServiceProvideResponse> registerAsServiceProvide(UserModel request);
   Future<String?> addImageServiceProvide(File image, String phoneNumber);
   Future<EditProfileResponse> editProfileProvideService(UserModel request);
 }
@@ -30,4 +29,5 @@ class RemoteProvidesServicesDataSourceImpl
       UserModel request) async {
     return await _firestore.editProfile(request);
   }
+
 }
