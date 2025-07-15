@@ -77,9 +77,6 @@ class ServicesProvidesRepoImpl extends ServicesProvidesRepo {
         }
 
         var response = await _dataSource.editProfileProvideService(request);
-        print('2222222222222#updateImage${response.status}');
-
-
         if (response.status) {
           if (pathImage != null) {
             response.image = pathImage;
