@@ -1,5 +1,3 @@
-import 'package:tabadul/feature/services_provides/data/request/get_services_provides_request.dart';
-
 import '/config/all_imports.dart';
 
 class FbFirestoreController {
@@ -209,7 +207,7 @@ class FbFirestoreController {
     }
   }
 
-  Future<GetServicesProvidesResponse> getServiceProvide(
+  Future<GetServicesProvidesResponse> getServicesProvides(
       GetServicesProvidesRequest request) async {
     try {
       var query = _firestore
