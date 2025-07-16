@@ -15,10 +15,10 @@ The **Tabadul** application was developed using the following tools and best pra
 | Category                 | Technologies                      |
 |--------------------------|-----------------------------------|
 | **Framework**            | Flutter (Dart)                    |
-| **State Management**     | GetX                              |
+| **State Management**     | Bloc                              |
 | **Architecture**         | Clean Code (Layered Architecture) |
 | **Dependency Injection** | get_it                            |
-| **Localization**         | GetX Localization                 |
+| **Localization**         | Easy Localization                 |
 | **Database**             | Firebase Firestore                |
 | **Authentication**       | Firebase Auth                     |
 | **Storage**              | Firebase Storage                  |
