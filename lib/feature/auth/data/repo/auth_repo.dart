@@ -119,7 +119,7 @@ class AuthRepoImpl extends AuthRepo {
                 SharedPreferenceKeys.image, response.userData!.image);
             _sharedPref.setData(SharedPreferenceKeys.id, response.userData!.id);
             _sharedPref.setData(SharedPreferenceKeys.description,
-                response.userData!.description ?? '');
+                response.userData!.detailsOfServiceProvider ?? '');
             _sharedPref.setData(
                 SharedPreferenceKeys.job, response.userData!.job ?? '');
             _sharedPref.setData(SharedPreferenceKeys.imageOfProvideService,
