@@ -63,7 +63,7 @@ class ServicesProvidesRepoImpl extends ServicesProvidesRepo {
     if (await _networkInfo.isConnected) {
       try {
         String? pathImage;
-        if (request.updateImage != null) {        
+        if (request.updateImage != null) {
           final compressed =
               await ImageCompressor.compressImage(request.updateImage!);
           if (compressed != null) {
