@@ -47,7 +47,7 @@ class EditProfileProvideServiceBloc extends Bloc<EditProfileProvideServiceEvent,
       (await _repo.editProfileProvideService(UserModel(
         phoneNumber: sharedPref.getString(SharedPreferenceKeys.phoneNumber),
         job: job.text.isNotEmpty ? job.text : null,
-        description: description.text.isNotEmpty ? description.text : null,
+        detailsOfServiceProvider: description.text.isNotEmpty ? description.text : null,
         updateImage: imagePath ==
                 sharedPref.getString(SharedPreferenceKeys.imageOfProvideService)
             ? null

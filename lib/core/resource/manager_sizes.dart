@@ -209,4 +209,6 @@ class ManagerIconsSizes {
   static double i20 = SizeUtil.setIconSize(20);
   static double i24 = SizeUtil.setIconSize(24);
   static double i30 = SizeUtil.setIconSize(30);
+  static double i60 = SizeUtil.setIconSize(60);
+
 }

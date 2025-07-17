@@ -45,7 +45,7 @@ class RegisterAsServiceProvideBloc
     if (formKey.currentState!.validate()) {
       emit(RegisterAsServiceProvideLoading(state.image));
       (await _repo.registerAsServiceProvide(UserModel(
-        description: descriptionOfJob.text,
+        detailsOfServiceProvider: descriptionOfJob.text,
         phoneNumber: sharedPref.getString(SharedPreferenceKeys.phoneNumber),
         job: job.text,
         updateImage:

@@ -209,6 +209,7 @@ class RouteGenerator {
           builder: (context) => DetailsServiceProvideScreen(user: user),
         );
       case Routes.listServicesProvidesScreen:
+        initListServiceProvide();
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.listServicesProvidesScreen),
           builder: (context) => ListServicesProvidesScreen(),

@@ -213,7 +213,6 @@ class FbFirestoreController {
       var query = _firestore
           .collection(FirebaseConstants.usersTable)
           .where(FirebaseConstants.job, isNotEqualTo: "")
-          .orderBy(FirebaseConstants.createdAt, descending: true)
           .limit(30);
 
       if (request.lastDocument != null) {
@@ -222,10 +221,10 @@ class FbFirestoreController {
 
       var snapshot = await query.get();
 
+
       if (snapshot.docs.isNotEmpty) {
         List<UserModel> users =
             snapshot.docs.map((doc) => UserModel.formMap(doc.data())).toList();
-
         return GetServicesProvidesResponse(
           lastDocument: snapshot.docs.last,
           message: ManagerStrings.successfully,

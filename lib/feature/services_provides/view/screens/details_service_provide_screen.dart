@@ -81,7 +81,7 @@ class DetailsServiceProvideScreen extends StatelessWidget {
                 CustomWidgetDetailsServiceProvide('${user.phoneNumber}'),
                 verticalSpace(ManagerHeight.h12),
                 CustomWidgetDetailsServiceProvide(
-                  '${user.description}',
+                  '${user.detailsOfServiceProvider}',
                   maxLines: 4,
                 ),
                 Padding(

@@ -11,7 +11,7 @@ class UserModel {
   String? image;
   String? imageOfProvideService;
 
-  String? description;
+  String? detailsOfServiceProvider;
   String? job;
   File? updateImage;
   String? phoneNumber;
@@ -22,7 +22,7 @@ class UserModel {
     this.lastName,
     this.image,
     this.regionAndStreet,
-    this.description,
+    this.detailsOfServiceProvider,
     this.job,
     this.city,
     this.updateImage,
@@ -35,7 +35,8 @@ class UserModel {
     city = map[FirebaseConstants.city];
     regionAndStreet = map[FirebaseConstants.regionAndStreet];
     image = map[FirebaseConstants.image];
-    description = map[FirebaseConstants.description];
+    imageOfProvideService = map[FirebaseConstants.imageOfProvideService];
+    detailsOfServiceProvider = map[FirebaseConstants.detailsOfServiceProvider];
     job = map[FirebaseConstants.job];
   }
 
@@ -49,7 +50,7 @@ class UserModel {
     if (imageOfProvideService != null) {
       data[FirebaseConstants.imageOfProvideService] = imageOfProvideService;
     }
-    if (description != null) data[FirebaseConstants.description] = description;
+    if (detailsOfServiceProvider != null) data[FirebaseConstants.detailsOfServiceProvider] = detailsOfServiceProvider;
     if (job != null) data[FirebaseConstants.job] = job;
     if (regionAndStreet != null) {
       data[FirebaseConstants.regionAndStreet] = regionAndStreet;
