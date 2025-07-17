@@ -131,6 +131,7 @@ class ManagerStrings {
   static String badRequest = 'bad_request'.tr();
   static String noData = 'no_data'.tr();
   static String successfully = 'successfully'.tr();
+  static String refresh = 'refresh'.tr();
 
   static String cancel = 'cancel'.tr();
   static String messageWhatsapp = 'message_whatsapp'.tr();
