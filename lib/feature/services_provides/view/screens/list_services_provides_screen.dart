@@ -21,49 +21,17 @@ class ListServicesProvidesScreen extends StatelessWidget {
           bottom: ManagerHeight.h15,
         ),
         itemBuilder: (context, index) {
-          return ListTile(
-            contentPadding: EdgeInsetsDirectional.zero,
-            leading: Container(
-              height: ManagerHeight.h70,
-              width: ManagerWidth.w74,
-              decoration: BoxDecoration(
-                color: context.theme.colorScheme.secondary,
-                borderRadius: BorderRadius.circular(ManagerRadius.r10),
-                image: DecorationImage(
-                  fit: BoxFit.fill,
-                  image: CachedNetworkImageProvider(
-                      instance<SharedPreferencesController>().getString(
-                          SharedPreferenceKeys.imageOfProvideService)),
-                ),
-              ),
+          final serviceProvider = [
+            UserModel(
+              city: 'غزة',
+              firstName: 'خالد',
+              lastName: 'شبير',
+              job: 'عامل كهربائي',
+              imageOfProvideService: instance<SharedPreferencesController>()
+                  .getString(SharedPreferenceKeys.imageOfProvideService),
             ),
-            title: Text(
-              'علي أحمد', // name
-              style: context.textTheme.bodyLarge?.copyWith(
-                height: ManagerHeight.h2,
-              ),
-            ),
-            subtitle: Text(
-              'عامل دهان', // job
-              style: context.textTheme.bodyLarge?.copyWith(
-                fontFamily: ManagerFontFamily.kHelveticaLNeeL,
-              ),
-            ),
-            trailing: SizedBox(
-              width: ManagerWidth.w62,
-              height: ManagerHeight.h30,
-              child: CustomButton(
-                onPressed: () {
-                  Navigator.pushNamed(
-                    context, Routes.detailServiceProvideScreen,
-                    // arguments: userModel, // data of user
-                  );
-                },
-                child: Text(ManagerStrings.call,
-                    style: context.textTheme.labelLarge),
-              ),
-            ),
-          );
+          ];
+          return CustomServiceProviderItem(serviceProvider: serviceProvider[0]);
         },
       ),
     );
