@@ -8,11 +8,8 @@ class CustomServiceProviderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  ListTile(
-        contentPadding: EdgeInsetsDirectional.only(
-           bottom:  ManagerHeight.h10
-        ),
+        contentPadding: EdgeInsetsDirectional.zero,
         leading: Container(
-          height: ManagerHeight.h100,
           width: ManagerWidth.w74,
           decoration: BoxDecoration(
             color: context.theme.colorScheme.secondary,

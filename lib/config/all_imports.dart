@@ -210,7 +210,6 @@ export '/feature/services_provides/data/response/get_services_provides_response.
 export '/feature/services_provides/controller/edit_profile_provide_service_bloc.dart';
 export '/feature/services_provides/view/screens/register_as_service_provide_screen.dart';
 export '/feature/services_provides/view/screens/edit_profile_provide_service_screen.dart';
-export '/feature/services_provides/view/widgets/custom_empty_list_services_provides.dart';
 export '/feature/services_provides/data/response/register_as_service_provide_response.dart';
 export '/feature/services_provides/view/widgets/custom_widget_details_service_provide.dart';
 export '/feature/services_provides/data/data_source/remote_provides_services_data_source.dart';
