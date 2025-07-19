@@ -23,6 +23,7 @@ class UserModel {
     this.image,
     this.regionAndStreet,
     this.detailsOfServiceProvider,
+    this.imageOfProvideService,
     this.job,
     this.city,
     this.updateImage,
