@@ -212,7 +212,7 @@ class RouteGenerator {
         initListServiceProvide();
         return MaterialPageRoute(
           settings: RouteSettings(name: Routes.listServicesProvidesScreen),
-          builder: (context) => ListServicesProvidesScreen(),
+          builder: (context) => ListServicesProvidersScreen(),
         );
       default:
         return unDefinedRoute();

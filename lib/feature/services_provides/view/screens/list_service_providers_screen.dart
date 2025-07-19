@@ -1,7 +1,7 @@
 import '/config/all_imports.dart';
 
-class ListServicesProvidesScreen extends StatelessWidget {
-  const ListServicesProvidesScreen({super.key});
+class ListServicesProvidersScreen extends StatelessWidget {
+  const ListServicesProvidersScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

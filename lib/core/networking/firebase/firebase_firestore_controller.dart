@@ -207,7 +207,7 @@ class FbFirestoreController {
     }
   }
 
-  Future<GetServicesProvidesResponse> getServicesProvides(
+  Future<GetServicesProvidesResponse> getServiceProviders(
       GetServicesProvidesRequest request) async {
     try {
       var query = _firestore

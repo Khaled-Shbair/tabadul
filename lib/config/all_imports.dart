@@ -201,7 +201,7 @@ export '/feature/products/view/widgets/custom_box_of_add_photo_of_product.dart';
 //provides_services feature
 export '/feature/services_provides/data/repo/provides_services_repo.dart';
 export '/feature/services_provides/view/widgets/custom_service_provider_item.dart';
-export '/feature/services_provides/view/screens/list_services_provides_screen.dart';
+export '/feature/services_provides/view/screens/list_service_providers_screen.dart';
 export '/feature/services_provides/data/request/get_services_provides_request.dart';
 export '/feature/services_provides/view/screens/profile_provide_service_screen.dart';
 export '/feature/services_provides/controller/register_as_service_provide_bloc.dart';
