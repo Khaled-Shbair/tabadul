@@ -12,13 +12,13 @@ class LogoutScreen extends StatelessWidget with CustomToast {
           customLoading(context);
         }
         if (state is LogoutSuccessfully) {
-          Navigator.pop(context);
+          Navigator.of(context, rootNavigator: true).pop();
           Navigator.pushNamedAndRemoveUntil(
               context, Routes.loginScreen, (route) => false);
           disposeLogout();
         }
         if (state is LogoutFailure) {
-          Navigator.pop(context);
+          Navigator.of(context, rootNavigator: true).pop();
           showToast(message: state.message, context: context);
         }
       },
