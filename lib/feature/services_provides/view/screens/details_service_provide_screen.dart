@@ -83,6 +83,7 @@ class DetailsServiceProvideScreen extends StatelessWidget {
                 CustomWidgetDetailsServiceProvide(
                   '${user.detailsOfServiceProvider}',
                   maxLines: 4,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                 ),
                 Padding(
                   padding: EdgeInsetsDirectional.only(
