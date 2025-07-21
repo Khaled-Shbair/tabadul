@@ -5,6 +5,8 @@ abstract class ServicesProvidesRepo {
       registerAsServiceProvide(UserModel request);
   Future<Either<Failure, EditProfileResponse>> editProfileProvideService(
       UserModel request);
+  Future<Either<Failure, GetServicesProvidesResponse>> getServiceProviders(
+      GetServicesProvidesRequest request);
 }
 
 class ServicesProvidesRepoImpl extends ServicesProvidesRepo {
@@ -99,7 +101,34 @@ class ServicesProvidesRepoImpl extends ServicesProvidesRepo {
           code: ResponseCode.NO_INTERNET_CONNECTION.value,
           message: ManagerStrings.noInternetConnection,
         ),
-      );
-    }
+      );    }
+  }
+
+  @override
+  Future<Either<Failure, GetServicesProvidesResponse>> getServiceProviders(
+      GetServicesProvidesRequest request) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        var response = await _dataSource.getServiceProviders(request);
+        if (response.status) {
+          return Right(response);
+        } else {
+          return Left(
+            Failure(
+              code: -99,
+              message: response.message,
+            ),
+          );
+        }
+      } catch (e) {
+        return Left(ErrorHandler.handle(e).failure);
+      }
+    } else {
+      return Left(
+        Failure(
+          code: ResponseCode.NO_INTERNET_CONNECTION.value,
+          message: ManagerStrings.noInternetConnection,
+        ),
+      );     }
   }
 }

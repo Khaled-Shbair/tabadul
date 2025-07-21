@@ -4,6 +4,7 @@ abstract class RemoteProvidesServicesDataSource {
   Future<RegisterAsServiceProvideResponse> registerAsServiceProvide(UserModel request);
   Future<String?> addImageServiceProvide(File image, String phoneNumber);
   Future<EditProfileResponse> editProfileProvideService(UserModel request);
+  Future<GetServicesProvidesResponse> getServiceProviders(GetServicesProvidesRequest request);
 }
 
 class RemoteProvidesServicesDataSourceImpl
@@ -30,4 +31,9 @@ class RemoteProvidesServicesDataSourceImpl
     return await _firestore.editProfile(request);
   }
 
+  @override
+  Future<GetServicesProvidesResponse> getServiceProviders(
+      GetServicesProvidesRequest request) async {
+    return await _firestore.getServiceProviders(request);
+  }
 }
