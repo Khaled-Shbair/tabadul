@@ -426,9 +426,6 @@ disposeRegisterAsServiceProvide() {
   }
 }
 
-initListServiceProvide() {}
-disposeListServiceProvide() {}
-
 initEditProfileProvideService() {
   if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
     instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
@@ -462,5 +459,40 @@ disposeEditProfileProvideService() {
   }
   if (GetIt.I.isRegistered<EditProfileProvideServiceBloc>()) {
     instance.unregister<EditProfileProvideServiceBloc>();
+  }
+}
+
+initListServiceProviders() {
+  if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
+    instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
+      () => RemoteProvidesServicesDataSourceImpl(
+        instance<FbFirestoreController>(),
+        instance<FirebaseStorageController>(),
+      ),
+    );
+  }
+  if (!GetIt.I.isRegistered<ServicesProvidesRepo>()) {
+    instance.registerLazySingleton<ServicesProvidesRepo>(
+        () => ServicesProvidesRepoImpl(
+          instance<NetworkInfo>(),
+          instance<RemoteProvidesServicesDataSource>(),
+        ));
+  }
+  if (!GetIt.I.isRegistered<ListServiceProvidersBloc>()) {
+    instance.registerLazySingleton<ListServiceProvidersBloc>(
+      () => ListServiceProvidersBloc(instance<ServicesProvidesRepo>()),
+    );
+  }
+}
+
+disposeListServiceProvide() {
+  if (GetIt.I.isRegistered<ListServiceProvidersBloc>()) {
+    instance.unregister<ListServiceProvidersBloc>();
+  }
+  if (GetIt.I.isRegistered<ServicesProvidesRepo>()) {
+    instance.unregister<ServicesProvidesRepo>();
+  }
+  if (GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
+    instance.unregister<RemoteProvidesServicesDataSource>();
   }
 }

@@ -198,13 +198,14 @@ export '/feature/products/data/data_source/remote_products_data_source.dart';
 export '/feature/products/view/screens/added_product_successfully_screen.dart';
 export '/feature/products/view/widgets/custom_box_of_add_photo_of_product.dart';
 
-//provides_services feature
+//services_provides feature
 export '/feature/services_provides/data/repo/provides_services_repo.dart';
 export '/feature/services_provides/view/widgets/custom_service_provider_item.dart';
 export '/feature/services_provides/view/screens/list_service_providers_screen.dart';
 export '/feature/services_provides/data/request/get_services_provides_request.dart';
 export '/feature/services_provides/view/screens/profile_provide_service_screen.dart';
 export '/feature/services_provides/controller/register_as_service_provide_bloc.dart';
+export '/feature/services_provides/controller/list_service_providers_bloc.dart';
 export '/feature/services_provides/view/screens/details_service_provide_screen.dart';
 export '/feature/services_provides/data/response/get_services_provides_response.dart';
 export '/feature/services_provides/controller/edit_profile_provide_service_bloc.dart';
