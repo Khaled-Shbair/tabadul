@@ -79,6 +79,7 @@ export '/core/resource/manager_text_theme_dark.dart';
 export '/core/resource/manager_text_theme_light.dart';
 export '/core/internet_checker/internet_checker.dart';
 export '/core/widgets/custom_image_selection_box.dart';
+export '/core/widgets/custom_no_internet_connection.dart';
 export '/core/networking/firebase/firebase_auth_controller.dart';
 export '/core/storage/local/shared_preference/pref_controller.dart';
 export '/core/networking/firebase/firebase_storage_controller.dart';
