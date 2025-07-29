@@ -26,11 +26,13 @@ class CustomWidgetDetailsServiceProvide extends StatelessWidget {
           ),
         ),
         horizontalSpace(ManagerWidth.w12),
-        Text(
-          text,
-          textAlign: TextAlign.start,
-          style: context.textTheme.bodyLarge,
-          maxLines: maxLines,
+        Expanded(
+          child: Text(
+            text,
+            maxLines: maxLines,
+            overflow: TextOverflow.ellipsis,
+            style: context.textTheme.bodyLarge
+          ),
         ),
       ],
     );
