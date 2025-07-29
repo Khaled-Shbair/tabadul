@@ -12,12 +12,7 @@
           "package_name": "com.tabadul.tabadul"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "974161501487-j7vc3lg2h38e2u0ebv513tt4bi6kah5c.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
           "current_key": "AIzaSyBzKGFnnMfcPYBg2yhgb4abWPNnKHQml4I"
@@ -25,12 +20,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "974161501487-j7vc3lg2h38e2u0ebv513tt4bi6kah5c.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

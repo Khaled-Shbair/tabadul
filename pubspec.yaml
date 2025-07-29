@@ -5,7 +5,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: '>=3.5.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -15,47 +15,85 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  flutter_zoom_drawer: ^3.0.3
-  flutter_svg: ^2.0.2
-  percent_indicator: ^4.2.2
-  url_launcher: ^6.1.6
-  animate_do: ^3.0.2
-  shared_preferences: ^2.0.15
-  get: ^4.6.5
-  image_picker: ^0.8.6
-  fluttertoast: ^8.1.1
-  firebase_core: ^2.0.0
-  firebase_auth: ^4.0.1
-  cloud_firestore: ^4.4.3
-  flutter_screenutil: ^5.6.1
-  sms_autofill: ^2.3.0
+
+  flutter_bloc: ^9.1.0 # Bloc pattern for state management
+  get_it: ^8.0.3 # Simple service locator for dependency injection
+  flutter_screenutil: ^5.8.4 # Responsive UI design
+  fluttertoast: ^8.2.2 # Toast notifications
+  flutter_zoom_drawer: ^3.2.0 # Drawer navigation with zoom effect
+  flutter_svg: ^2.0.7 # SVG image support
+  percent_indicator: ^4.2.3 # Circular and linear percent indicators
+  animate_do: ^4.2.0 # Animation utilities
+  dropdown_search: ^6.0.2 # Dropdown search widget
+  cached_network_image: ^3.4.1 # Caching network images
+  flutter_image_compress: ^2.4.0 # Compress images
+  path_provider: ^2.1.5 # Access device file system paths
+  path: ^1.9.1 # Path manipulation utilities
+  
+  # localization 
+  easy_localization: ^3.0.7+1 # Easy localization and internationalization
+  
+  #local Storage
+  shared_preferences: ^2.2.0 # Store simple data locally
+
+  # Functional Programming
+  dartz: ^0.10.1 # Functional programming tools (Either, Option, etc.)
+
+  # Check your internet connection
+  internet_connection_checker_plus: ^2.7.1 # Internet connection status
+
+  url_launcher: ^6.3.1 # Launch URLs in browser or apps
+  image_picker: ^1.0.0 # Pick images from gallery or camera
+  sms_autofill: ^2.3.0 # SMS code autofill
+
+  firebase_core: ^3.13.0 # Firebase core services
+  firebase_auth: ^5.5.3 # Firebase authentication
+  cloud_firestore: ^5.6.7 # Cloud Firestore database
+  firebase_storage: ^12.4.5 # Firebase cloud storage
+  firebase_app_check: ^0.3.2+5 # Protects access to backend resources
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.12.0
-  flutter_lints: ^2.0.0
+  flutter_lints: ^5.0.0
 
-flutter_icons:
+  flutter_native_splash: ^2.4.5 # Generate native splash screens
+  flutter_launcher_icons: ^0.14.3 # Generate app launcher icons
+
+flutter_launcher_icons:
   ios: true
-  android: true
-  image_path: "images/app_icon.png"
-
+  android: "launcher_icon"
+  image_path: "assets/images/launcher_icon.png"
+  image_path_android: "assets/images/launcher_icon.png"
+  image_path_ios: "assets/images/launcher_icon.png"
+  adaptive_icon_foreground: "assets/images/launcher_icon.png"
+  adaptive_icon_background: "#464698"
+  remove_alpha_ios: true
+  min_sdk_android: 21
 
 flutter:
   uses-material-design: true
 
   assets:
-    - images/departments/
-    - images/login_and_create_account/
-    - images/splash_screen_images/
-    - images/
+    - assets/images/
+    - assets/images/splash/
+    - assets/images/on_boarding/
+    - assets/images/auth/
+    - assets/images/home/
+    - assets/images/info/
+    - assets/images/icons_images/
+    - assets/images/add_personal_information/
+    - assets/images/add_and_buy_product/
+    - assets/images/services_provides/
+    - assets/languages/
+
+    
 
   fonts:
     - family: HelveticaLTArabic
       fonts:
-        - asset: fonts/HelveticaNeueLT-Arabic-75-Bold.ttf
+        - asset: assets/fonts/HelveticaNeueLT-Arabic-75-Bold.ttf
 
     - family: HelveticaNeueLTRoman
       fonts:
-        - asset: fonts/HelveticaNeueLT-55-Roman-Bold.ttf
+        - asset: assets/fonts/HelveticaNeueLT-55-Roman-Bold.ttf
