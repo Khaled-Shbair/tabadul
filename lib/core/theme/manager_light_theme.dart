@@ -146,7 +146,7 @@ ThemeData managerLightTheme() {
       actionTextColor: ManagerColors.white,
     ),
     textTheme: ManagerTextThemeLight(),
-    tabBarTheme: TabBarTheme(
+    tabBarTheme: TabBarThemeData(
       dividerColor: ManagerColors.transparent,
       unselectedLabelColor: ManagerColors.primaryColor,
       labelStyle: ManagerTextStyles.font15AntiFlashWhiteBold,

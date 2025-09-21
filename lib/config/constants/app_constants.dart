@@ -8,6 +8,7 @@ class AppConstants {
   static const double widthOfSideOfBorderSideInMainButton = 1;
   static const double elevationOfMyBackButton = 5;
   static const int maxLengthOfPhoneNumber = 10;
+  static const String     phoneNumberForContactUsOnWhatsapp  = '0592638012';
   static const List<CodeCountryModel> countriesCodes = [
     CodeCountryModel(name: '970+', id: 0),
     CodeCountryModel(name: '972+', id: 1),

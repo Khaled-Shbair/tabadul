@@ -5,7 +5,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.5.0 <4.0.0'
+  sdk: '>=3.8.1 <4.0.0'
 
 dependencies:
   flutter:
@@ -29,8 +29,8 @@ dependencies:
   flutter_image_compress: ^2.4.0 # Compress images
   path_provider: ^2.1.5 # Access device file system paths
   path: ^1.9.1 # Path manipulation utilities
-  
-  # localization 
+
+  # localization
   easy_localization: ^3.0.7+1 # Easy localization and internationalization
   
   #local Storage
@@ -46,16 +46,16 @@ dependencies:
   image_picker: ^1.0.0 # Pick images from gallery or camera
   sms_autofill: ^2.3.0 # SMS code autofill
 
-  firebase_core: ^3.13.0 # Firebase core services
-  firebase_auth: ^5.5.3 # Firebase authentication
-  cloud_firestore: ^5.6.7 # Cloud Firestore database
-  firebase_storage: ^12.4.5 # Firebase cloud storage
-  firebase_app_check: ^0.3.2+5 # Protects access to backend resources
+  firebase_core: ^4.0.0 # Firebase core services
+  firebase_auth: ^6.0.1 # Firebase authentication
+  cloud_firestore: ^6.0.0 # Cloud Firestore database
+  firebase_storage: ^13.0.0 # Firebase cloud storage
+  firebase_app_check: ^0.4.0 # Protects access to backend resources
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
   flutter_native_splash: ^2.4.5 # Generate native splash screens
   flutter_launcher_icons: ^0.14.3 # Generate app launcher icons

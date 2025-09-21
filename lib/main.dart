@@ -2,8 +2,8 @@ import 'config/all_imports.dart';
 
 final AppRouteObserver appRouteObserver = AppRouteObserver();
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() async {  WidgetsFlutterBinding.ensureInitialized();
+await EasyLocalization.ensureInitialized();
   await initModule();
   runApp(
     EasyLocalization(

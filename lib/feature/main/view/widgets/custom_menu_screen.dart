@@ -38,10 +38,25 @@ class CustomMenuScreen extends StatelessWidget {
                 title: items[index].title,
                 onTap: () {
                   ZoomDrawer.of(context)?.close();
-                  if (items[index].route ==
+
+               if(items[index].route == Routes.profileScreen){
+                 var controller = context.read<MainBloc>();
+                 final currentState = controller.state;
+                 if (currentState is BottomNavIndexChanged &&
+                     currentState.index != index) {
+                   controller.add(BottomNavIndexChange(3));
+                 }else   if(items[index].route == Routes.profileProvideServiceScreen){
+                   var controller = context.read<MainBloc>();
+                   final currentState = controller.state;
+                   if (currentState is BottomNavIndexChanged &&
+                       currentState.index != index) {
+                     controller.add(BottomNavIndexChange(2));
+                   }
+                 }
+               }else if (items[index].route ==
                       ManagerStrings.contactUsOnWhatsapp) {
                     openWhatsAppChat(
-                      '0592638012',
+                  AppConstants.phoneNumberForContactUsOnWhatsapp,
                       message: ManagerStrings.messageWhatsapp,
                     );
                   } else if (AppRouteObserver.currentRoute !=

@@ -5,10 +5,7 @@ import 'all_imports.dart';
 final instance = GetIt.instance;
 
 Future<void> initModule() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
   Bloc.observer = AppBlocObserver();
-
   initNetworkInfo();
   await PrefController().initializeApp();
   await initFirebase();
@@ -20,7 +17,7 @@ Future<void> initModule() async {
   );
 }
 
-initNetworkInfo() async {
+Future<void> initNetworkInfo() async {
   if (!GetIt.I.isRegistered<InternetConnection>()) {
     instance.registerLazySingleton<InternetConnection>(
       () => InternetConnection(),
@@ -37,7 +34,7 @@ initNetworkInfo() async {
   }
 }
 
-initSharedPreference() async {
+Future<void> initSharedPreference() async {
   if (!GetIt.I.isRegistered<SharedPreferencesController>()) {
     final sharedPreferences = await SharedPreferences.getInstance();
     instance.registerLazySingleton<SharedPreferencesController>(
@@ -45,7 +42,7 @@ initSharedPreference() async {
   }
 }
 
-initFirebase() async {
+Future<void> initFirebase() async {
   if (!GetIt.I.isRegistered<FirebaseApp>()) {
     final firebase = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
@@ -80,7 +77,7 @@ initFirebase() async {
   }
 }
 
-initOnBoarding() {
+void initOnBoarding() {
   if (!GetIt.I.isRegistered<OnBoardingBloc>()) {
     instance.registerLazySingleton<OnBoardingBloc>(
       () => OnBoardingBloc(instance<SharedPreferencesController>()),
@@ -88,13 +85,13 @@ initOnBoarding() {
   }
 }
 
-disposeOnBoarding() {
+void disposeOnBoarding() {
   if (GetIt.I.isRegistered<OnBoardingBloc>()) {
     instance.unregister<OnBoardingBloc>();
   }
 }
 
-initAuth() {
+void initAuth() {
   if (!GetIt.I.isRegistered<RemoteAuthDataSource>()) {
     instance.registerLazySingleton<RemoteAuthDataSource>(
       () => RemoteAuthDataSourceImpl(
@@ -115,7 +112,7 @@ initAuth() {
   }
 }
 
-disposeAuth() {
+void disposeAuth() {
   if (GetIt.I.isRegistered<RemoteAuthDataSource>()) {
     instance.unregister<RemoteAuthDataSource>();
   }
@@ -124,7 +121,7 @@ disposeAuth() {
   }
 }
 
-initLogin() {
+void initLogin() {
   if (!GetIt.I.isRegistered<LoginBloc>()) {
     instance.registerLazySingleton<LoginBloc>(
       () => LoginBloc(instance<AuthRepo>()),
@@ -132,13 +129,13 @@ initLogin() {
   }
 }
 
-disposeLogin() {
+void disposeLogin() {
   if (GetIt.I.isRegistered<LoginBloc>()) {
     instance.unregister<LoginBloc>();
   }
 }
 
-initCreateAccount() {
+void initCreateAccount() {
   if (!GetIt.I.isRegistered<CreateAccountBloc>()) {
     instance.registerLazySingleton<CreateAccountBloc>(
       () => CreateAccountBloc(instance<AuthRepo>()),
@@ -146,13 +143,13 @@ initCreateAccount() {
   }
 }
 
-disposeCreateAccount() {
+void disposeCreateAccount() {
   if (GetIt.I.isRegistered<CreateAccountBloc>()) {
     instance.unregister<CreateAccountBloc>();
   }
 }
 
-initSecurityCode() {
+void initSecurityCode() {
   if (!GetIt.I.isRegistered<SecurityCodeBloc>()) {
     instance.registerLazySingleton<SecurityCodeBloc>(
       () => SecurityCodeBloc(instance<AuthRepo>()),
@@ -163,7 +160,7 @@ initSecurityCode() {
   }
 }
 
-disposeSecurityCode() {
+void disposeSecurityCode() {
   if (GetIt.I.isRegistered<SecurityCodeBloc>()) {
     instance.unregister<SecurityCodeBloc>();
   }
@@ -172,7 +169,7 @@ disposeSecurityCode() {
   }
 }
 
-initAddPersonalInformation() {
+void initAddPersonalInformation() {
   if (!GetIt.I.isRegistered<RemoteAddPersonalInformationDataSource>()) {
     instance.registerLazySingleton<RemoteAddPersonalInformationDataSource>(
       () => RemoteAddPersonalInformationDataSourceImpl(
@@ -193,7 +190,7 @@ initAddPersonalInformation() {
   }
 }
 
-disposeAddPersonalInformation() async {
+Future<void> disposeAddPersonalInformation() async {
   if (GetIt.I.isRegistered<RemoteAddPersonalInformationDataSource>()) {
     instance.unregister<RemoteAddPersonalInformationDataSource>();
   }
@@ -205,7 +202,7 @@ disposeAddPersonalInformation() async {
   }
 }
 
-initMain() {
+void initMain() {
   disposeLogin();
   disposeCreateAccount();
   if (!GetIt.I.isRegistered<MainBloc>()) {
@@ -214,13 +211,13 @@ initMain() {
   }
 }
 
-disposeMain() {
+void disposeMain() {
   if (GetIt.I.isRegistered<MainBloc>()) {
     instance.unregister<MainBloc>();
   }
 }
 
-initLogout() {
+void initLogout() {
   if (!GetIt.I.isRegistered<LogoutBloc>()) {
     instance.registerLazySingleton<LogoutBloc>(() => LogoutBloc(
           instance<SharedPreferencesController>(),
@@ -229,13 +226,13 @@ initLogout() {
   }
 }
 
-disposeLogout() async {
+Future<void> disposeLogout() async {
   if (GetIt.I.isRegistered<LogoutBloc>()) {
     instance.unregister<LogoutBloc>();
   }
 }
 
-initEditProfile() {
+void initEditProfile() {
   if (!GetIt.I.isRegistered<RemoteProfileDataSource>()) {
     instance.registerLazySingleton<RemoteProfileDataSource>(
         () => RemoteProfileDataSourceImpl(
@@ -257,7 +254,7 @@ initEditProfile() {
   }
 }
 
-disposeEditProfile() {
+void disposeEditProfile() {
   if (GetIt.I.isRegistered<RemoteProfileDataSource>()) {
     instance.unregister<RemoteProfileDataSource>();
   }
@@ -269,7 +266,7 @@ disposeEditProfile() {
   }
 }
 
-initNotifications() {
+void initNotifications() {
   if (!GetIt.I.isRegistered<RemoteNotificationsDataSource>()) {
     instance.registerLazySingleton<RemoteNotificationsDataSource>(
       () =>
@@ -295,7 +292,7 @@ initNotifications() {
   }
 }
 
-disposeNotifications() {
+void disposeNotifications() {
   if (GetIt.I.isRegistered<RemoteNotificationsDataSource>()) {
     instance.unregister<RemoteNotificationsDataSource>();
   }
@@ -307,7 +304,7 @@ disposeNotifications() {
   }
 }
 
-initShopAndAddProduct() {
+void initShopAndAddProduct() {
   if (!GetIt.I.isRegistered<RemoteProductsDataSource>()) {
     instance.registerLazySingleton<RemoteProductsDataSource>(
       () => RemoteProductsDataSourceImpl(instance<FbFirestoreController>(),
@@ -324,7 +321,7 @@ initShopAndAddProduct() {
   }
 }
 
-disposeShopAndAddProduct() {
+void disposeShopAndAddProduct() {
   if (GetIt.I.isRegistered<RemoteProductsDataSource>()) {
     instance.unregister<RemoteProductsDataSource>();
   }
@@ -333,7 +330,7 @@ disposeShopAndAddProduct() {
   }
 }
 
-initShopProducts() {
+void initShopProducts() {
   if (!GetIt.I.isRegistered<ShopProductsBloc>()) {
     instance.registerLazySingleton<ShopProductsBloc>(
       () => ShopProductsBloc(
@@ -344,13 +341,13 @@ initShopProducts() {
   }
 }
 
-disposeShopProducts() {
+void disposeShopProducts() {
   if (GetIt.I.isRegistered<ShopProductsBloc>()) {
     instance.unregister<ShopProductsBloc>();
   }
 }
 
-initAddProduct() {
+void initAddProduct() {
   if (!GetIt.I.isRegistered<AddProductBloc>()) {
     instance.registerLazySingleton<AddProductBloc>(
       () => AddProductBloc(instance<ProductsRepo>()),
@@ -358,7 +355,7 @@ initAddProduct() {
   }
 }
 
-initBuyProduct() {
+void initBuyProduct() {
   if (!GetIt.I.isRegistered<BuyProductBloc>()) {
     instance.registerLazySingleton<BuyProductBloc>(
       () => BuyProductBloc(instance<ProductsRepo>()),
@@ -366,31 +363,31 @@ initBuyProduct() {
   }
 }
 
-disposeBuyProduct() {
+void disposeBuyProduct() {
   if (GetIt.I.isRegistered<BuyProductBloc>()) {
     instance.unregister<BuyProductBloc>();
   }
 }
 
-disposeAddProduct() {
+void disposeAddProduct() {
   if (GetIt.I.isRegistered<AddProductBloc>()) {
     instance.unregister<AddProductBloc>();
   }
 }
 
-initDeliveryTime() {
+void initDeliveryTime() {
   if (!GetIt.I.isRegistered<DeliveryTimeBloc>()) {
     instance.registerLazySingleton<DeliveryTimeBloc>(() => DeliveryTimeBloc());
   }
 }
 
-disposeDeliveryTime() {
+void disposeDeliveryTime() {
   if (GetIt.I.isRegistered<DeliveryTimeBloc>()) {
     instance.unregister<DeliveryTimeBloc>();
   }
 }
 
-initRegisterAsServiceProvide() {
+void initRegisterAsServiceProvide() {
   if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
     instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
         () => RemoteProvidesServicesDataSourceImpl(
@@ -414,7 +411,7 @@ initRegisterAsServiceProvide() {
   }
 }
 
-disposeRegisterAsServiceProvide() {
+void disposeRegisterAsServiceProvide() {
   if (GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
     instance.unregister<RemoteProvidesServicesDataSource>();
   }
@@ -426,7 +423,7 @@ disposeRegisterAsServiceProvide() {
   }
 }
 
-initEditProfileProvideService() {
+void initEditProfileProvideService() {
   if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
     instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
         () => RemoteProvidesServicesDataSourceImpl(
@@ -450,7 +447,7 @@ initEditProfileProvideService() {
   }
 }
 
-disposeEditProfileProvideService() {
+void disposeEditProfileProvideService() {
   if (GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
     instance.unregister<RemoteProvidesServicesDataSource>();
   }
@@ -462,7 +459,7 @@ disposeEditProfileProvideService() {
   }
 }
 
-initListServiceProviders() {
+void initListServiceProviders() {
   if (!GetIt.I.isRegistered<RemoteProvidesServicesDataSource>()) {
     instance.registerLazySingleton<RemoteProvidesServicesDataSource>(
       () => RemoteProvidesServicesDataSourceImpl(
@@ -485,7 +482,7 @@ initListServiceProviders() {
   }
 }
 
-disposeListServiceProvide() {
+void disposeListServiceProvide() {
   if (GetIt.I.isRegistered<ListServiceProvidersBloc>()) {
     instance.unregister<ListServiceProvidersBloc>();
   }
