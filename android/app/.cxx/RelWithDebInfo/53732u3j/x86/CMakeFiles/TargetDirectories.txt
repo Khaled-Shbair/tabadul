@@ -1,0 +1,2 @@
+K:/tabadul/android/app/.cxx/RelWithDebInfo/53732u3j/x86/CMakeFiles/edit_cache.dir
+K:/tabadul/android/app/.cxx/RelWithDebInfo/53732u3j/x86/CMakeFiles/rebuild_cache.dir
