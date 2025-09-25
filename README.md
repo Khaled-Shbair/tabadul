@@ -40,7 +40,7 @@ https://github.com/user-attachments/assets/7d5f76dd-cd38-40d0-824d-8da20820e63a
 ## 📥 Download the APK  
 Get the latest version of **Tabadul application** and start using it now!  
 
-📌 **Direct APK Download:**   [📥 Download APK](https://drive.google.com/file/d/1oGbuR3xnizZXt9ldZrEjxZSrXU5UinVQ/view?usp=sharing)  
+📌 **Direct APK Download:**   [📥 Download APK](https://drive.google.com/file/d/1_eTCA-4EUlf-TuFWh6NXn39WmIG8zgBC/view?usp=sharing)
 
 🔹 **Fast & Secure** 🔐  
 🔹 **Easy Installation** 📲  
